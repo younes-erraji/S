@@ -1,0 +1,208 @@
+﻿:root {
+  --main-color: #18337d;
+  --input-bg: #4c555785;
+  --white-color: #fefefe;
+  --error-color: #9b3d3d;
+  --grey-color: #636e72;
+  --secondary-bg: #dcdcdc23;
+}
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+.hide-scroll {
+  overflow: hidden;
+}
+.submit {
+  display: block;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: #191e22;
+  background-size: 200%;
+  color: var(--white-color);
+  cursor: pointer;
+  border-radius: 14px;
+  letter-spacing: 1.5px;
+  transition: background-color 0.4s;
+}
+.submit:hover {
+  background-color: #000;
+}
+.error {
+  color: #c45757;
+  margin-top: 2px;
+  font-size: 14px;
+}
+.result {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.result.fail {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.result.success {
+  color: #4f8a10;
+  background-color: #dff2bf;
+  border-color: #bdd396;
+}
+.card-header {
+  font-size: 2.2rem;
+  margin: 0;
+  padding: 8px;
+  color: var(--grey-color);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+@media (max-width: 767.98px) {
+  html {
+    font-size: 9px;
+  }
+}
+@media (max-width: 575.98px) {
+  html {
+    font-size: 8.4px;
+  }
+}
+@media (max-width: 1199.98px) {
+  .container {
+    width: 98%;
+  }
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.main-form {
+  width: 448px;
+  background-color: var(--white-color);
+  min-height: 560px;
+  padding: 44px 22px;
+  margin-block: 18px;
+  box-shadow: 3px 3px 7px #00000007;
+}
+.main-form h1 {
+  text-align: center;
+  margin: 28px 0;
+  font-size: 4rem;
+  color: #777;
+  font-weight: bold;
+}
+.main-form > div {
+  margin: 20px 0;
+}
+.main-form > div label {
+  color: #444;
+  font-size: 1.8rem;
+  padding: 10px 0 4px;
+  display: block;
+  letter-spacing: 1px;
+}
+.main-form > div input:not([type="submit"]),
+.main-form > div select {
+  color: #222;
+  border: none;
+  border-bottom: 2px solid var(--grey-color);
+  background-color: #f8f8f8;
+  height: 40px;
+  padding: 8px 14px;
+  font-size: 1.7rem;
+  transition: all 0.3s;
+}
+.main-form > div input:not([type="submit"]):focus,
+.main-form > div select:focus {
+  outline: none;
+}
+.main-form > div textarea {
+  height: 140px;
+  resize: vertical;
+  color: #222;
+  border: none;
+  border-bottom: 2px solid var(--grey-color);
+  background-color: #f8f8f8;
+  padding: 8px 14px;
+  font-size: 1.7rem;
+  width: 100%;
+  transition: all 0.3s;
+}
+.main-form > div textarea:focus {
+  outline: none;
+}
+.main-form > div input:not([type="submit"]) {
+  width: 100%;
+}
+.main-form a.session {
+  color: revert;
+}
+.main-form .submit {
+  width: 100%;
+}
+.main-form .checkbox {
+  margin: 20px 0;
+}
+.main-form .checkbox input[type="checkbox"] {
+  appearance: none;
+  display: none;
+}
+.main-form .checkbox input[type="checkbox"]:checked + label:after {
+  transform: translateY(-50%) scale(1);
+}
+.main-form .checkbox label {
+  position: relative;
+  color: var(--grey-color);
+  font-size: 1.8rem;
+  padding: 10px 0 10px 30px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.main-form .checkbox label::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: var(--white-color);
+  border: 1px solid var(--grey-color);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.main-form .checkbox label::after {
+  font-family: "FontAwesome";
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  font-size: 18px;
+  text-align: center;
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.4s ease-in-out;
+}
+footer {
+  width: 100%;
+  font-size: 14px;
+  color: var(--white-color);
+  text-align: center;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+@media (max-width: 467.98px) {
+  .main-form {
+    width: 98%;
+    margin: 6px auto;
+  }
+} /*# sourceMappingURL=authentication.css.map */
