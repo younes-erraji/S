@@ -29,7 +29,7 @@
 <body>
   <main>
     <div class="card">
-      <div class="card-header">{{ __('reset password') }}</div>
+      <div class="card-header">Reset password</div>
 
       <div class="card-body">
         <form method="POST" action="{{ route('password.update') }}">
@@ -38,7 +38,7 @@
           <input type="hidden" name="token" value="{{ $token }}" />
 
           <div class="form-group">
-            <label for="email">{{ __('email address') }}</label>
+            <label for="email">E-mail address</label>
 
             <div>
               <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -53,7 +53,7 @@
           </div>
 
           <div class="form-group">
-            <label for="password">{{ __('password') }}</label>
+            <label for="password">Password</label>
 
             <div>
               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
@@ -68,7 +68,7 @@
           </div>
 
           <div class="form-group">
-            <label for="password-confirm">{{ __('confirm password') }}</label>
+            <label for="password-confirm">Confirm password</label>
 
             <div>
               <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
@@ -79,7 +79,7 @@
           <div class="form-group">
             <div>
               <button type="submit" class="btn btn-primary">
-                {{ __('reset password') }}
+                Reset password
               </button>
             </div>
           </div>

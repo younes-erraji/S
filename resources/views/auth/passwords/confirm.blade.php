@@ -4,42 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>confirm password</title>
+  <title>Confirm password</title>
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/styles/bootstrap-card.css') }}">
-<style>
-  main {
-    width: 448px;
-    margin: 0 auto;
-    padding: 47px 0;
-
-  }
-
-  .card {
-    width: 100%
-  }
-
-  @media (max-width: 474px) {
+  <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap-card.css') }}">
+  <style>
     main {
-      width: 98%;
+      width: 448px;
+      margin: 0 auto;
+      padding: 47px 0;
     }
-  }
-</style>
+
+    .card {
+      width: 100%
+    }
+
+    @media (max-width: 474px) {
+      main {
+        width: 98%;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <main>
   <div class="card">
-    <div class="card-header">{{ __('confirm password') }}</div>
+    <div class="card-header">Confirm password</div>
 
     <div class="card-body">
-      {{ __('please confirm your password before continuing') }}
+      Please confirm your password before continuing
 
       <form method="POST" action="{{ route('password.confirm') }}">
         @csrf
 
         <div class="form-group">
-          <label for="password">{{ __('password') }}</label>
+          <label for="password">Password</label>
 
           <div>
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
@@ -56,12 +55,12 @@
         <div class="form-group">
           <div>
             <button type="submit" class="btn btn-primary">
-              {{ __('confirm password') }}
+              Confirm password
             </button>
 
             @if (Route::has('password.request'))
             <a class="btn btn-link" href="{{ route('password.request') }}">
-              {{ __('forgot your password?') }}
+              Forgot your password?
             </a>
             @endif
           </div>

@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Navire;
-use Export;
+use App\Exports\NavireExport;
+use Excel;
 
 class NaviresController extends Controller
 {
-
   public function __construct()
   {
     $this->middleware('auth');
-    $this->middleware('role:administrator|superadministrator');
+    $this->middleware('role:user|administrator|superadministrator');
   }
 
   public function index()
@@ -114,10 +114,10 @@ class NaviresController extends Controller
 
   public function excel()
   {
-    return Export::download(new CategoriesExport, 'categories.xlsx');
+    return Excel::download(new NavireExport, 'navires.xlsx');
   }
   public function csv()
   {
-    return Export::download(new CategoriesExport, 'categories.csv');
+    return Excel::download(new NavireExport, 'navires.csv');
   }
 }

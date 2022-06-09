@@ -42,6 +42,7 @@ main .show-dashboard {
 }
 main .dashboard {
   min-height: 100vh;
+  width: 244px;
   overflow-y: auto;
   position: sticky;
   top: 0;
@@ -58,16 +59,16 @@ main .dashboard .x {
 }
 main .dashboard h1 {
   margin: 4px 0;
+  width: 100%;
 }
 main .dashboard h1 a {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 0 8px;
+  width: 100%;
 }
 main .dashboard h1 a img {
-  width: 144px;
-  margin: 0 0.2rem;
+  width: 100%;
 }
 main .dashboard > ul {
   padding: 4px;

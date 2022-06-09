@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ asset('assets/styles/board/CRUD.css') }}" />
 @endsection
 
-@section('title',' users ')
+@section('title','User')
 
 @section('content')
 <form id='update-form' class="container" method='POST' action='/users/{{ $user->id }}' enctype="multipart/form-data">
@@ -23,11 +23,21 @@
     <p>All fields marked with an asterisk * are required</p>
     @endif
 
-    <label for="username">username</label>
-    <input type="text" id="username" name="username" value="{{ $user->name }}" readonly />
+    <label for="name">name</label>
+    <input type="text" id="name" name="name" value="{{ $user->name }}" />
+    <span class="error">@error('name') {{ $message }} @enderror</span>
 
     <label for="email">email</label>
-    <input type="email" id="email" name="email" value="{{ $user->email }}" readonly />
+    <input type="email" id="email" name="email" value="{{ $user->email }}" />
+    <span class="error">@error('email') {{ $message }} @enderror</span>
+
+    <label for="password">password</label>
+    <input type="password" id="password" name="password" />
+    <span class="error">@error('password') {{ $message }} @enderror</span>
+
+    <label for="password_confirmation">password_confirmation</label>
+    <input type="password" id="password_confirmation" name="password_confirmation" />
+    <span class="error">@error('password_confirmation') {{ $message }} @enderror</span>
 
     <label for="user_role">user role *</label>
     <select name="user_role" id="user_role">

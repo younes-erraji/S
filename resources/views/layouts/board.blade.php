@@ -24,31 +24,47 @@
       <div class="dashboard">
         <div class="x"><img src="{{ asset('assets/icons/x.svg') }}" /></div>
         <h1>
-          <a href="/"><img src="{{ asset('Logo/D.I.E.F.png') }}" /></a>
+          <a href="/"><img src="{{ asset('assets/images/logo.jpg') }}" /></a>
         </h1>
         <ul>
           <li><a href="/admin" class='list'>Admin</a></li>
           <li>
             <a class='list' data-list="navires">Navires<i class="fa fa-angle-right"></i></a>
             <ul class="navires sublinks">
-              <li><a href="/navires">edit</a></li>
-              <li><a href="/navires/create">create</a></li>
+              <li><a href="/navires">List</a></li>
+              <li><a href="/navires/create">Create</a></li>
             </ul>
-          </li>
-          <li><a href="/partners" class='list'>Operations</a></li>
           </li>
           <li>
-            <a class='list' data-list="team">Armateurs<i class="fa fa-angle-right"></i></a>
-            <ul class="team sublinks">
-              <li><a href="/team-admin">edit</a></li>
-              <li><a href="/team-admin/create">create</a></li>
+            <a class='list' data-list="operations">Operations<i class="fa fa-angle-right"></i></a>
+            <ul class="operations sublinks">
+              <li><a href="/operations">List</a></li>
+              <li><a href="/operations/create">Create</a></li>
             </ul>
           </li>
-          <li><a href="/media-admin" class='list'>Lignes</a></li>
-          @role('superadministrator')
-          <li><a href="/users" class='list' data-list="users">Users</a></li>
+          <li>
+            <a class='list' data-list="armateurs">Armateurs<i class="fa fa-angle-right"></i></a>
+            <ul class="armateurs sublinks">
+              <li><a href="/armateurs">List</a></li>
+              <li><a href="/armateurs/create">Create</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class='list' data-list="lignes">Lignes<i class="fa fa-angle-right"></i></a>
+            <ul class="lignes sublinks">
+              <li><a href="/lignes">List</a></li>
+              <li><a href="/lignes/create">Create</a></li>
+            </ul>
+          </li>
+          @role('superadministrator|administrator')
+          <li>
+            <a class='list' data-list="users">Users<i class="fa fa-angle-right"></i></a>
+            <ul class="users sublinks">
+              <li><a href="/users">List</a></li>
+              <li><a href="/users/create">Create</a></li>
+            </ul>
+          </li>
           @endrole
-          <li><a href="/" class='list quit'><i class="fa fa-times"></i>Exit</a></li>
         </ul>
       </div>
       <div class="content">

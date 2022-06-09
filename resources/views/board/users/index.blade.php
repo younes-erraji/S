@@ -2,17 +2,17 @@
 @section('style')
 <link rel="stylesheet" href="{{ asset('assets/styles/board/datatable.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
-<style>
-  .container {
-    margin-top: 0 !important;
-  }
-</style>
 @endsection
 
-@section('title',' users ')
+@section('title','Users')
 
 @section('content')
 <div class="container">
+
+  <div class="buttons">
+    <a href="{{ route('export.users.excel') }}" @if(count($users) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
+    <a href="{{ route('export.users.csv') }}" @if(count($users) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a>
+  </div>
 
   <table class="grid">
     <thead>
@@ -21,6 +21,7 @@
         <th>name</th>
         <th>email</th>
         <th>role</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -33,18 +34,33 @@
         <td>{{ $user->email }}</td>
         <td> {{ $user->role($user)->display_name }} </td>
         <td><a class="edit" href="/users/{{ $user->id }}/edit"><i class="fa fa-pencil"></i></a></td>
+        <td>
+          <form method="POST" action="users/{{ $user->id }}">
+            @csrf
+            @method('DELETE')
+            <a class="delete"><i class="fa fa-trash-o"></i></a>
+          </form>
+        </td>
       </tr>
       @endif
       @endforeach
     </tbody>
   </table>
 </div>
+<a class="add" href="/users/create"><i class="fa fa-plus-circle"></i></a>
 @endsection
 @section('scripts')
 <script src="{{ asset('assets/scripts/board/datatable.js') }}"></script>
 <script>
-  $(document).ready( function () {
-    $('.grid').DataTable();
+  $('.grid').DataTable();
+  const deleteButtons = Array.from(document.querySelectorAll('a.delete'));
+  deleteButtons.forEach(function (item) {
+    item.addEventListener('click', () => {
+      let sure = confirm('Are You sure about that');
+      if (sure) {
+        item.parentElement.submit();
+      }
+    });
   });
 </script>
 @endsection

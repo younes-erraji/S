@@ -67,7 +67,7 @@
   </div>
   </div>
 </form>
-<form id='delete' method="POST" action="/navires">
+<form id='delete' method="POST" action="/navires/{{ $navire->id }}">
   @csrf
   @method('DELETE')
 </form>

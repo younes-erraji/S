@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>- {{ __('login') }}</title>
+    <title>- Login</title>
     <link rel="icon" href="{{ asset('Logo/favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,10 +20,10 @@
   <body>
     <form class="main-form" method="POST" action="{{ route('login') }}">
       @csrf
-      <h1>{{ __('login') }}</h1>
+      <h1>Login</h1>
       <div class="username">
         <div>
-          <label for="email">{{ __('email address') }} <span>*</span></label>
+          <label for="email">E-mail address <span>*</span></label>
         </div>
         <input type="email" id="email" name="email" value="{{ old('email') }}" dir="auto" />
         @error('email')
@@ -34,7 +34,7 @@
       </div>
       <div class="password">
         <div>
-          <label for="password">{{ __('password') }} <span>*</span></label>
+          <label for="password">Password <span>*</span></label>
         </div>
         <input type="password" id="password" name="password" dir="auto" />
         @error('password')
@@ -46,7 +46,7 @@
       <div>
         @if (Route::has('password.request'))
         <a href="{{ route('password.request') }}">
-          {{ __('forgot your password?') }}
+          Forgot your password?
         </a>
         @endif
       </div>
@@ -56,16 +56,16 @@
           : '' }} />
 
         <label class="form-check-label" for="remember">
-          {{ __('remember me') }}
+          Remember me
         </label>
       </div>
 
       <button type="submit" class="submit">
-        {{ __('login') }}
+        Login
       </button>
 
     </form>
-    <footer> &copy; {{ __('copyright') . __('D.I.E.F.') }} <br /> {{ __('all rights reserved') }}</footer>
+    <footer> &copy; Copyright Somaya <br /> All rights reserved</footer>
   </body>
 
 </html>

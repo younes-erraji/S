@@ -18,7 +18,6 @@ class NavireExport implements FromCollection
 
   public function collection()
   {
-    // return Category::all();
     return collect(Navire::getNavires());
   }
 }

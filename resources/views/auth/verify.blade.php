@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>verify your email address</title>
+  <title>Verify your email address</title>
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap-card.css') }}">
 <style>
@@ -29,20 +29,20 @@
 <body>
   <main>
     <div class="card">
-      <div class="card-header">{{ __('verify your email address') }}</div>
+      <div class="card-header">Verify your email address</div>
 
       <div class="card-body">
         @if (session('resent'))
         <div class="alert alert-success" role="alert">
-          {{ __('a fresh verification link has been sent to your email address') }}
+          A fresh verification link has been sent to your email address
         </div>
         @endif
 
-        {{ __('before proceeding, please check your email for a verification link') }}
-        {{ __('if you did not receive the email') }},
+        Before proceeding, please check your email for a verification link
+        If you did not receive the email,
         <form class="main-form" method="POST" action="{{ route('verification.resend') }}">
           @csrf
-          <button type="submit" class="btn btn-link">{{ __('click here to request another') }}</button>.
+          <button type="submit" class="btn btn-link">Click here to request another</button>.
         </form>
       </div>
   </main>
