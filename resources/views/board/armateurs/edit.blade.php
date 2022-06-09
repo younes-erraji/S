@@ -40,7 +40,7 @@
     <input type="text" id="type" name='type' value="{{ $armateur->type }}" />
     <span class="error">@error('type') {{ $message }} @enderror</span>
 
-    <label for="nom_court">nom_court *</label>
+    <label for="nom_court">nom court *</label>
     <input type="text" id="nom_court" name='nom_court' value="{{ $armateur->nom_court }}" />
     <span class="error">@error('nom_court') {{ $message }} @enderror</span>
 

@@ -31,7 +31,7 @@
         <th>nom</th>
         <th>prenom</th>
         <th>type</th>
-        <th>nom_court</th>
+        <th>nom court</th>
         <th></th>
         <th></th>
       </tr>

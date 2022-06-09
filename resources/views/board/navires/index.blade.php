@@ -34,9 +34,9 @@
         <th>categorie</th>
         <th>scategorie</th>
         <th>type</th>
-        <th>type_dem</th>
-        <th>date_immatriculation</th>
-        <th>quartier_maritime</th>
+        <th>type dem</th>
+        <th>date immatriculation</th>
+        <th>quartier maritime</th>
         <th></th>
         <th></th>
       </tr>

@@ -34,7 +34,7 @@
     <input type="password" id="password" name="password" value="{{ old("password") }}" />
     <span class="error">@error('password') {{ $message }} @enderror</span>
 
-    <label for="password_confirmation">password_confirmation</label>
+    <label for="password_confirmation">Password confirmation</label>
     <input type="password" id="password_confirmation" name="password_confirmation" value="{{ old("password_confirmation") }}" />
     <span class="error">@error('password_confirmation') {{ $message }} @enderror</span>
 

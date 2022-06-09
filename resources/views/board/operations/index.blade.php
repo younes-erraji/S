@@ -28,7 +28,7 @@
       <tr>
         <th>#</th>
         <th>type</th>
-        <th>operation_date</th>
+        <th>operation date</th>
         <th></th>
         <th></th>
       </tr>

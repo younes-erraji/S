@@ -56,7 +56,7 @@
     <input type="text" id="type_dem" name='type_dem' value="{{ old('type_dem') }}" />
     <span class="error">@error('type_dem') {{ $message }} @enderror</span>
 
-    <label for="date_immatriculation" dir="auto">date_immatriculation *</label>
+    <label for="date_immatriculation" dir="auto">date immatriculation *</label>
     <input type="date" id="date_immatriculation" name='date_immatriculation' value="{{ old('date_immatriculation') }}" />
     <span class="error">@error('date_immatriculation') {{ $message }} @enderror</span>
 

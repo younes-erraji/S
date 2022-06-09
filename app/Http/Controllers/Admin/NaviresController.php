@@ -34,14 +34,14 @@ class NaviresController extends Controller
   public function update(Navire $navire)
   {
     request()->validate([
-      'matricule' => 'required|min:7',
-      'nom' => 'required|min:7',
-      'email' => 'required|email|min:7',
-      'portattache' => 'required|min:7',
-      'categorie' => 'required|min:7',
-      'scategorie' => 'required|min:7',
-      'type' => 'required|min:7',
-      'type_dem' => 'required|min:7',
+      'matricule' => 'required',
+      'nom' => 'required',
+      'email' => 'required|email',
+      'portattache' => 'required',
+      'categorie' => 'required',
+      'scategorie' => 'required',
+      'type' => 'required',
+      'type_dem' => 'required',
       'date_immatriculation' => 'required|date',
       'quartier_maritime' => 'required|date',
     ]);
@@ -69,14 +69,14 @@ class NaviresController extends Controller
   public function store()
   {
     request()->validate([
-      'matricule' => 'required|min:7',
-      'nom' => 'required|min:7',
-      'email' => 'required|email|min:7',
-      'portattache' => 'required|min:7',
-      'categorie' => 'required|min:7',
-      'scategorie' => 'required|min:7',
-      'type' => 'required|min:7',
-      'type_dem' => 'required|min:7',
+      'matricule' => 'required',
+      'nom' => 'required',
+      'email' => 'required|email',
+      'portattache' => 'required',
+      'categorie' => 'required',
+      'scategorie' => 'required',
+      'type' => 'required',
+      'type_dem' => 'required',
       'date_immatriculation' => 'required|date',
       'quartier_maritime' => 'required|date',
     ]);

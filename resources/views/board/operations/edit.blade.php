@@ -28,7 +28,7 @@
     <input type="text" id="type" name='type' value="{{ $operation->type }}" />
     <span class="error">@error('type') {{ $message }} @enderror</span>
 
-    <label for="operation_date" dir="auto">operation_date *</label>
+    <label for="operation_date" dir="auto">operation date *</label>
     <input type="date" id="operation_date" name='operation_date' value="{{ $operation->operation_date }}" />
     <span class="error">@error('operation_date') {{ $message }} @enderror</span>
   </div>

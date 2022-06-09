@@ -8,7 +8,7 @@
 </style>
 @endsection
 
-@section('title','Home')
+@section('title','Dashboard')
 
 @section('content')
 <div class="container">
