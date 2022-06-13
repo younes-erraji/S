@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
 @endsection
 
-@section('title',' Navires ')
+@section('title','Navires')
 
 @section('content')
 <div class="container">
@@ -27,16 +27,16 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>matricule</th>
-        <th>nom</th>
-        <th>email</th>
-        <th>portattache</th>
-        <th>categorie</th>
-        <th>scategorie</th>
-        <th>type</th>
-        <th>type dem</th>
-        <th>date immatriculation</th>
-        <th>quartier maritime</th>
+        <th>Matricule</th>
+        <th>Nom</th>
+        <th>Portattache</th>
+        <th>Categorie</th>
+        <th>SCategorie</th>
+        <th>Type</th>
+        <th>Type Dem</th>
+        <th>Date Immatriculation</th>
+        <th>Quartier Maritime</th>
+        <th>Armateur</th>
         <th></th>
         <th></th>
       </tr>
@@ -47,7 +47,6 @@
         <td>{{ $navire->id }}</td>
         <td>{{ $navire->matricule }}</td>
         <td>{{ $navire->nom }}</td>
-        <td>{{ $navire->email }}</td>
         <td>{{ $navire->portattache }}</td>
         <td>{{ $navire->categorie }}</td>
         <td>{{ $navire->scategorie }}</td>
@@ -55,6 +54,7 @@
         <td>{{ $navire->type_dem }}</td>
         <td>{{ $navire->date_immatriculation }}</td>
         <td>{{ $navire->quartier_maritime }}</td>
+        <td>{{ $navire->Armateur->nom . ' ' . $navire->Armateur->prenom }}</td>
         <td><a class="edit" href="navires/{{ $navire->id }}/edit"><i class="fa fa-pencil"></i></a></td>
         <td>
           <form method="POST" action="navires/{{ $navire->id }}">

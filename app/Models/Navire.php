@@ -10,8 +10,8 @@ class Navire extends Model
   use HasFactory;
   protected $table = 'navires';
   protected $fillable = [
-    'matricule', 'nom', 'email', 'portattache',
-    'categorie', 'scategorie', 'type', 'type_dem', 'date_immatriculation', 'quartier_maritime'
+    'matricule', 'nom', 'portattache',
+    'categorie', 'scategorie', 'type', 'type_dem', 'date_immatriculation', 'quartier_maritime', 'armateur_id'
   ];
 
   protected $hidden = [
@@ -22,5 +22,10 @@ class Navire extends Model
   {
     $navires = Navire::all()->sortByDesc('created_at')->toArray();
     return $navires;
+  }
+
+  public function Armateur()
+  {
+    return $this->belongsTo(Armateur::class);
   }
 }

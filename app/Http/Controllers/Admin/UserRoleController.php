@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\History;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Exports\UserExport;
@@ -46,6 +47,13 @@ class UserRoleController extends Controller
           'email' => request('email'),
           'password' => Hash::make(request('password')),
         ]);
+
+        History::create([
+          'user' => auth()->user()->name,
+          'role' => auth()->user()->role()->display_name,
+          'table' => 'Users',
+          'operation' => 'Update'
+        ]);
         return back()->with('success', 'The UPDATE Operation completed successfully');
       } else {
         return back()->with('fail', 'Something went wrong');
@@ -79,6 +87,13 @@ class UserRoleController extends Controller
 
     if ($test) {
       $test->attachRole(request('user_role'));
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Users',
+        'operation' => 'Insert'
+      ]);
+
       return back()->with('success', 'The INSERTION Completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');
@@ -92,6 +107,12 @@ class UserRoleController extends Controller
     if ($test) {
       $test = $user->delete();
       if ($test) {
+        History::create([
+          'user' => auth()->user()->name,
+          'role' => auth()->user()->role()->display_name,
+          'table' => 'Users',
+          'operation' => 'Delete'
+        ]);
         return redirect('/users')->with('success', 'The DELETE Operation completed successfully');
       } else {
         return back()->with('fail', 'Something went wrong');

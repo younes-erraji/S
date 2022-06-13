@@ -58,7 +58,7 @@ main .dashboard .x {
   cursor: pointer;
 }
 main .dashboard h1 {
-  margin: 4px 0;
+  margin: 0;
   width: 100%;
 }
 main .dashboard h1 a {
@@ -272,4 +272,14 @@ footer ul.socials li i:hover {
 }
 [disabled] {
   pointer-events: none;
+}
+
+.only-admin {
+  font-size: 14px;
+  color: white;
+  padding-left: 9px;
+  margin: 11px 0;
+  border-bottom: 1px solid #fff;
+  opacity: 0.7;
+  cursor: pointer;
 }

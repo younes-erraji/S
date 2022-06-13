@@ -10,7 +10,7 @@ class Operation extends Model
   use HasFactory;
   protected $table = 'operations';
   protected $fillable = [
-    'type', 'operation_date'
+    'type', 'operation_date', 'navire_id'
   ];
 
   protected $hidden = [
@@ -21,5 +21,10 @@ class Operation extends Model
   {
     $operations = Operation::all()->sortByDesc('created_at')->toArray();
     return $operations;
+  }
+
+  public function Navire()
+  {
+    return $this->belongsTo(Navire::class);
   }
 }

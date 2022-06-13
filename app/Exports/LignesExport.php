@@ -6,18 +6,17 @@ use App\Models\Ligne;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class LignesExport implements FromCollection
+class LignesExport implements FromCollection, WithHeadings
 {
   public function headings(): array
   {
     return [
-      '#', 'intitule', 'created_at'
+      '#', 'Intitule', 'Created at'
     ];
   }
 
   public function collection()
   {
-    // return Category::all();
     return collect(Ligne::getLignes());
   }
 }

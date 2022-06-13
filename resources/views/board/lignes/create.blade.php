@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ asset('assets/styles/board/CRUD.css') }}" />
 @endsection
 
-@section('title',' Ligne ')
+@section('title','Ligne')
 
 @section('content')
 <form id='insert' class="container" method='POST' action='/lignes'>
@@ -23,7 +23,7 @@
     @endif
   </div>
   <div class="width-100">
-    <label for="intitule">intitule *</label>
+    <label for="intitule">Intitule *</label>
     <input type="text" id="intitule" name='intitule' value="{{ old('intitule') }}" />
     <span class="error">@error('intitule') {{ $message }} @enderror</span>
   </div>
@@ -35,6 +35,4 @@
   </div>
 </form>
 
-@endsection
-@section('scripts')
 @endsection

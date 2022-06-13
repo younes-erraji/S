@@ -6,12 +6,12 @@ use App\Models\Operation;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class OperationExport implements FromCollection
+class OperationExport implements FromCollection, WithHeadings
 {
   public function headings(): array
   {
     return [
-      '#', 'Type', 'operation_date'
+      '#', 'Type', 'Operation Date', "Created at"
     ];
   }
 

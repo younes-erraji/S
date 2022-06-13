@@ -24,15 +24,16 @@ class User extends Authenticatable
   protected $hidden = [
     'password',
     'remember_token',
+    'updated_at'
   ];
 
   protected $casts = [
     'email_verified_at' => 'datetime',
   ];
 
-  public function role($user)
+  public function role()
   {
-    $role_id = DB::table('role_user')->where('user_id', '=', $user->id)->get()[0]->role_id;
+    $role_id = DB::table('role_user')->where('user_id', '=', $this->id)->get()[0]->role_id;
     return DB::table('roles')->where('id', '=', $role_id)->get()[0];
   }
 

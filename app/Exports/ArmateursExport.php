@@ -6,12 +6,12 @@ use App\Models\Armateur;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ArmateursExport implements FromCollection
+class ArmateursExport implements FromCollection, WithHeadings
 {
   public function headings(): array
   {
     return [
-      '#', 'identite', 'nom', 'prenom', 'type', 'nom_court', 'created_at'
+      '#', 'Identite', 'Nom', 'Prenom', 'E-mail', 'Type', 'Nom court', 'Armateur ID', 'Created at'
     ];
   }
 

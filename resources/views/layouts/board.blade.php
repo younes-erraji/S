@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title> - @yield('title')</title>
+    <title>- @yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
     <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
@@ -23,10 +24,10 @@
       <div class="dashboard">
         <div class="x"><img src="{{ asset('assets/icons/x.svg') }}" /></div>
         <h1>
-          <a href="/"><img src="{{ asset('assets/images/logo.jpg') }}" /></a>
+          <a><img src="{{ asset('assets/images/logo.jpg') }}" /></a>
         </h1>
         <ul>
-          <li><a href="/admin" class='list'>Admin</a></li>
+          <li><a href="/admin" class='list'>Dashboard</a></li>
           <li>
             <a class='list' data-list="navires">Navires<i class="fa fa-angle-right"></i></a>
             <ul class="navires sublinks">
@@ -56,6 +57,9 @@
             </ul>
           </li>
           @role('superadministrator|administrator')
+          <li class='only-admin'>- Admin</li>
+          <li><a href="/history" class='list'>History</a>
+          </li>
           <li>
             <a class='list' data-list="users">Users<i class="fa fa-angle-right"></i></a>
             <ul class="users sublinks">

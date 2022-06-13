@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ligne;
+use App\Models\History;
 use App\Exports\LignesExport;
 use Excel;
 
@@ -43,6 +44,14 @@ class LignesController extends Controller
     ]);
 
     if ($test) {
+
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Lignes',
+        'operation' => 'Update'
+      ]);
+
       return back()->with('success', 'The UPDATE Operation completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');
@@ -60,6 +69,14 @@ class LignesController extends Controller
     ]);
 
     if ($test) {
+
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Lignes',
+        'operation' => 'Insert'
+      ]);
+
       return back()->with('success', 'The INSERTION Completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');
@@ -71,6 +88,13 @@ class LignesController extends Controller
     $test = $ligne->delete();
 
     if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Lignes',
+        'operation' => 'Delete'
+      ]);
+
       return redirect('/lignes')->with('success', 'The DELETE Operation completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');

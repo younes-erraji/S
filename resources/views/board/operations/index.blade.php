@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
 @endsection
 
-@section('title',' Operations ')
+@section('title','Operations')
 
 @section('content')
 <div class="container">
@@ -27,8 +27,9 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>type</th>
-        <th>operation date</th>
+        <th>Type</th>
+        <th>Operation Date</th>
+        <th>Navire</th>
         <th></th>
         <th></th>
       </tr>
@@ -39,6 +40,7 @@
         <td>{{ $operation->id }}</td>
         <td>{{ $operation->type }}</td>
         <td>{{ $operation->operation_date }}</td>
+        <td>{{ $operation->Navire->nom }}</td>
         <td><a class="edit" href="operations/{{ $operation->id }}/edit"><i class="fa fa-pencil"></i></a></td>
         <td>
           <form method="POST" action="operations/{{ $operation->id }}">

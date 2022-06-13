@@ -18,9 +18,9 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>name</th>
-        <th>email</th>
-        <th>role</th>
+        <th>Nom</th>
+        <th>E-mail</th>
+        <th>Role</th>
         <th></th>
         <th></th>
       </tr>

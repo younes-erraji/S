@@ -24,23 +24,27 @@
   </div>
   <div class="width-100">
 
-    <label for="identite">identite *</label>
+    <label for="identite">Identite *</label>
     <input type="text" id="identite" name='identite' value="{{ old('identite') }}" />
     <span class="error">@error('identite') {{ $message }} @enderror</span>
 
-    <label for="nom" dir="auto">nom *</label>
+    <label for="nom" dir="auto">Nom *</label>
     <input type="text" id="nom" name='nom' value="{{ old('nom') }}" />
     <span class="error">@error('nom') {{ $message }} @enderror</span>
 
-    <label for="prenom" dir="auto">prenom *</label>
+    <label for="prenom" dir="auto">Prenom *</label>
     <input type="text" id="prenom" name='prenom' value="{{ old('prenom') }}" />
     <span class="error">@error('prenom') {{ $message }} @enderror</span>
 
-    <label for="type" dir="auto">type *</label>
+    <label for="email">E-mail addresse *</label>
+    <input type="email" id="email" name='email' value="{{ old('email') }}" />
+    <span class="error">@error('email') {{ $message }} @enderror</span>
+
+    <label for="type" dir="auto">Type *</label>
     <input type="text" id="type" name='type' value="{{ old('type') }}" />
     <span class="error">@error('type') {{ $message }} @enderror</span>
 
-    <label for="nom_court" dir="auto">nom court *</label>
+    <label for="nom_court" dir="auto">Nom Court *</label>
     <input type="text" id="nom_court" name='nom_court' value="{{ old('nom_court') }}" />
     <span class="error">@error('nom_court') {{ $message }} @enderror</span>
   </div>

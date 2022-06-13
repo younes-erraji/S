@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ asset('assets/styles/board/CRUD.css') }}" />
 @endsection
 
-@section('title',' Operation ')
+@section('title','Operation')
 
 @section('content')
 <form id='update' class="container" method='POST' action='/operations/{{ $operation->id }}'>
@@ -24,13 +24,21 @@
     @endif
   </div>
   <div class="width-100">
-    <label for="type">type *</label>
+    <label for="type">Type *</label>
     <input type="text" id="type" name='type' value="{{ $operation->type }}" />
     <span class="error">@error('type') {{ $message }} @enderror</span>
 
-    <label for="operation_date" dir="auto">operation date *</label>
+    <label for="operation_date" dir="auto">Operation Date *</label>
     <input type="date" id="operation_date" name='operation_date' value="{{ $operation->operation_date }}" />
     <span class="error">@error('operation_date') {{ $message }} @enderror</span>
+
+    <label for="navire_id" dir="auto">Navire *</label>
+    <select id="navire_id" name='navire_id'>
+      @foreach ($navires as $navire)
+        <option value="{{ $navire->id }}">{{ $navire->nom }}</option>
+      @endforeach
+    </select>
+    <span class="error">@error('armateur_id') {{ $message }} @enderror</span>
   </div>
 
   <div class="buttons width-100">

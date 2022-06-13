@@ -12,6 +12,9 @@ class Operations extends Migration
       $table->id();
       $table->string('type');
       $table->date('operation_date');
+      $table->unsignedBigInteger('navire_id')->nullable();
+
+      $table->foreign('navire_id')->references('id')->on('navires')->onDelete('cascade')->onUpdate('cascade');
 
       $table->timestamps();
     });

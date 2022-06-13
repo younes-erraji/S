@@ -6,13 +6,13 @@ use App\Models\Navire;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class NavireExport implements FromCollection
+class NavireExport implements FromCollection, WithHeadings
 {
   public function headings(): array
   {
     return [
-      '#', 'matricule', 'nom', 'email', 'portattache',
-      'categorie', 'scategorie', 'type', 'type_dem', 'date_immatriculation', 'quartier_maritime', 'Created at'
+      '#', 'Matricule', 'Nom', 'Portattache',
+      'Categorie', 'SCategorie', 'Type', 'Type Dem', 'Date Immatriculation', 'Quartier Maritime', 'Created at'
     ];
   }
 

@@ -6,7 +6,8 @@ use App\Http\Controllers\Admin\{
   NaviresController,
   OperationsController,
   AdminController,
-  UserRoleController
+  UserRoleController,
+  HistoryController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,11 @@ Route::prefix('armateurs')->group(function () {
   Route::delete('{armateur}', [ArmateursController::class, 'destroy']);
 });
 
+Route::prefix('history')->group(function () {
+  Route::get('/', [HistoryController::class, 'index']);
+  Route::delete('{history}', [HistoryController::class, 'destroy']);
+});
+
 Route::prefix('export')->group(function () {
   Route::prefix('armateurs')->group(function () {
     Route::get('excel', [ArmateursController::class, 'excel'])->name('export.armateurs.excel');
@@ -78,6 +84,11 @@ Route::prefix('export')->group(function () {
   Route::prefix('users')->group(function () {
     Route::get('excel', [UserRoleController::class, 'excel'])->name('export.users.excel');
     Route::get('csv', [UserRoleController::class, 'csv'])->name('export.users.csv');
+  });
+
+  Route::prefix('history')->group(function () {
+    Route::get('excel', [HistoryController::class, 'excel'])->name('export.history.excel');
+    Route::get('csv', [HistoryController::class, 'csv'])->name('export.history.csv');
   });
 });
 

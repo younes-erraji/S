@@ -23,34 +23,33 @@
     <p>All fields marked with an asterisk * are required</p>
     @endif
 
-    <label for="name">name</label>
+    <label for="name">Nom</label>
     <input type="text" id="name" name="name" value="{{ $user->name }}" />
     <span class="error">@error('name') {{ $message }} @enderror</span>
 
-    <label for="email">email</label>
+    <label for="email">E-mail</label>
     <input type="email" id="email" name="email" value="{{ $user->email }}" />
     <span class="error">@error('email') {{ $message }} @enderror</span>
 
-    <label for="password">password</label>
+    <label for="password">Password</label>
     <input type="password" id="password" name="password" />
     <span class="error">@error('password') {{ $message }} @enderror</span>
 
-    <label for="password_confirmation">password confirmation</label>
+    <label for="password_confirmation">Password confirmation</label>
     <input type="password" id="password_confirmation" name="password_confirmation" />
     <span class="error">@error('password_confirmation') {{ $message }} @enderror</span>
 
-    <label for="user_role">user role *</label>
+    <label for="user_role">Role *</label>
     <select name="user_role" id="user_role">
       <option selected disabled>Choose...</option>
-      <option value="user">user</option>
-      <option value="administrator">administrator</option>
+      <option value="user">User</option>
+      <option value="administrator">Administrator</option>
     </select>
     <span class="error">@error('user_role') {{ $message }} @enderror</span>
 
   </div>
 </form>
 <div class="buttons">
-  {{-- <input type="submit" value="Update" form="update-form" /> --}}
   <button type="submit" form="update-form"><i class="fa fa-pencil"></i> Update</button>
   <a class="cancel" href="/users"><i class="fa fa-ban"></i> Cancel</a>
 </div>

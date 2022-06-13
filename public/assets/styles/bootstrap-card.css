@@ -1,3 +1,26 @@
+.container {
+  min-height: calc(100vh - 96.4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  width: 448px;
+  margin: 0 auto;
+  padding: 47px 0;
+}
+
+.card {
+  width: 100%;
+}
+
+@media (max-width: 474px) {
+  main {
+    width: 98%;
+  }
+}
+
 .card {
   position: relative;
   display: flex;
@@ -331,4 +354,25 @@ label {
 
 .alert-success .alert-link {
   color: #0b2e13;
+}
+
+.footer {
+  background: #c4c3c3;
+  color: #222;
+  padding: 18px 0;
+  text-align: center;
+  width: 100%;
+  justify-self: flex-end;
+}
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0 0;
+}
+.footer ul li {
+  display: inline-block;
+}
+.footer ul li i:hover {
+  color: #fff;
+  cursor: pointer;
 }

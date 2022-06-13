@@ -24,17 +24,21 @@
     @endif
   </div>
   <div class="width-100">
-    <label for="identite">identite *</label>
+    <label for="identite">Identite *</label>
     <input type="text" id="identite" name='identite' value="{{ $armateur->identite }}" />
     <span class="error">@error('identite') {{ $message }} @enderror</span>
 
-    <label for="nom">nom *</label>
+    <label for="nom">Nom *</label>
     <input type="text" id="nom" name='nom' value="{{ $armateur->nom }}" />
     <span class="error">@error('nom') {{ $message }} @enderror</span>
 
-    <label for="prenom">prenom *</label>
+    <label for="prenom">Prenom *</label>
     <input type="text" id="prenom" name='prenom' value="{{ $armateur->prenom }}" />
     <span class="error">@error('prenom') {{ $message }} @enderror</span>
+
+    <label for="email">E-mail addresse *</label>
+    <input type="email" id="email" name='email' value="{{ $armateur->email }}" />
+    <span class="error">@error('email') {{ $message }} @enderror</span>
 
     <label for="type">type *</label>
     <input type="text" id="type" name='type' value="{{ $armateur->type }}" />
@@ -43,7 +47,6 @@
     <label for="nom_court">nom court *</label>
     <input type="text" id="nom_court" name='nom_court' value="{{ $armateur->nom_court }}" />
     <span class="error">@error('nom_court') {{ $message }} @enderror</span>
-
   </div>
 
   <div class="buttons width-100">

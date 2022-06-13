@@ -22,15 +22,15 @@
     <p>All fields marked with an asterisk * are required</p>
     @endif
 
-    <label for="name">name</label>
+    <label for="name">Nom</label>
     <input type="text" id="name" name="name" value="{{ old("name") }}" />
     <span class="error">@error('name') {{ $message }} @enderror</span>
 
-    <label for="email">E-mail addresse</label>
+    <label for="email">E-mail</label>
     <input type="email" id="email" name="email" value="{{ old("email") }}" />
     <span class="error">@error('email') {{ $message }} @enderror</span>
 
-    <label for="password">password</label>
+    <label for="password">Password</label>
     <input type="password" id="password" name="password" value="{{ old("password") }}" />
     <span class="error">@error('password') {{ $message }} @enderror</span>
 
@@ -38,11 +38,11 @@
     <input type="password" id="password_confirmation" name="password_confirmation" value="{{ old("password_confirmation") }}" />
     <span class="error">@error('password_confirmation') {{ $message }} @enderror</span>
 
-    <label for="user_role">user role *</label>
+    <label for="user_role">Role *</label>
     <select name="user_role" id="user_role">
       <option selected disabled>Choose...</option>
-      <option value="user">user</option>
-      <option value="administrator">administrator</option>
+      <option value="user">User</option>
+      <option value="administrator">Administrator</option>
     </select>
     <span class="error">@error('user_role') {{ $message }} @enderror</span>
     <div class="buttons">

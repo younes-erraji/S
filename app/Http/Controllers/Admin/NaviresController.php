@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Navire;
+use App\Models\Armateur;
+use App\Models\History;
 use App\Exports\NavireExport;
 use Excel;
 
@@ -23,12 +25,14 @@ class NaviresController extends Controller
 
   public function edit(Navire $navire)
   {
-    return view('board.navires.edit', ['navire' => $navire]);
+    $armateurs = Armateur::all();
+    return view('board.navires.edit', ['navire' => $navire, 'armateurs' => $armateurs]);
   }
 
   public function create()
   {
-    return view('board.navires.create');
+    $armateurs = Armateur::all();
+    return view('board.navires.create', ['armateurs' => $armateurs]);
   }
 
   public function update(Navire $navire)
@@ -36,7 +40,6 @@ class NaviresController extends Controller
     request()->validate([
       'matricule' => 'required',
       'nom' => 'required',
-      'email' => 'required|email',
       'portattache' => 'required',
       'categorie' => 'required',
       'scategorie' => 'required',
@@ -44,12 +47,14 @@ class NaviresController extends Controller
       'type_dem' => 'required',
       'date_immatriculation' => 'required|date',
       'quartier_maritime' => 'required|date',
+
+      'armateur_id' => 'required'
     ]);
 
     $test = $navire->update([
       'matricule' => request('matricule'),
       'nom' => request('nom'),
-      'email' => request('email'),
+
       'portattache' => request('portattache'),
       'categorie' => request('categorie'),
       'scategorie' => request('scategorie'),
@@ -57,9 +62,18 @@ class NaviresController extends Controller
       'type_dem' => request('type_dem'),
       'date_immatriculation' => request('date_immatriculation'),
       'quartier_maritime' => request('quartier_maritime'),
+
+      'armateur_id' => request('armateur_id')
     ]);
 
     if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Navires',
+        'operation' => 'Update'
+      ]);
+
       return back()->with('success', 'The UPDATE Operation completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');
@@ -71,7 +85,7 @@ class NaviresController extends Controller
     request()->validate([
       'matricule' => 'required',
       'nom' => 'required',
-      'email' => 'required|email',
+
       'portattache' => 'required',
       'categorie' => 'required',
       'scategorie' => 'required',
@@ -79,12 +93,13 @@ class NaviresController extends Controller
       'type_dem' => 'required',
       'date_immatriculation' => 'required|date',
       'quartier_maritime' => 'required|date',
+
+      'armateur_id' => 'required'
     ]);
 
     $test = Navire::create([
       'matricule' => request('matricule'),
       'nom' => request('nom'),
-      'email' => request('email'),
       'portattache' => request('portattache'),
       'categorie' => request('categorie'),
       'scategorie' => request('scategorie'),
@@ -92,9 +107,18 @@ class NaviresController extends Controller
       'type_dem' => request('type_dem'),
       'date_immatriculation' => request('date_immatriculation'),
       'quartier_maritime' => request('quartier_maritime'),
+
+      'armateur_id' => request('armateur_id')
     ]);
 
     if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Navires',
+        'operation' => 'Insert'
+      ]);
+
       return back()->with('success', 'The INSERTION Completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');
@@ -106,6 +130,13 @@ class NaviresController extends Controller
     $test = $navire->delete();
 
     if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Navires',
+        'operation' => 'Delete'
+      ]);
+
       return redirect('/navires')->with('success', 'The DELETE Operation completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');

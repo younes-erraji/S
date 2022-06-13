@@ -27,11 +27,12 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>identite</th>
-        <th>nom</th>
-        <th>prenom</th>
-        <th>type</th>
-        <th>nom court</th>
+        <th>Identite</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Nom Court</th>
+        <th>E-mail</th>
+        <th>Type</th>
         <th></th>
         <th></th>
       </tr>
@@ -43,6 +44,7 @@
         <td>{{ $armateur->identite }}</td>
         <td>{{ $armateur->nom }}</td>
         <td>{{ $armateur->prenom }}</td>
+        <td>{{ $armateur->email }}</td>
         <td>{{ $armateur->type }}</td>
         <td>{{ $armateur->nom_court }}</td>
         <td><a class="edit" href="armateurs/{{ $armateur->id }}/edit"><i class="fa fa-pencil"></i></a></td>

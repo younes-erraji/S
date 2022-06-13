@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Armateur;
+use App\Models\History;
 use App\Exports\ArmateursExport;
 use Excel;
-
 
 class ArmateursController extends Controller
 {
@@ -51,6 +51,13 @@ class ArmateursController extends Controller
     ]);
 
     if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Armateurs',
+        'operation' => 'Update'
+      ]);
+
       return back()->with('success', 'The UPDATE Operation completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');
@@ -63,6 +70,7 @@ class ArmateursController extends Controller
       'identite' => 'required',
       'nom' => 'required',
       'prenom' => 'required',
+      'email' => 'required|email',
       'type' => 'required',
       'nom_court' => 'required'
     ]);
@@ -71,11 +79,19 @@ class ArmateursController extends Controller
       'identite' => request('identite'),
       'nom' => request('nom'),
       'prenom' => request('prenom'),
+      'email' => request('email'),
       'type' => request('type'),
       'nom_court' => request('nom_court'),
     ]);
 
     if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Armateurs',
+        'operation' => 'Insert'
+      ]);
+
       return back()->with('success', 'The INSERTION Completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');
@@ -87,6 +103,13 @@ class ArmateursController extends Controller
     $test = $armateur->delete();
 
     if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Armateurs',
+        'operation' => 'Delete'
+      ]);
+
       return redirect('/armateurs')->with('success', 'The DELETE Operation completed successfully');
     } else {
       return back()->with('fail', 'Something went wrong');

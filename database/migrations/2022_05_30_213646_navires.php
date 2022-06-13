@@ -12,7 +12,6 @@ class Navires extends Migration
       $table->id();
       $table->string('matricule');
       $table->string('nom');
-      $table->string('email')->unique();
       $table->string('portattache');
       $table->string('categorie');
       $table->string('scategorie');
@@ -20,6 +19,9 @@ class Navires extends Migration
       $table->string('type_dem');
       $table->date('date_immatriculation');
       $table->date('quartier_maritime');
+      $table->unsignedBigInteger('armateur_id')->nullable();
+
+      $table->foreign('armateur_id')->references('id')->on('armateurs')->onDelete('cascade')->onUpdate('cascade');
 
       $table->timestamps();
     });

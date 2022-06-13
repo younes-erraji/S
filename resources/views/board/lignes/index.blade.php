@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
 @endsection
 
-@section('title',' Lignes ')
+@section('title','Lignes')
 
 @section('content')
 <div class="container">
@@ -27,7 +27,7 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>intitule</th>
+        <th>Intitule</th>
         <th></th>
         <th></th>
       </tr>

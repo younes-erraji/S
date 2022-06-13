@@ -13,6 +13,7 @@ class Armateurs extends Migration
       $table->string('identite');
       $table->string('nom');
       $table->string('prenom');
+      $table->string('email')->unique();
       $table->string('type');
       $table->string('nom_court');
 
