@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Operation;
-use App\Models\History;
+use App\Models\{Operation, History, Double, Navire};
 use App\Exports\OperationExport;
-use App\Models\Navire;
 use Excel;
+use Illuminate\Support\Facades\DB;
 
 class OperationsController extends Controller
 {
@@ -71,11 +70,23 @@ class OperationsController extends Controller
       'navire_id' => 'required',
     ]);
 
-    $test = Operation::create([
-      'type' => request('type'),
-      'operation_date' => request('operation_date'),
-      'navire_id' => request('navire_id'),
-    ]);
+    $count = DB::table('operations')->where('type', '=', request('type'))->count();
+
+    $test = null;
+    if ($count != 0) {
+      $test = Double::create([
+        'type' => request('type'),
+        'operation_date' => request('operation_date'),
+      ]);
+    } else {
+      $test = Operation::create([
+        'type' => request('type'),
+        'operation_date' => request('operation_date'),
+        'navire_id' => request('navire_id'),
+      ]);
+    }
+
+
 
     if ($test) {
       History::create([

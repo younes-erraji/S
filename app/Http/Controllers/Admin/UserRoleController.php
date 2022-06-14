@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\History;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use App\Models\{User, History};
+use Illuminate\Support\Facades\{DB, Hash};
 use App\Exports\UserExport;
 use Excel;
 

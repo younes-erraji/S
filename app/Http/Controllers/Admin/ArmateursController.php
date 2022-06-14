@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Armateur;
-use App\Models\History;
+use App\Models\{Armateur, History};
 use App\Exports\ArmateursExport;
 use Excel;
 

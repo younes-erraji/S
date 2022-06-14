@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\{
   NaviresController,
   OperationsController,
   AdminController,
+  DoublesController,
   UserRoleController,
   HistoryController
 };
@@ -60,6 +61,11 @@ Route::prefix('history')->group(function () {
   Route::delete('{history}', [HistoryController::class, 'destroy']);
 });
 
+Route::prefix('doubles')->group(function () {
+  Route::get('/', [DoublesController::class, 'index']);
+  Route::delete('{double}', [DoublesController::class, 'destroy']);
+});
+
 Route::prefix('export')->group(function () {
   Route::prefix('armateurs')->group(function () {
     Route::get('excel', [ArmateursController::class, 'excel'])->name('export.armateurs.excel');
@@ -89,6 +95,11 @@ Route::prefix('export')->group(function () {
   Route::prefix('history')->group(function () {
     Route::get('excel', [HistoryController::class, 'excel'])->name('export.history.excel');
     Route::get('csv', [HistoryController::class, 'csv'])->name('export.history.csv');
+  });
+
+  Route::prefix('doubles')->group(function () {
+    Route::get('excel', [DoublesController::class, 'excel'])->name('export.doubles.excel');
+    Route::get('csv', [DoublesController::class, 'csv'])->name('export.doubles.csv');
   });
 });
 

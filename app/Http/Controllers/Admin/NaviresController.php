@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Navire;
-use App\Models\Armateur;
-use App\Models\History;
+use App\Models\{Navire, Armateur, History, Double};
 use App\Exports\NavireExport;
 use Excel;
+use Illuminate\Support\Facades\DB;
 
 class NaviresController extends Controller
 {
@@ -97,19 +96,40 @@ class NaviresController extends Controller
       'armateur_id' => 'required'
     ]);
 
-    $test = Navire::create([
-      'matricule' => request('matricule'),
-      'nom' => request('nom'),
-      'portattache' => request('portattache'),
-      'categorie' => request('categorie'),
-      'scategorie' => request('scategorie'),
-      'type' => request('type'),
-      'type_dem' => request('type_dem'),
-      'date_immatriculation' => request('date_immatriculation'),
-      'quartier_maritime' => request('quartier_maritime'),
+    $count = DB::table('navires')->where('matricule', '=', request('matricule'))->count();
 
-      'armateur_id' => request('armateur_id')
-    ]);
+    $test = null;
+    if ($count != 0) {
+      $test = Double::create([
+        'matricule' => request('matricule'),
+        'nom' => request('nom'),
+        'portattache' => request('portattache'),
+        'categorie' => request('categorie'),
+        'scategorie' => request('scategorie'),
+        'type' => request('type'),
+        'type_dem' => request('type_dem'),
+        'date_immatriculation' => request('date_immatriculation'),
+        'quartier_maritime' => request('quartier_maritime'),
+
+        'armateur_id' => request('armateur_id')
+      ]);
+    } else {
+      $test = Navire::create([
+        'matricule' => request('matricule'),
+        'nom' => request('nom'),
+        'portattache' => request('portattache'),
+        'categorie' => request('categorie'),
+        'scategorie' => request('scategorie'),
+        'type' => request('type'),
+        'type_dem' => request('type_dem'),
+        'date_immatriculation' => request('date_immatriculation'),
+        'quartier_maritime' => request('quartier_maritime'),
+
+        'armateur_id' => request('armateur_id')
+      ]);
+    }
+
+
 
     if ($test) {
       History::create([

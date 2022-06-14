@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ligne;
-use App\Models\History;
+use App\Models\{Ligne, History, Double};
 use App\Exports\LignesExport;
 use Excel;
+use Illuminate\Support\Facades\DB;
 
 class LignesController extends Controller
 {
@@ -64,12 +64,20 @@ class LignesController extends Controller
       'intitule' => 'required|max:255',
     ]);
 
-    $test = Ligne::create([
-      'intitule' => request('intitule'),
-    ]);
+    $count = DB::table('lignes')->where('intitule', '=', request('intitule'))->count();
+
+    $test = null;
+    if ($count != 0) {
+      $test = Double::create([
+        'intitule' => request('intitule'),
+      ]);
+    } else {
+      $test = Ligne::create([
+        'intitule' => request('intitule'),
+      ]);
+    }
 
     if ($test) {
-
       History::create([
         'user' => auth()->user()->name,
         'role' => auth()->user()->role()->display_name,
