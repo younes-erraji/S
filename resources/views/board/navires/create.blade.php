@@ -66,7 +66,7 @@
     <span class="error">@error('date_immatriculation') {{ $message }} @enderror</span>
 
     <label for="quartier_maritime" dir="auto">Quartier Maritime *</label>
-    <input type="date" id="quartier_maritime" name='quartier_maritime' value="{{ old('quartier_maritime') }}" />
+    <input type="text" id="quartier_maritime" name='quartier_maritime' value="{{ old('quartier_maritime') }}" />
     <span class="error">@error('quartier_maritime') {{ $message }} @enderror</span>
   </div>
   <div class="buttons width-100">

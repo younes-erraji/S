@@ -91,7 +91,7 @@ class NaviresController extends Controller
       'type' => 'required',
       'type_dem' => 'required',
       'date_immatriculation' => 'required|date',
-      'quartier_maritime' => 'required|date',
+      'quartier_maritime' => 'required',
 
       'armateur_id' => 'required'
     ]);
