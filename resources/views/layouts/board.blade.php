@@ -56,9 +56,9 @@
               <li><a href="/lignes/create">Create</a></li>
             </ul>
           </li>
-          @role('superadministrator|administrator')
-          <li class='only-admin'>- Admin</li>
           <li><a href="/doubles" class='list'>Doubles</a></li>
+          @role('superadministrator|administrator')
+          {{-- <li class='only-admin'>- Admin</li> --}}
           <li><a href="/history" class='list'>History</a></li>
           <li>
             <a class='list' data-list="users">Users<i class="fa fa-angle-right"></i></a>
