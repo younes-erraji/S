@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>- Confirm password</title>
+  <title>- Confirmez le mot de passe</title>
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/font-awesome.min.css') }}" />
@@ -19,16 +19,16 @@
   <div class="container">
     <main>
       <div class="card">
-        <div class="card-header">Confirm password</div>
+        <div class="card-header">Confirmez le mot de passe</div>
 
         <div class="card-body">
-          Please confirm your password before continuing
+          Veuillez confirmer votre mot de passe avant de continuer
 
           <form method="POST" action="{{ route('password.confirm') }}">
             @csrf
 
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password">Mot de passe</label>
 
               <div>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
@@ -45,12 +45,12 @@
             <div class="form-group">
               <div>
                 <button type="submit" class="btn btn-primary">
-                  Confirm password
+                  Confirmez le mot de passe
                 </button>
 
                 @if (Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                  Forgot your password?
+                  Mot de passe oublié?
                 </a>
                 @endif
               </div>

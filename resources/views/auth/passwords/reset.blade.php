@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>- Reset password</title>
+  <title>- Réinitialiser le mot de passe</title>
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/font-awesome.min.css') }}" />
@@ -19,7 +19,7 @@
   <div class="container">
     <main>
       <div class="card">
-        <div class="card-header">Reset password</div>
+        <div class="card-header">Réinitialiser le mot de passe</div>
 
         <div class="card-body">
           <form method="POST" action="{{ route('password.update') }}">
@@ -28,7 +28,7 @@
             <input type="hidden" name="token" value="{{ $token }}" />
 
             <div class="form-group">
-              <label for="email">E-mail address</label>
+              <label for="email">Adresse e-mail</label>
 
               <div>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password">Mot de passe</label>
 
               <div>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
@@ -58,7 +58,7 @@
             </div>
 
             <div class="form-group">
-              <label for="password-confirm">Confirm password</label>
+              <label for="password-confirm">Confirmez le mot de passe</label>
 
               <div>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
@@ -69,7 +69,7 @@
             <div class="form-group">
               <div>
                 <button type="submit" class="btn btn-primary">
-                  Reset password
+                  Réinitialiser le mot de passe
                 </button>
               </div>
             </div>

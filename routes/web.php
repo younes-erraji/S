@@ -23,8 +23,9 @@ Route::get('admin', [AdminController::class, 'index'])->name('admin');
 Route::prefix('navires')->group(function () {
   Route::get('/', [NaviresController::class, 'index']);
   Route::get('{navire}/edit', [NaviresController::class, 'edit']);
+  Route::get('{navire}', [NaviresController::class, 'show']);
   Route::put('{navire}', [NaviresController::class, 'update']);
-  Route::get('create', [NaviresController::class, 'create']);
+  Route::get('create', [NaviresController::class, 'create'])->name('navire.create');
   Route::post('/', [NaviresController::class, 'store']);
   Route::delete('{navire}', [NaviresController::class, 'destroy']);
 });
@@ -112,4 +113,9 @@ Route::prefix('users')->group(function () {
   Route::get('create', [UserRoleController::class, 'create']);
   Route::post('/', [UserRoleController::class, 'store']);
   Route::delete('/{user}', [UserRoleController::class, 'destroy']);
+});
+
+Route::prefix('import')->group(function () {
+  Route::get('armateurs', [ArmateursController::class, 'import'])->name('import.armateurs');
+  Route::get('navires', [NaviresController::class, 'import'])->name('import.navires');
 });

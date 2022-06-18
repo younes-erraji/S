@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>- Login</title>
+    <title>- Connexion</title>
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
     <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,10 +20,10 @@
   <body>
     <form class="main-form" method="POST" action="{{ route('login') }}">
       @csrf
-      <h1>Login</h1>
+      <h1>Connexion</h1>
       <div class="username">
         <div>
-          <label for="email">E-mail <span>*</span></label>
+          <label for="email">Adresse e-mail <span>*</span></label>
         </div>
         <input type="email" id="email" name="email" value="{{ old('email') }}" dir="auto" />
         @error('email')
@@ -34,7 +34,7 @@
       </div>
       <div class="password">
         <div>
-          <label for="password">Password <span>*</span></label>
+          <label for="password">Mot de passe <span>*</span></label>
         </div>
         <input type="password" id="password" name="password" dir="auto" />
         @error('password')
@@ -46,7 +46,7 @@
       <div>
         @if (Route::has('password.request'))
         <a href="{{ route('password.request') }}">
-          Forgot your password?
+          Mot de passe oublié?
         </a>
         @endif
       </div>
@@ -56,12 +56,12 @@
           : '' }} />
 
         <label class="form-check-label" for="remember">
-          Remember me
+          Souviens-toi de moi
         </label>
       </div>
 
       <button type="submit" class="submit">
-        Login
+        Connexion
       </button>
 
     </form>

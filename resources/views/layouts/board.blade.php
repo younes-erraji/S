@@ -24,7 +24,7 @@
       <div class="dashboard">
         <div class="x"><img src="{{ asset('assets/icons/x.svg') }}" /></div>
         <h1>
-          <a><img src="{{ asset('assets/images/logo.jpg') }}" /></a>
+          <a>MINISTRE DE L'EQUIPEMENT, DU TRANSPORT DE LA LOGISTIQUE ET DE L'EAU</a>
         </h1>
         <ul>
           <li><a href="/admin" class='list'>Dashboard</a></li>
@@ -32,7 +32,7 @@
             <a class='list' data-list="navires">Navires<i class="fa fa-angle-right"></i></a>
             <ul class="navires sublinks">
               <li><a href="/navires">List</a></li>
-              <li><a href="/navires/create">Create</a></li>
+              <li><a href="{{ route('navire.create') }}">Create</a></li>
             </ul>
           </li>
           <li>
@@ -49,14 +49,14 @@
               <li><a href="/armateurs/create">Create</a></li>
             </ul>
           </li>
-          <li>
+          {{-- <li>
             <a class='list' data-list="lignes">Lignes<i class="fa fa-angle-right"></i></a>
             <ul class="lignes sublinks">
               <li><a href="/lignes">List</a></li>
               <li><a href="/lignes/create">Create</a></li>
             </ul>
-          </li>
-          <li><a href="/doubles" class='list'>Doubles</a></li>
+          </li> --}}
+          <li><a href="/doubles" class='list'>Doublons</a></li>
           @role('superadministrator|administrator')
           {{-- <li class='only-admin'>- Admin</li> --}}
           <li><a href="/history" class='list'>History</a></li>
@@ -86,7 +86,7 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                  Logout
+                  Se déconnecter
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
@@ -105,7 +105,7 @@
             <span>
               &copy; Copyright Somaya.
               <br />
-              All Rights Reserved.
+              Tous les droits sont réservés.
             </span>
           </div>
           <ul class="socials">

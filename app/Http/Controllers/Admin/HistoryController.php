@@ -26,9 +26,9 @@ class HistoryController extends Controller
     $test = $history->delete();
 
     if ($test) {
-      return redirect('/history')->with('success', 'The DELETE Operation completed successfully');
+      return redirect('/history')->with('success', 'L\'opération DELETE s\'est terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 

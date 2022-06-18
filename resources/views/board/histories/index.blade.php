@@ -2,11 +2,6 @@
 @section('style')
 <link rel="stylesheet" href="{{ asset('assets/styles/board/datatable.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
-<style>
-.container {
-  margin-top: 0 !important;
-}
-</style>
 @endsection
 
 @section('title','History')
@@ -25,18 +20,18 @@
 
   <div class="buttons">
     <a href="{{ route('export.history.excel') }}" @if(count($histories) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
-    <a href="{{ route('export.history.csv') }}" @if(count($histories) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a>
+    {{-- <a href="{{ route('export.history.csv') }}" @if(count($histories) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
   </div>
 
   <table class="grid">
     <thead>
       <tr>
         <th>#</th>
-        <th>User</th>
+        <th>Utilisateur</th>
         <th>Role</th>
         <th>Table</th>
-        <th>Operation</th>
-        <th>Operation Date</th>
+        <th>Opération</th>
+        <th>Date d'opération</th>
         <th></th>
       </tr>
     </thead>
@@ -65,7 +60,11 @@
 @section('scripts')
 <script src="{{ asset('assets/scripts/board/datatable.js') }}"></script>
 <script>
-  $('.grid').DataTable();
+  $('.grid').DataTable({
+    language: {
+      url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+    }
+  });
   const deleteButtons = Array.from(document.querySelectorAll('a.delete'));
   deleteButtons.forEach(function (item) {
     item.addEventListener('click', () => {

@@ -60,16 +60,18 @@ main .dashboard .x {
 main .dashboard h1 {
   margin: 0;
   width: 100%;
+  padding: 8px;
+  border-bottom: 1px solid #fefefe;
 }
 main .dashboard h1 a {
   display: flex;
   align-items: center;
   text-align: center;
   width: 100%;
+  font-size: 20px;
+  color: #fff;
 }
-main .dashboard h1 a img {
-  width: 100%;
-}
+
 main .dashboard > ul {
   padding: 4px;
   margin-top: 14px;
@@ -140,8 +142,8 @@ main .content nav .header {
 }
 main .content section .container {
   padding: 1.4rem 7px;
-  margin-top: 40px;
   width: auto;
+  min-height: calc(100vh - 35px);
 }
 .navbar-nav {
   font-size: 1.8rem;

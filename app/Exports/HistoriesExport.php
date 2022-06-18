@@ -11,7 +11,7 @@ class HistoriesExport implements FromCollection, WithHeadings
   public function headings(): array
   {
     return [
-      '#', 'User', 'Role', 'Table', 'Operation', 'Operation Date'
+      '#', 'Utilisateur', 'Rôle', 'Table', 'Opération', 'Date d\'opération'
     ];
   }
 

@@ -56,9 +56,9 @@ class ArmateursController extends Controller
         'operation' => 'Update'
       ]);
 
-      return back()->with('success', 'The UPDATE Operation completed successfully');
+      return back()->with('success', 'L\'opération UPDATE s\'est terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 
@@ -90,9 +90,9 @@ class ArmateursController extends Controller
         'operation' => 'Insert'
       ]);
 
-      return back()->with('success', 'The INSERTION Completed successfully');
+      return back()->with('success', 'L\'INSERTION terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 
@@ -108,9 +108,9 @@ class ArmateursController extends Controller
         'operation' => 'Delete'
       ]);
 
-      return redirect('/armateurs')->with('success', 'The DELETE Operation completed successfully');
+      return redirect('/armateurs')->with('success', 'L\'opération DELETE s\'est terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 
@@ -121,5 +121,14 @@ class ArmateursController extends Controller
   public function csv()
   {
     return Excel::download(new ArmateursExport, 'armateurs.csv');
+  }
+
+  public function show(Armateur $armateur)
+  {
+    return view("board.armateurs.show", ['armateur' => $armateur]);
+  }
+
+  public function import()
+  {
   }
 }

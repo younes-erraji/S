@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>- Send password reset link</title>
+  <title>- Envoyer le lien de réinitialisation du mot de passe</title>
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/font-awesome.min.css') }}" />
@@ -19,7 +19,7 @@
   <div class="container">
     <main>
       <div class="card">
-        <div class="card-header">Reset password</div>
+        <div class="card-header">Réinitialiser le mot de passe</div>
 
         <div class="card-body">
           @if (session('status'))
@@ -32,7 +32,7 @@
             @csrf
 
             <div class="form-group">
-              <label for="email">E-mail address</label>
+              <label for="email">Adresse e-mail</label>
 
               <div>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -49,7 +49,7 @@
             <div class="form-group">
               <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
-                  Send password reset link
+                  Envoyer le lien de réinitialisation du mot de passe
                 </button>
               </div>
             </div>

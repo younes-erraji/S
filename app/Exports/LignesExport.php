@@ -11,7 +11,7 @@ class LignesExport implements FromCollection, WithHeadings
   public function headings(): array
   {
     return [
-      '#', 'Intitule', 'Created at'
+      '#', 'Intitule', 'Créé à'
     ];
   }
 

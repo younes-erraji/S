@@ -51,9 +51,9 @@ class LignesController extends Controller
         'operation' => 'Update'
       ]);
 
-      return back()->with('success', 'The UPDATE Operation completed successfully');
+      return back()->with('success', 'L\'opération UPDATE s`\'est terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 
@@ -84,9 +84,9 @@ class LignesController extends Controller
         'operation' => 'Insert'
       ]);
 
-      return back()->with('success', 'The INSERTION Completed successfully');
+      return back()->with('success', 'L\'INSERTION terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 
@@ -102,9 +102,9 @@ class LignesController extends Controller
         'operation' => 'Delete'
       ]);
 
-      return redirect('/lignes')->with('success', 'The DELETE Operation completed successfully');
+      return redirect('/lignes')->with('success', 'L\'opération DELETE s\'est terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 

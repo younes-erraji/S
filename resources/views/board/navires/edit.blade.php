@@ -20,7 +20,7 @@
       {{ Session::get('fail') }}
     </div>
     @else
-    <p>All fields marked with an asterisk * are required</p>
+    <p>Tous les champs marqués d'un astérisque * sont obligatoires</p>
     @endif
   </div>
   <div class="width-50">
@@ -76,9 +76,9 @@
   @method('DELETE')
 </form>
 <div class="buttons">
-  <button type="submit" form="update"><i class="fa fa-pencil"></i> Update</button>
-  <a class='delete'><i class="fa fa-trash"></i> Delete</a>
-  <a class="cancel" href="/navires"><i class="fa fa-ban"></i> Cancel</a>
+  <button type="submit" form="update"><i class="fa fa-pencil"></i> Mettre à jour</button>
+  {{-- <a class='delete'><i class="fa fa-trash"></i> Delete</a> --}}
+  <a class="cancel" href="/navires"><i class="fa fa-ban"></i> Annuler</a>
 </div>
 @endsection
 @section('scripts')

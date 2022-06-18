@@ -1,76 +1,47 @@
-.ar {
-  font-family: Cairo, Arial, Tahoma;
-}
-.flex-dir-col {
-  flex-direction: column;
-}
-.d-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.d-flex .main-image {
-  margin: 14px auto;
-  flex: 1;
-}
-.d-flex section {
-  flex: 2;
-}
-.text-center {
-  text-align: center;
-}
-.main-image img {
+table {
+  font-family: Poppins, Arial, Tahoma;
+  font-size: 17px;
+  color: #4e4e4e;
+  padding: 14px;
   width: 100%;
-  height: 100%;
+  text-align: start;
 }
-article .tag {
-  font-weight: 600;
-  color: #666;
-  display: block;
-  font-size: 14px;
-  margin-top: 7px;
+
+table tr {
+  padding: 14px 0;
+  display: grid;
+  align-items: center;
+  width: 100%;
+  grid-template-columns: 20% 30% 20% 30%;
+  border-bottom: 1px solid #ccc;
 }
-article .heading {
-  font-size: 34px;
-  margin: 0;
-  font-weight: 600;
-  color: #444;
+
+table tr th {
+  width: 20%;
 }
-article p {
-  line-height: 1.6;
-  font-size: 18px;
-  color: #777;
-}
-hr {
-  border: none;
-  border-bottom: 0.4px solid #ccc;
-  margin: 14px 0;
-}
-.button {
-  padding: 7px 14px;
-  margin: 4px 7px;
-  display: inline-block;
-  border-radius: 4px;
+
+a.action {
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  text-decoration: none;
+  padding: 14px;
+  margin: 4px;
   color: #fff;
+  font-size: 22px;
+
   cursor: pointer;
-  transition: background-color 0.4s;
-  user-select: none;
 }
-.edit {
+a.action.edit {
   background-color: #2b7bdd;
 }
-.edit:hover {
-  background-color: #205da8;
-}
-.delete {
+a.action.delete {
   background-color: #d43535;
 }
-.delete:hover {
-  background-color: #921b1b;
-}
-.cancel {
-  background-color: #575555;
-}
-.cancel:hover {
-  background-color: #3d3939;
+
+table tr th.actions {
+  display: flex;
 }

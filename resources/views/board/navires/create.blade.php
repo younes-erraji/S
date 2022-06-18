@@ -19,7 +19,7 @@
       {{ Session::get('fail') }}
     </div>
     @else
-    <p>All fields marked with an asterisk * are required</p>
+    <p>Tous les champs marqués d'un astérisque * sont obligatoires</p>
     @endif
   </div>
 <div class="width-50">
@@ -70,8 +70,8 @@
     <span class="error">@error('quartier_maritime') {{ $message }} @enderror</span>
   </div>
   <div class="buttons width-100">
-    <button type="submit"><i class="fa fa-pencil"></i> Insert</button>
-    <a class="cancel" href="/navires"><i class="fa fa-ban"></i> Cancel</a>
+    <button type="submit"><i class="fa fa-pencil"></i> Insérer</button>
+    <a class="cancel" href="/navires"><i class="fa fa-ban"></i> Annuler</a>
   </div>
   </div>
 </form>

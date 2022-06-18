@@ -19,7 +19,7 @@
       {{ Session::get('fail') }}
     </div>
     @else
-    <p>All fields marked with an asterisk * are required</p>
+    <p>Tous les champs marqués d'un astérisque * sont obligatoires</p>
     @endif
   </div>
   <div class="width-100">
@@ -36,7 +36,7 @@
     <input type="text" id="prenom" name='prenom' value="{{ old('prenom') }}" />
     <span class="error">@error('prenom') {{ $message }} @enderror</span>
 
-    <label for="email">E-mail addresse *</label>
+    <label for="email">Adresse e-maile *</label>
     <input type="email" id="email" name='email' value="{{ old('email') }}" />
     <span class="error">@error('email') {{ $message }} @enderror</span>
 
@@ -50,8 +50,8 @@
   </div>
 
   <div class="buttons width-100">
-    <button type="submit"><i class="fa fa-pencil"></i> Insert</button>
-    <a class="cancel" href="/armateurs"><i class="fa fa-ban"></i> Cancel</a>
+    <button type="submit"><i class="fa fa-pencil"></i> Insérer</button>
+    <a class="cancel" href="/armateurs"><i class="fa fa-ban"></i> Annuler</a>
   </div>
   </div>
 </form>

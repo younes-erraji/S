@@ -25,9 +25,9 @@ class DoublesController extends Controller
     $test = $double->delete();
 
     if ($test) {
-      return redirect('/doubles')->with('success', 'The DELETE Operation completed successfully');
+      return redirect('/doubles')->with('success', 'L\'opération DELETE s\'est terminée avec succès');
     } else {
-      return back()->with('fail', 'Something went wrong');
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
   }
 

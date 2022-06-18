@@ -20,7 +20,7 @@
 
   <div class="buttons">
     <a href="{{ route('export.lignes.excel') }}" @if(count($lignes) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
-    <a href="{{ route('export.lignes.csv') }}" @if(count($lignes) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a>
+    {{-- <a href="{{ route('export.lignes.csv') }}" @if(count($lignes) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
   </div>
 
   <table class="grid">
@@ -50,12 +50,16 @@
     </tbody>
   </table>
 </div>
-<a class="add" href="/lignes/create"><i class="fa fa-plus-circle"></i></a>
+{{-- <a class="add" href="/lignes/create"><i class="fa fa-plus-circle"></i></a> --}}
 @endsection
 @section('scripts')
 <script src="{{ asset('assets/scripts/board/datatable.js') }}"></script>
 <script>
-  $('.grid').DataTable();
+  $('.grid').DataTable({
+    language: {
+      url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+    }
+  });
   const deleteButtons = Array.from(document.querySelectorAll('a.delete'));
   deleteButtons.forEach(function (item) {
     item.addEventListener('click', () => {

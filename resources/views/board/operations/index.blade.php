@@ -20,7 +20,7 @@
 
   <div class="buttons">
     <a href="{{ route('export.operations.excel') }}" @if(count($operations) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
-    <a href="{{ route('export.operations.csv') }}" @if(count($operations) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a>
+    {{-- <a href="{{ route('export.operations.csv') }}" @if(count($operations) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
   </div>
 
   <table class="grid">
@@ -28,7 +28,7 @@
       <tr>
         <th>#</th>
         <th>Type</th>
-        <th>Operation Date</th>
+        <th>Date d'opération</th>
         <th>Navire</th>
         <th></th>
         <th></th>
@@ -54,12 +54,16 @@
     </tbody>
   </table>
 </div>
-<a class="add" href="/operations/create"><i class="fa fa-plus-circle"></i></a>
+{{-- <a class="add" href="/operations/create"><i class="fa fa-plus-circle"></i></a> --}}
 @endsection
 @section('scripts')
 <script src="{{ asset('assets/scripts/board/datatable.js') }}"></script>
 <script>
-  $('.grid').DataTable();
+  $('.grid').DataTable({
+    language: {
+      url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+    }
+  });
   const deleteButtons = Array.from(document.querySelectorAll('a.delete'));
   deleteButtons.forEach(function (item) {
     item.addEventListener('click', () => {

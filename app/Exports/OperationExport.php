@@ -11,7 +11,7 @@ class OperationExport implements FromCollection, WithHeadings
   public function headings(): array
   {
     return [
-      '#', 'Type', 'Operation Date', "Created at"
+      '#', 'Type', 'Date d\'opération', "Créé à"
     ];
   }
 

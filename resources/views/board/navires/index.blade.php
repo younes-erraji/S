@@ -24,8 +24,9 @@
   @endif
 
   <div class="buttons">
-    <a href="{{ route('export.navires.excel') }}" @if(count($navires) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
-    <a href="{{ route('export.navires.csv') }}" @if(count($navires) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a>
+    <a href="{{ route('export.navires.excel') }}" @if(count($navires) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Export</a>
+    {{-- <a href="{{ route('export.navires.csv') }}" @if(count($navires) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
+    {{-- <a href="{{ route('import.navires.csv') }}" class="button import"><i class="fa fa-download"></i> Import</a> --}}
   </div>
 
   <table class="grid">
@@ -36,12 +37,13 @@
         <th>Nom</th>
         <th>Portattache</th>
         <th>Categorie</th>
-        <th>SCategorie</th>
+        {{-- <th>SCategorie</th>
         <th>Type</th>
         <th>Type Dem</th>
-        <th>Date Immatriculation</th>
-        <th>Quartier Maritime</th>
+        <th>Date Immatriculation</th> --}}
+        {{-- <th>Quartier Maritime</th> --}}
         <th>Armateur</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -54,12 +56,13 @@
         <td>{{ $navire->nom }}</td>
         <td>{{ $navire->portattache }}</td>
         <td>{{ $navire->categorie }}</td>
-        <td>{{ $navire->scategorie }}</td>
+        {{-- <td>{{ $navire->scategorie }}</td>
         <td>{{ $navire->type }}</td>
         <td>{{ $navire->type_dem }}</td>
         <td>{{ $navire->date_immatriculation }}</td>
-        <td>{{ $navire->quartier_maritime }}</td>
+        <td>{{ $navire->quartier_maritime }}</td> --}}
         <td>{{ $navire->Armateur->nom . ' ' . $navire->Armateur->prenom }}</td>
+        <td><a class="edit" href="navires/{{ $navire->id }}"><i class="fa fa-info"></i></a></td>
         <td><a class="edit" href="navires/{{ $navire->id }}/edit"><i class="fa fa-pencil"></i></a></td>
         <td>
           <form method="POST" action="navires/{{ $navire->id }}">
@@ -73,12 +76,16 @@
     </tbody>
   </table>
 </div>
-<a class="add" href="/navires/create"><i class="fa fa-plus-circle"></i></a>
+{{-- <a class="add" href="/navires/create"><i class="fa fa-plus-circle"></i></a> --}}
 @endsection
 @section('scripts')
 <script src="{{ asset('assets/scripts/board/datatable.js') }}"></script>
 <script>
-  $('.grid').DataTable();
+  $('.grid').DataTable({
+    language: {
+      url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+    }
+  });
   const deleteButtons = Array.from(document.querySelectorAll('a.delete'));
   deleteButtons.forEach(function (item) {
     item.addEventListener('click', () => {

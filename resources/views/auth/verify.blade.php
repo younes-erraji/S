@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>- Verify your email address</title>
+  <title>- Vérifiez votre adresse e-mail</title>
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/styles/utilities/font-awesome.min.css') }}" />
@@ -19,20 +19,20 @@
   <div class="container">
     <main>
       <div class="card">
-        <div class="card-header">Verify your email address</div>
+        <div class="card-header">Vérifiez votre adresse e-mail</div>
 
         <div class="card-body">
           @if (session('resent'))
           <div class="alert alert-success" role="alert">
-            A fresh verification link has been sent to your email address
+            Un nouveau lien de vérification a été envoyé à votre adresse e-mail
           </div>
           @endif
 
-          Before proceeding, please check your email for a verification link
-          If you did not receive the email,
+          Avant de continuer, veuillez vérifier votre e-mail pour un lien de vérification
+           Si vous n'avez pas reçu l'e-mail,
           <form class="main-form" method="POST" action="{{ route('verification.resend') }}">
             @csrf
-            <button type="submit" class="btn btn-link">Click here to request another</button>.
+            <button type="submit" class="btn btn-link">Cliquez ici pour en demander un autre</button>.
           </form>
         </div>
       </div>

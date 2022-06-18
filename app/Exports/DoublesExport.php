@@ -11,7 +11,7 @@ class DoublesExport implements FromCollection, WithHeadings
   public function headings(): array
   {
     return [
-      '#', 'Created at'
+      '#', 'Créé à'
     ];
   }
 

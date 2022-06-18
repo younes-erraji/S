@@ -3,9 +3,6 @@
 <link rel="stylesheet" href="{{ asset('assets/styles/board/datatable.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
 <style>
-.container {
-  margin-top: 0 !important;
-}
 .grid {
   font-size: 14px;
 }
@@ -28,7 +25,7 @@
 
   <div class="buttons">
     <a href="{{ route('export.doubles.excel') }}" @if(count($doubles) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
-    <a href="{{ route('export.doubles.csv') }}" @if(count($doubles) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a>
+    {{-- <a href="{{ route('export.doubles.csv') }}" @if(count($doubles) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
   </div>
 
   <table class="grid">
@@ -45,8 +42,8 @@
         <th>Date Immatriculation</th>
         <th>Quartier Maritime</th>
         <th>Intitule</th>
-        <th>Operation Date</th>
-        <th>Created at</th>
+        <th>Date d'opération</th>
+        <th>Créé à</th>
         <th></th>
       </tr>
     </thead>
@@ -83,7 +80,11 @@
 @section('scripts')
 <script src="{{ asset('assets/scripts/board/datatable.js') }}"></script>
 <script>
-  $('.grid').DataTable();
+  $('.grid').DataTable({
+    language: {
+      url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+    }
+  });
   const deleteButtons = Array.from(document.querySelectorAll('a.delete'));
   deleteButtons.forEach(function (item) {
     item.addEventListener('click', () => {

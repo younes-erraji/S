@@ -12,7 +12,7 @@ class NavireExport implements FromCollection, WithHeadings
   {
     return [
       '#', 'Matricule', 'Nom', 'Portattache',
-      'Categorie', 'SCategorie', 'Type', 'Type Dem', 'Date Immatriculation', 'Quartier Maritime', 'Created at'
+      'Categorie', 'SCategorie', 'Type', 'Type Dem', 'Date Immatriculation', 'Quartier Maritime', 'Créé à'
     ];
   }
 
