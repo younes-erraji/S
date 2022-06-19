@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Exports\DoublesExport;
+use App\Imports\DoublesImport;
 use App\Models\{Double, History};
 use Excel;
 
@@ -47,13 +48,19 @@ class DoublesController extends Controller
     return Excel::download(new DoublesExport, 'doubles.csv');
   }
 
-  public function import()
-  {
-    return 'Import';
-  }
-
   public function show(Double $double)
   {
     return view('board.doubles.show', ['double' => $double]);
+  }
+
+  public function import()
+  {
+    request()->validate([
+      'excel-doubles' => 'required|mimes:xlsx,csv',
+    ]);
+
+    Excel::import(new DoublesImport, request('excel-doubles'));
+
+    return back()->with('success', 'Importé avec succés');
   }
 }

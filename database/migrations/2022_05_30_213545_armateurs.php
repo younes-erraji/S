@@ -10,10 +10,10 @@ class Armateurs extends Migration
   {
     Schema::create('armateurs', function (Blueprint $table) {
       $table->id();
-      $table->string('identite')->unique();
+      $table->string('identite');
       $table->string('nom');
       $table->string('prenom');
-      $table->string('email')->unique();
+      $table->string('email');
       $table->string('type');
       $table->string('nom_court');
 

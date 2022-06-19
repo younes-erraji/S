@@ -1,0 +1,12 @@
+CREATE TRIGGER Manage_Navire_Doubles
+BEFORE INSERT
+ON Navires FOR EACH ROW
+BEGIN
+  SET @count := 0;
+  Select @count = Count(Matricule) from navires where Matricule = New.Matricule;
+  IF @count > 0
+  	THEN
+    	INSERT INTO Doubles(matricule, nom, portattache, categorie, scategorie, type, type_dem, date_immatriculation, quartier_maritime, armateur_id, created_at
+    END IF;
+    Values (New.matricule, New.nom, new.portattache, new.categorie, new.scategorie, new.type, new.type_dem, new.date_immatriculation, new.quartier_maritime, new.armateur_id, Now());
+END

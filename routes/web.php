@@ -119,8 +119,8 @@ Route::prefix('users')->group(function () {
 });
 
 Route::prefix('import')->group(function () {
-  Route::get('armateurs', [ArmateursController::class, 'import'])->name('import.armateurs');
-  Route::get('navires', [NaviresController::class, 'import'])->name('import.navires');
-  Route::get('doubles', [DoublesController::class, 'import'])->name('import.doubles');
-  Route::get('operations', [OperationsController::class, 'import'])->name('import.operations');
+  Route::post('armateurs', [ArmateursController::class, 'import'])->name('import.armateurs');
+  Route::post('navires', [NaviresController::class, 'import'])->name('import.navires');
+  Route::post('doubles', [DoublesController::class, 'import'])->name('import.doubles');
+  Route::post('operations', [OperationsController::class, 'import'])->name('import.operations');
 });

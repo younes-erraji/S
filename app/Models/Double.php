@@ -10,10 +10,10 @@ class Double extends Model
   use HasFactory;
   protected $table = 'doubles';
   protected $fillable = [
-    'matricule', 'nom', 'portattache', 'categorie',
+    'table', 'matricule', 'nom', 'portattache', 'categorie',
     'scategorie', 'type', 'type_dem',
     'date_immatriculation', 'quartier_maritime', 'armateur_id',
-    'intitule', 'operation_date',
+    'intitule', 'operation_date', 'count'
   ];
 
   protected $hidden = [

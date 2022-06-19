@@ -25,8 +25,15 @@
 
   <div class="buttons">
     <a href="{{ route('export.doubles.excel') }}" @if(count($doubles) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
-    {{-- <a href="{{ route('export.doubles.csv') }}" @if(count($doubles) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
-    <a href="{{ route('import.doubles') }}" class="button import"><i class="fa fa-upload"></i> Import</a>
+
+    <form class="d-flex" method='POST' action="{{ route('import.doubles') }}" enctype="multipart/form-data">
+      @csrf
+      <div>
+        <input type="file" id='excel-doubles' name="excel-doubles" />
+        <span class="error">@error('excel-doubles') {{ $message }} @enderror</span>
+      </div>
+      <button class="button import"><i class="fa fa-upload"></i> Import</button>
+    </form>
   </div>
 
   <table class="grid">

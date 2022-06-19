@@ -20,8 +20,14 @@
 
   <div class="buttons">
     <a href="{{ route('export.operations.excel') }}" @if(count($operations) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
-    {{-- <a href="{{ route('export.operations.csv') }}" @if(count($operations) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
-    <a href="{{ route('import.operations') }}" class="button import"><i class="fa fa-upload"></i> Import</a>
+    <form class="d-flex" method='POST' action="{{ route('import.operations') }}" enctype="multipart/form-data">
+      @csrf
+      <div>
+        <input type="file" id='excel-operations' name="excel-operations" />
+        <span class="error">@error('excel-operations') {{ $message }} @enderror</span>
+      </div>
+      <button class="button import"><i class="fa fa-upload"></i> Import</button>
+    </form>
   </div>
 
   <table class="grid">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\{Operation, History, Double, Navire};
 use App\Exports\OperationExport;
+use App\Imports\OperationsImport;
 use Excel;
 use Illuminate\Support\Facades\DB;
 
@@ -73,11 +74,21 @@ class OperationsController extends Controller
 
     $test = null;
     if ($count != 0) {
-      $test = Double::create([
-        'table' => 'Operation',
-        'type' => request('type'),
-        'operation_date' => request('operation_date'),
-      ]);
+
+      $double = Double::where('type', '=', request('type'))->first();
+
+      if ($double) {
+        $test = $double->update([
+          'count' => $double->count + 1
+        ]);
+      } else {
+        $test = Double::create([
+          'table' => 'Operation',
+          'type' => request('type'),
+          'operation_date' => request('operation_date'),
+          'count' => 1
+        ]);
+      }
     } else {
       $test = Operation::create([
         'type' => request('type'),
@@ -85,8 +96,6 @@ class OperationsController extends Controller
         'navire_id' => request('navire_id'),
       ]);
     }
-
-
 
     if ($test) {
       History::create([
@@ -131,6 +140,12 @@ class OperationsController extends Controller
 
   public function import()
   {
-    return 'Import';
+    request()->validate([
+      'excel-operations' => 'required|mimes:xlsx,csv',
+    ]);
+
+    Excel::import(new OperationsImport, request('excel-operations'));
+
+    return back()->with('success', 'Importé avec succés');
   }
 }

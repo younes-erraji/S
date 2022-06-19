@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\{Navire, Armateur, History, Double};
 use App\Exports\NavireExport;
+use App\Imports\NaviresImport;
 use Excel;
 use Illuminate\Support\Facades\DB;
 
@@ -93,20 +94,30 @@ class NaviresController extends Controller
 
     $test = null;
     if ($count != 0) {
-      $test = Double::create([
-        'table' => 'Navire',
-        'matricule' => request('matricule'),
-        'nom' => request('nom'),
-        'portattache' => request('portattache'),
-        'categorie' => request('categorie'),
-        'scategorie' => request('scategorie'),
-        'type' => request('type'),
-        'type_dem' => request('type_dem'),
-        'date_immatriculation' => request('date_immatriculation'),
-        'quartier_maritime' => request('quartier_maritime'),
 
-        'armateur_id' => request('armateur_id')
-      ]);
+      $double = Double::where('matricule', '=', request('matricule'))->first();
+
+      if ($double) {
+        $test = $double->update([
+          'count' => $double->count + 1
+        ]);
+      } else {
+        $test = Double::create([
+          'table' => 'Navire',
+          'matricule' => request('matricule'),
+          'nom' => request('nom'),
+          'portattache' => request('portattache'),
+          'categorie' => request('categorie'),
+          'scategorie' => request('scategorie'),
+          'type' => request('type'),
+          'type_dem' => request('type_dem'),
+          'date_immatriculation' => request('date_immatriculation'),
+          'quartier_maritime' => request('quartier_maritime'),
+
+          'armateur_id' => request('armateur_id'),
+          'count' => 1
+        ]);
+      }
     } else {
       $test = Navire::create([
         'matricule' => request('matricule'),
@@ -169,16 +180,20 @@ class NaviresController extends Controller
     return view("board.navires.show", ['navire' => $navire]);
   }
 
-
   public function create()
   {
     $armateurs = Armateur::all();
     return view('board.navires.create', ['armateurs' => $armateurs]);
   }
 
-
   public function import()
   {
-    return 'Import';
+    request()->validate([
+      'excel-navires' => 'required|mimes:xlsx,csv',
+    ]);
+
+    Excel::import(new NaviresImport, request('excel-navires'));
+
+    return back()->with('success', 'Importé avec succés');
   }
 }

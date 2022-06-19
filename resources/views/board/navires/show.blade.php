@@ -46,9 +46,13 @@
         <td>{{ $navire->quartier_maritime }}</td>
       </tr>
       <tr>
+        @if (isset($navire->Armateur))
         <th>Armateur</th>
         <td>{{ $navire->Armateur->nom . ' ' . $navire->Armateur->prenom }}</td>
-
+        @else
+        <th></th>
+        <td></td>
+        @endif
         <th class='actions'>
           <a class="action edit" href="/navires/{{ $navire->id }}/edit"><i class="fa fa-pencil"></i></a>
           <form method="POST" action="/navires/{{ $navire->id }}">

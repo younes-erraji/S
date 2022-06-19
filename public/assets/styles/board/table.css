@@ -27,6 +27,7 @@
 }
 .buttons .button.import {
   background-color: #446185;
+  border: none;
 }
 .buttons .button.import:hover {
   background-color: #304968;
@@ -169,4 +170,9 @@ a.add {
 .operation_Insert {
   background-color: #4f8a10;
   color: white;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
 }

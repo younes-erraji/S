@@ -25,8 +25,14 @@
 
   <div class="buttons">
     <a href="{{ route('export.navires.excel') }}" @if(count($navires) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Export</a>
-    {{-- <a href="{{ route('export.navires.csv') }}" @if(count($navires) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
-    <a href="{{ route('import.navires') }}" class="button import"><i class="fa fa-upload"></i> Import</a>
+    <form class="d-flex" method='POST' action="{{ route('import.navires') }}" enctype="multipart/form-data">
+      @csrf
+      <div>
+        <input type="file" id='excel-navires' name="excel-navires" />
+        <span class="error">@error('excel-navires') {{ $message }} @enderror</span>
+      </div>
+      <button class="button import"><i class="fa fa-upload"></i> Import</button>
+    </form>
   </div>
 
   <table class="grid">
@@ -61,7 +67,11 @@
         <td>{{ $navire->type_dem }}</td>
         <td>{{ $navire->date_immatriculation }}</td>
         <td>{{ $navire->quartier_maritime }}</td> --}}
+        @if (isset($navire->Armateur))
         <td>{{ $navire->Armateur->nom . ' ' . $navire->Armateur->prenom }}</td>
+        @else
+        <td></td>
+        @endif
         <td><a class="edit" href="navires/show/{{ $navire->id }}"><i class="fa fa-info"></i></a></td>
         <td><a class="edit" href="navires/{{ $navire->id }}/edit"><i class="fa fa-pencil"></i></a></td>
         <td>

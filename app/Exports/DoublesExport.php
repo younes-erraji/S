@@ -11,7 +11,7 @@ class DoublesExport implements FromCollection, WithHeadings
   public function headings(): array
   {
     return [
-      '#', 'Créé à'
+      '#', 'Table', 'Matricule', 'Nom', 'Portattache', 'Categorie', 'SCategorie', 'Type', 'Type_dem', 'Date_immatriculation', 'Quartier_maritime', 'Armateur', 'Intitule', 'Count', 'Operation_date', 'Créé à'
     ];
   }
 

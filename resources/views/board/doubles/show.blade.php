@@ -17,6 +17,7 @@
         <th>Table:</th>
         <td>{{ $double->table }}</td>
       </tr>
+      @if (isset($double->matricule))
       <tr>
         <th>Matricule</th>
         <td>{{ $double->matricule }}</td>
@@ -24,29 +25,37 @@
         <th>Nom</th>
         <td>{{ $double->nom }}</td>
       </tr>
-      {{-- <tr>
+      @endif
+      @if (isset($double->categorie))
+      <tr>
         <th>Categorie</th>
         <td>{{ $double->categorie }}</td>
 
-        <th>Type</th>
-        <td>{{ $double->type }}</td>
-      </tr>
-      <tr>
         <th>SCategorie</th>
         <td>{{ $double->scategorie }}</td>
-
+      </tr>
+      @endif
+      <tr>
+        <th>Type</th>
+        <td>{{ $double->type }}</td>
+        @if (isset($double->type_dem))
         <th>Type Dem</th>
         <td>{{ $double->type_dem }}</td>
+        @endif
       </tr>
+      @if (isset($double->date_immatriculation))
       <tr>
         <th>Date Immatriculation</th>
         <td>{{ $double->date_immatriculation }}</td>
 
         <th>Quartier Maritime</th>
         <td>{{ $double->quartier_maritime }}</td>
-      </tr> --}}
-      <tr>
+      </tr>
+      @endif
 
+      <tr>
+        <th>Count</th>
+        <td>{{ $double->count }}</td>
         <th class='actions'>
           <a class="action edit" href="/doubles/{{ $double->id }}/edit"><i class="fa fa-pencil"></i></a>
           <form method="POST" action="/doubles/{{ $double->id }}">

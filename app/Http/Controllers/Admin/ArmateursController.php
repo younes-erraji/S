@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Armateur, History};
+use App\Models\{Armateur, History, Double};
 use App\Exports\ArmateursExport;
+use App\Imports\ArmateursImport;
 use Excel;
+use DB;
 
 class ArmateursController extends Controller
 {
@@ -73,14 +75,37 @@ class ArmateursController extends Controller
       'nom_court' => 'required'
     ]);
 
-    $test = Armateur::create([
-      'identite' => request('identite'),
-      'nom' => request('nom'),
-      'prenom' => request('prenom'),
-      'email' => request('email'),
-      'type' => request('type'),
-      'nom_court' => request('nom_court'),
-    ]);
+    $count = DB::table('armateurs')->where('identite', '=', request('identite'))->count();
+
+    $test = null;
+    if ($count != 0) {
+      $double = Double::where('matricule', '=', request('identite'))->first();
+
+      if ($double) {
+        $test = $double->update([
+          'count' => $double->count + 1
+        ]);
+      } else {
+        $test = Double::create([
+          'table' => 'Armateurs',
+          'matricule' => request('identite'),
+          'nom' => request('nom') . ' ' . request('prenom'),
+          // 'email' => request('email'),
+          'type' => request('type'),
+          // 'nom_court' => request('nom_court'),
+          'count' => 1
+        ]);
+      }
+    } else {
+      $test = Armateur::create([
+        'identite' => request('identite'),
+        'nom' => request('nom'),
+        'prenom' => request('prenom'),
+        'email' => request('email'),
+        'type' => request('type'),
+        'nom_court' => request('nom_court'),
+      ]);
+    }
 
     if ($test) {
       History::create([
@@ -130,6 +155,12 @@ class ArmateursController extends Controller
 
   public function import()
   {
-    return 'import';
+    request()->validate([
+      'excel-armateurs' => 'required|mimes:xlsx,csv',
+    ]);
+
+    Excel::import(new ArmateursImport, request('excel-armateurs'));
+
+    return back()->with('success', 'Importé avec succés');
   }
 }
