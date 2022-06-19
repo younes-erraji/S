@@ -76,9 +76,8 @@
   @method('DELETE')
 </form>
 <div class="buttons">
-  <button type="submit" form="update"><i class="fa fa-pencil"></i> Mettre à jour</button>
-  {{-- <a class='delete'><i class="fa fa-trash"></i> Delete</a> --}}
-  <a class="cancel" href="/navires"><i class="fa fa-ban"></i> Annuler</a>
+  <button type="submit" form="update"><i class="fa fa-pencil"></i>&nbsp; Mettre à jour</button>
+  <a class="cancel" href="/navires"><i class="fa fa-ban"></i>&nbsp; Annuler</a>
 </div>
 @endsection
 @section('scripts')

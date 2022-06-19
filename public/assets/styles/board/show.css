@@ -7,12 +7,20 @@ table {
   text-align: start;
 }
 
+table tbody.one-column tr {
+  grid-template-columns: 20% 1fr;
+}
+
+table tbody.two-column tr {
+  grid-template-columns: 20% 30% 20% 30%;
+}
+
 table tr {
   padding: 14px 0;
   display: grid;
   align-items: center;
   width: 100%;
-  grid-template-columns: 20% 30% 20% 30%;
+
   border-bottom: 1px solid #ccc;
 }
 

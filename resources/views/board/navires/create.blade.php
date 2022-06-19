@@ -22,7 +22,7 @@
     <p>Tous les champs marqués d'un astérisque * sont obligatoires</p>
     @endif
   </div>
-<div class="width-50">
+  <div class="width-50">
     <label for="matricule">Matricule *</label>
     <input type="text" id="matricule" name='matricule' value="{{ old('matricule') }}" />
     <span class="error">@error('matricule') {{ $message }} @enderror</span>
@@ -70,8 +70,8 @@
     <span class="error">@error('quartier_maritime') {{ $message }} @enderror</span>
   </div>
   <div class="buttons width-100">
-    <button type="submit"><i class="fa fa-pencil"></i> Insérer</button>
-    <a class="cancel" href="/navires"><i class="fa fa-ban"></i> Annuler</a>
+    <button type="submit"><i class="fa fa-pencil"></i>&nbsp; Insérer</button>
+    <a class="cancel" href="/navires"><i class="fa fa-ban"></i>&nbsp; Annuler</a>
   </div>
   </div>
 </form>

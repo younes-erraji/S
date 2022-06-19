@@ -27,12 +27,12 @@
           <a>MINISTRE DE L'EQUIPEMENT, DU TRANSPORT DE LA LOGISTIQUE ET DE L'EAU</a>
         </h1>
         <ul>
-          <li><a href="/admin" class='list'>Dashboard</a></li>
+          <li><a href="/admin" class='list'>Tableau de bord</a></li>
           <li>
             <a class='list' data-list="navires">Navires<i class="fa fa-angle-right"></i></a>
             <ul class="navires sublinks">
               <li><a href="/navires">List</a></li>
-              <li><a href="{{ route('navire.create') }}">Create</a></li>
+              <li><a href="/navires/create">Create</a></li>
             </ul>
           </li>
           <li>

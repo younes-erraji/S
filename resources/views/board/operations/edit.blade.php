@@ -42,8 +42,8 @@
   </div>
 
   <div class="buttons width-100">
-    <button type="submit"><i class="fa fa-pencil"></i> Mettre à jour</button>
-    <a class="cancel" href="/operations"><i class="fa fa-ban"></i> Cancel</a>
+    <button type="submit"><i class="fa fa-pencil"></i>&nbsp; Mettre à jour</button>
+    <a class="cancel" href="/operations"><i class="fa fa-ban"></i>&nbsp; Cancel</a>
   </div>
   </div>
 </form>

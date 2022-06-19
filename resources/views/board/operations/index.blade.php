@@ -21,6 +21,7 @@
   <div class="buttons">
     <a href="{{ route('export.operations.excel') }}" @if(count($operations) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
     {{-- <a href="{{ route('export.operations.csv') }}" @if(count($operations) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
+    <a href="{{ route('import.operations') }}" class="button import"><i class="fa fa-upload"></i> Import</a>
   </div>
 
   <table class="grid">

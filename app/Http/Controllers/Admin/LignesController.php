@@ -68,6 +68,7 @@ class LignesController extends Controller
     $test = null;
     if ($count != 0) {
       $test = Double::create([
+        'table' => 'Ligne',
         'intitule' => request('intitule'),
       ]);
     } else {

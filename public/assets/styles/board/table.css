@@ -25,6 +25,12 @@
 .buttons .button.csv:hover {
   background-color: #f39c12;
 }
+.buttons .button.import {
+  background-color: #446185;
+}
+.buttons .button.import:hover {
+  background-color: #304968;
+}
 
 section .grid {
   width: 100%;

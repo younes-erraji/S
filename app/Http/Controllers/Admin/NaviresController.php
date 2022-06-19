@@ -27,12 +27,6 @@ class NaviresController extends Controller
     return view('board.navires.edit', ['navire' => $navire, 'armateurs' => $armateurs]);
   }
 
-  public function create()
-  {
-    $armateurs = Armateur::all();
-    return view('board.navires.create', ['armateurs' => $armateurs]);
-  }
-
   public function update(Navire $navire)
   {
     request()->validate([
@@ -100,6 +94,7 @@ class NaviresController extends Controller
     $test = null;
     if ($count != 0) {
       $test = Double::create([
+        'table' => 'Navire',
         'matricule' => request('matricule'),
         'nom' => request('nom'),
         'portattache' => request('portattache'),
@@ -127,8 +122,6 @@ class NaviresController extends Controller
         'armateur_id' => request('armateur_id')
       ]);
     }
-
-
 
     if ($test) {
       History::create([
@@ -176,7 +169,16 @@ class NaviresController extends Controller
     return view("board.navires.show", ['navire' => $navire]);
   }
 
+
+  public function create()
+  {
+    $armateurs = Armateur::all();
+    return view('board.navires.create', ['armateurs' => $armateurs]);
+  }
+
+
   public function import()
   {
+    return 'Import';
   }
 }

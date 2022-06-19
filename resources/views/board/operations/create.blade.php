@@ -41,8 +41,8 @@
   </div>
 
   <div class="buttons width-100">
-    <button type="submit"><i class="fa fa-pencil"></i> Insérer</button>
-    <a class="cancel" href="/operations"><i class="fa fa-ban"></i> Annuler</a>
+    <button type="submit"><i class="fa fa-pencil"></i>&nbsp; Insérer</button>
+    <a class="cancel" href="/operations"><i class="fa fa-ban"></i>&nbsp; Annuler</a>
   </div>
   </div>
 </form>

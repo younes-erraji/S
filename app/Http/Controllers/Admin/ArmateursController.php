@@ -130,5 +130,6 @@ class ArmateursController extends Controller
 
   public function import()
   {
+    return 'import';
   }
 }

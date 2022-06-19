@@ -11,7 +11,7 @@ class ArmateursExport implements FromCollection, WithHeadings
   public function headings(): array
   {
     return [
-      '#', 'Identite', 'Nom', 'Prenom', 'E-mail', 'Type', 'Nom court', 'Armateur ID', 'Créé à'
+      '#', 'Identite', 'Nom', 'Prenom', 'E-mail', 'Type', 'Nom court', 'Créé à'
     ];
   }
 

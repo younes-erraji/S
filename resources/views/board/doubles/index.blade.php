@@ -26,15 +26,17 @@
   <div class="buttons">
     <a href="{{ route('export.doubles.excel') }}" @if(count($doubles) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
     {{-- <a href="{{ route('export.doubles.csv') }}" @if(count($doubles) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
+    <a href="{{ route('import.doubles') }}" class="button import"><i class="fa fa-upload"></i> Import</a>
   </div>
 
   <table class="grid">
     <thead>
       <tr>
         <th>#</th>
+        <th>Table</th>
         <th>Matricule</th>
         <th>Nom</th>
-        <th>Portattache</th>
+        {{-- <th>Portattache</th>
         <th>Categorie</th>
         <th>SCategorie</th>
         <th>Type</th>
@@ -42,8 +44,10 @@
         <th>Date Immatriculation</th>
         <th>Quartier Maritime</th>
         <th>Intitule</th>
-        <th>Date d'opération</th>
+        <th>Date d'opération</th> --}}
+        <th>Count</th>
         <th>Créé à</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -51,9 +55,10 @@
       @foreach ($doubles as $double)
       <tr>
         <td>{{ $double->id }}</td>
+        <td>{{ $double->table }}</td>
         <td>{{ $double->matricule ?? '---' }}</td>
         <td>{{ $double->nom ?? '---' }}</td>
-        <td>{{ $double->portattache ?? '---' }}</td>
+        {{-- <td>{{ $double->portattache ?? '---' }}</td>
         <td>{{ $double->categorie ?? '---' }}</td>
         <td>{{ $double->scategorie ?? '---' }}</td>
         <td>{{ $double->type ?? '---' }}</td>
@@ -61,9 +66,11 @@
         <td>{{ $double->date_immatriculation ?? '---' }}</td>
         <td>{{ $double->quartier_maritime ?? '---' }}</td>
         <td>{{ $double->intitule ?? '---' }}</td>
-        <td>{{ $double->operation_date ?? '---' }}</td>
+        <td>{{ $double->operation_date ?? '---' }}</td> --}}
 
+        <td>{{ $double->count }}</td>
         <td>{{ $double->created_at }}</td>
+        <td><a class="edit" href="doubles/show/{{ $double->id }}"><i class="fa fa-info"></i></a></td>
         <td>
           <form method="POST" action="doubles/{{ $double->id }}">
             @csrf

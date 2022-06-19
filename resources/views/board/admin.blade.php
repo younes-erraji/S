@@ -1,16 +1,16 @@
 @extends('layouts.board')
 @section('title', 'Dashboard')
-@section('style')
-@endsection
 
-@section('title','Dashboard')
+@section('title','Tableau de bord')
 
 @section('content')
 <div class="container">
-  <h1>Tableau de bord</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem soluta a perferendis velit quisquam
-    dolorem, quaerat vitae corrupti? Obcaecati, numquam? Voluptates ipsum molestiae et facere, recusandae, fugiat
-    veritatis ab atque dolorum aut voluptas vero obcaecati? Omnis mollitia facere ex excepturi libero error, pariatur
-    animi?</p>
+  <h1 class="overlay__title">
+    MINISTRE DE L'EQUIPEMENT, DU TRANSPORT DE LA LOGISTIQUE ET DE L'EAU
+  </h1>
+  <h2 class="overlay__subtitle">Projet De Stage</h2>
+  <p class="overlay__description">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque impedit quo incidunt. Nemo cupiditate, officia reprehenderit incidunt nulla accusantium molestias, laudantium ut magni doloremque quos soluta, velit explicabo corporis error ipsum! Consectetur voluptates incidunt quaerat iusto vero pariatur molestiae ad quo repellendus quae! Numquam.
+  </p>
 </div>
 @endsection

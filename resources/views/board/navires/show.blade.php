@@ -9,7 +9,7 @@
 
 <div class="container">
   <table class="grid">
-    <tbody>
+    <tbody class="two-column">
       <tr>
         <th>#</th>
         <td>{{ $navire->id }}</td>

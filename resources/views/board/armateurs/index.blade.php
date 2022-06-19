@@ -21,6 +21,7 @@
   <div class="buttons">
     <a href="{{ route('export.armateurs.excel') }}" @if(count($armateurs) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Export</a>
     {{-- <a href="{{ route('export.armateurs.csv') }}" @if(count($armateurs) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
+    <a href="{{ route('import.armateurs') }}" class="button import"><i class="fa fa-upload"></i> Import</a>
   </div>
 
   <table class="grid">
@@ -30,9 +31,10 @@
         <th>Identite</th>
         <th>Nom</th>
         <th>Prenom</th>
-        <th>Nom Court</th>
+        {{-- <th>Nom Court</th> --}}
         <th>E-mail</th>
-        <th>Type</th>
+        {{-- <th>Type</th> --}}
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -44,9 +46,10 @@
         <td>{{ $armateur->identite }}</td>
         <td>{{ $armateur->nom }}</td>
         <td>{{ $armateur->prenom }}</td>
+        {{-- <td>{{ $armateur->nom_court }}</td> --}}
         <td>{{ $armateur->email }}</td>
-        <td>{{ $armateur->type }}</td>
-        <td>{{ $armateur->nom_court }}</td>
+        {{-- <td>{{ $armateur->type }}</td> --}}
+        <td><a class="edit" href="armateurs/show/{{ $armateur->id }}"><i class="fa fa-info"></i></a></td>
         <td><a class="edit" href="armateurs/{{ $armateur->id }}/edit"><i class="fa fa-pencil"></i></a></td>
         <td>
           <form method="POST" action="armateurs/{{ $armateur->id }}">

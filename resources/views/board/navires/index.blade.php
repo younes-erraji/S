@@ -26,7 +26,7 @@
   <div class="buttons">
     <a href="{{ route('export.navires.excel') }}" @if(count($navires) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Export</a>
     {{-- <a href="{{ route('export.navires.csv') }}" @if(count($navires) === 0) disabled @endif class="button csv"><i class="fa fa-download"></i> CSV</a> --}}
-    {{-- <a href="{{ route('import.navires.csv') }}" class="button import"><i class="fa fa-download"></i> Import</a> --}}
+    <a href="{{ route('import.navires') }}" class="button import"><i class="fa fa-upload"></i> Import</a>
   </div>
 
   <table class="grid">
@@ -62,7 +62,7 @@
         <td>{{ $navire->date_immatriculation }}</td>
         <td>{{ $navire->quartier_maritime }}</td> --}}
         <td>{{ $navire->Armateur->nom . ' ' . $navire->Armateur->prenom }}</td>
-        <td><a class="edit" href="navires/{{ $navire->id }}"><i class="fa fa-info"></i></a></td>
+        <td><a class="edit" href="navires/show/{{ $navire->id }}"><i class="fa fa-info"></i></a></td>
         <td><a class="edit" href="navires/{{ $navire->id }}/edit"><i class="fa fa-pencil"></i></a></td>
         <td>
           <form method="POST" action="navires/{{ $navire->id }}">

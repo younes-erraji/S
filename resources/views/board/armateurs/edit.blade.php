@@ -50,8 +50,8 @@
   </div>
 
   <div class="buttons width-100">
-    <button type="submit"><i class="fa fa-pencil"></i> Mettre à jour</button>
-    <a class="cancel" href="/armateurs"><i class="fa fa-ban"></i> Annuler</a>
+    <button type="submit"><i class="fa fa-pencil"></i>&nbsp; Mettre à jour</button>
+    <a class="cancel" href="/armateurs"><i class="fa fa-ban"></i>&nbsp; Annuler</a>
   </div>
   </div>
 </form>

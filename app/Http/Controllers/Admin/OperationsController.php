@@ -74,6 +74,7 @@ class OperationsController extends Controller
     $test = null;
     if ($count != 0) {
       $test = Double::create([
+        'table' => 'Operation',
         'type' => request('type'),
         'operation_date' => request('operation_date'),
       ]);
@@ -126,5 +127,10 @@ class OperationsController extends Controller
   public function csv()
   {
     return Excel::download(new OperationExport, 'operations.csv');
+  }
+
+  public function import()
+  {
+    return 'Import';
   }
 }

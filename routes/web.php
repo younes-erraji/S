@@ -23,9 +23,9 @@ Route::get('admin', [AdminController::class, 'index'])->name('admin');
 Route::prefix('navires')->group(function () {
   Route::get('/', [NaviresController::class, 'index']);
   Route::get('{navire}/edit', [NaviresController::class, 'edit']);
-  Route::get('{navire}', [NaviresController::class, 'show']);
   Route::put('{navire}', [NaviresController::class, 'update']);
-  Route::get('create', [NaviresController::class, 'create'])->name('navire.create');
+  Route::get('show/{navire}', [NaviresController::class, 'show']);
+  Route::get('create', [NaviresController::class, 'create']);
   Route::post('/', [NaviresController::class, 'store']);
   Route::delete('{navire}', [NaviresController::class, 'destroy']);
 });
@@ -44,6 +44,7 @@ Route::prefix('lignes')->group(function () {
   Route::get('{ligne}/edit', [LignesController::class, 'edit']);
   Route::put('{ligne}', [LignesController::class, 'update']);
   Route::get('create', [LignesController::class, 'create']);
+  Route::get('show', [LignesController::class, 'show']);
   Route::post('/', [LignesController::class, 'store']);
   Route::delete('{ligne}', [LignesController::class, 'destroy']);
 });
@@ -51,6 +52,7 @@ Route::prefix('lignes')->group(function () {
 Route::prefix('armateurs')->group(function () {
   Route::get('/', [ArmateursController::class, 'index']);
   Route::get('{armateur}/edit', [ArmateursController::class, 'edit']);
+  Route::get('show/{armateur}', [ArmateursController::class, 'show']);
   Route::put('{armateur}', [ArmateursController::class, 'update']);
   Route::get('create', [ArmateursController::class, 'create']);
   Route::post('/', [ArmateursController::class, 'store']);
@@ -65,6 +67,7 @@ Route::prefix('history')->group(function () {
 Route::prefix('doubles')->group(function () {
   Route::get('/', [DoublesController::class, 'index']);
   Route::delete('{double}', [DoublesController::class, 'destroy']);
+  Route::get('show/{double}', [DoublesController::class, 'show']);
 });
 
 Route::prefix('export')->group(function () {
@@ -118,4 +121,6 @@ Route::prefix('users')->group(function () {
 Route::prefix('import')->group(function () {
   Route::get('armateurs', [ArmateursController::class, 'import'])->name('import.armateurs');
   Route::get('navires', [NaviresController::class, 'import'])->name('import.navires');
+  Route::get('doubles', [DoublesController::class, 'import'])->name('import.doubles');
+  Route::get('operations', [OperationsController::class, 'import'])->name('import.operations');
 });

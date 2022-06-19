@@ -11,6 +11,8 @@ class CreateDoublesTable extends Migration
     Schema::create('doubles', function (Blueprint $table) {
       $table->id();
 
+      $table->string('table')->nullable();
+
       $table->string('matricule')->nullable();
       $table->string('nom')->nullable();
       $table->string('portattache')->nullable();
@@ -21,10 +23,12 @@ class CreateDoublesTable extends Migration
 
       $table->string('type_dem')->nullable();
       $table->date('date_immatriculation')->nullable();
-      $table->date('quartier_maritime')->nullable();
+      $table->string('quartier_maritime')->nullable();
       $table->bigInteger('armateur_id')->nullable();
 
       $table->string('intitule')->nullable();
+
+      $table->integer('count')->nullable()->default(0);
 
       $table->date('operation_date')->nullable();
 
