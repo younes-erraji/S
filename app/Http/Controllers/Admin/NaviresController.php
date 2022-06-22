@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Navire, Armateur, History, Double};
+use App\Models\{Navire, Armateur, DNavires, History, Double};
 use App\Exports\NavireExport;
 use App\Imports\NaviresImport;
 use Excel;
@@ -40,8 +40,6 @@ class NaviresController extends Controller
       'type_dem' => 'required',
       'date_immatriculation' => 'required|date',
       'quartier_maritime' => 'required',
-
-      'armateur_id' => 'required'
     ]);
 
     $test = $navire->update([
@@ -55,8 +53,6 @@ class NaviresController extends Controller
       'type_dem' => request('type_dem'),
       'date_immatriculation' => request('date_immatriculation'),
       'quartier_maritime' => request('quartier_maritime'),
-
-      'armateur_id' => request('armateur_id')
     ]);
 
     if ($test) {
@@ -95,15 +91,17 @@ class NaviresController extends Controller
     $test = null;
     if ($count != 0) {
 
-      $double = Double::where('matricule', '=', request('matricule'))->first();
+      $double = DNavires::where('matricule', '=', request('matricule'))->first();
 
       if ($double) {
         $test = $double->update([
           'count' => $double->count + 1
         ]);
       } else {
-        $test = Double::create([
-          'table' => 'Navire',
+
+        $armateur = Armateur::where('id', '=', request('armateur_id'))->first();
+
+        $test = DNavires::create([
           'matricule' => request('matricule'),
           'nom' => request('nom'),
           'portattache' => request('portattache'),
@@ -113,23 +111,28 @@ class NaviresController extends Controller
           'type_dem' => request('type_dem'),
           'date_immatriculation' => request('date_immatriculation'),
           'quartier_maritime' => request('quartier_maritime'),
-
-          'armateur_id' => request('armateur_id'),
+          'armateur_id' => $armateur->identite,
+          'armateur' => $armateur->nom . ' ' . $armateur->prenom,
           'count' => 1
         ]);
       }
     } else {
-      $test = Navire::create([
-        'matricule' => request('matricule'),
-        'nom' => request('nom'),
-        'portattache' => request('portattache'),
-        'categorie' => request('categorie'),
-        'scategorie' => request('scategorie'),
-        'type' => request('type'),
-        'type_dem' => request('type_dem'),
-        'date_immatriculation' => request('date_immatriculation'),
-        'quartier_maritime' => request('quartier_maritime'),
+      $navire = new Navire();
 
+      $navire->matricule = request('matricule');
+      $navire->nom = request('nom');
+      $navire->portattache = request('portattache');
+      $navire->categorie = request('categorie');
+      $navire->scategorie = request('scategorie');
+      $navire->type = request('type');
+      $navire->type_dem = request('type_dem');
+      $navire->date_immatriculation = request('date_immatriculation');
+      $navire->quartier_maritime = request('quartier_maritime');
+
+      $test = $navire->save();
+
+      DB::table('navires_armateurs')->insert([
+        'navire_id' => $navire->id,
         'armateur_id' => request('armateur_id')
       ]);
     }
@@ -177,7 +180,10 @@ class NaviresController extends Controller
 
   public function show(Navire $navire)
   {
-    return view("board.navires.show", ['navire' => $navire]);
+    $armateurs = Navire::join('navires_armateurs', 'navires_armateurs.navire_id', 'navires.id')->join('armateurs', 'armateurs.id', 'navires_armateurs.armateur_id')
+      ->where('navires.id', '=', $navire->id)->get();
+
+    return view("board.navires.show", ['navire' => $navire, 'armateurs' => $armateurs]);
   }
 
   public function create()

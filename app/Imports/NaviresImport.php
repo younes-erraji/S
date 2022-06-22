@@ -20,8 +20,6 @@ class NaviresImport implements ToModel, WithHeadingRow
       'type_dem' => $row['type_dem'],
       'date_immatriculation' => $row['date_immatriculation'],
       'quartier_maritime' => $row['quartier_maritime'],
-
-      // 'armateur_id' => $row['armateur']
     ]);
   }
 }

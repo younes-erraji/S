@@ -49,14 +49,23 @@
               <li><a href="/armateurs/create">Create</a></li>
             </ul>
           </li>
-          {{-- <li>
+          {{--
+          <li>
             <a class='list' data-list="lignes">Lignes<i class="fa fa-angle-right"></i></a>
             <ul class="lignes sublinks">
               <li><a href="/lignes">List</a></li>
               <li><a href="/lignes/create">Create</a></li>
             </ul>
-          </li> --}}
-          <li><a href="/doubles" class='list'>Doublons</a></li>
+          </li>
+          --}}
+          <li>
+            <a class='list' data-list="doublons">Doublons<i class="fa fa-angle-right"></i></a>
+            <ul class="doublons sublinks">
+              <li><a href="/doubles/armateurs">Armateurs</a></li>
+              <li><a href="/doubles/navires">Navires</a></li>
+              <li><a href="/doubles/operations">Operations</a></li>
+            </ul>
+          </li>
           @role('superadministrator|administrator')
           {{-- <li class='only-admin'>- Admin</li> --}}
           <li><a href="/history" class='list'>History</a></li>

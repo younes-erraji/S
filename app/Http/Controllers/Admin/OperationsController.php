@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Operation, History, Double, Navire};
+use App\Models\{DOperations, Operation, History, Double, Navire};
 use App\Exports\OperationExport;
 use App\Imports\OperationsImport;
 use Excel;
@@ -75,17 +75,19 @@ class OperationsController extends Controller
     $test = null;
     if ($count != 0) {
 
-      $double = Double::where('type', '=', request('type'))->first();
+      $double = DOperations::where('type', '=', request('type'))->where('navire_id', '=', request('navire_id'))->first();
 
       if ($double) {
         $test = $double->update([
           'count' => $double->count + 1
         ]);
       } else {
-        $test = Double::create([
-          'table' => 'Operation',
+        $navire = DB::table('navires')->where('id', '=', request('navire_id'))->first();
+
+        $test = DOperations::create([
           'type' => request('type'),
           'operation_date' => request('operation_date'),
+          'navire' => $navire->matricule,
           'count' => 1
         ]);
       }

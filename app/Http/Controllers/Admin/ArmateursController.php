@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Armateur, History, Double};
+use App\Models\{Armateur, DArmateurs, History, Navire};
 use App\Exports\ArmateursExport;
 use App\Imports\ArmateursImport;
 use Excel;
@@ -46,6 +46,7 @@ class ArmateursController extends Controller
       'identite' => request('identite'),
       'nom' => request('nom'),
       'prenom' => request('prenom'),
+      'email' => request('email'),
       'type' => request('type'),
       'nom_court' => request('nom_court'),
     ]);
@@ -79,20 +80,20 @@ class ArmateursController extends Controller
 
     $test = null;
     if ($count != 0) {
-      $double = Double::where('matricule', '=', request('identite'))->first();
+      $double = DArmateurs::where('identite', '=', request('identite'))->first();
 
       if ($double) {
         $test = $double->update([
           'count' => $double->count + 1
         ]);
       } else {
-        $test = Double::create([
-          'table' => 'Armateurs',
-          'matricule' => request('identite'),
-          'nom' => request('nom') . ' ' . request('prenom'),
-          // 'email' => request('email'),
+        $test = DArmateurs::create([
+          'identite' => request('identite'),
+          'nom' => request('nom'),
+          'prenom' => request('prenom'),
+          'email' => request('email'),
           'type' => request('type'),
-          // 'nom_court' => request('nom_court'),
+          'nom_court' => request('nom_court'),
           'count' => 1
         ]);
       }
@@ -150,7 +151,10 @@ class ArmateursController extends Controller
 
   public function show(Armateur $armateur)
   {
-    return view("board.armateurs.show", ['armateur' => $armateur]);
+    $navires = Armateur::join('navires_armateurs', 'navires_armateurs.armateur_id', 'armateurs.id')->join('navires', 'navires.id', 'navires_armateurs.navire_id')
+      ->where('armateurs.id', '=', $armateur->id)->get();
+
+    return view("board.armateurs.show", ['armateur' => $armateur, 'navires' => $navires]);
   }
 
   public function import()

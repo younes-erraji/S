@@ -46,10 +46,8 @@
     </select>
     <span class="error">@error('user_role') {{ $message }} @enderror</span>
 
+    <button type="submit"><i class="fa fa-pencil"></i>&nbsp; Mettre à jour</button>
+    <a class="cancel" href="/users"><i class="fa fa-ban"></i>&nbsp; Annuler</a>
   </div>
 </form>
-<div class="buttons">
-  <button type="submit" form="update-form"><i class="fa fa-pencil"></i> Mettre à jour</button>
-  <a class="cancel" href="/users"><i class="fa fa-ban"></i> Annuler</a>
-</div>
 @endsection

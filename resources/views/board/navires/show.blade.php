@@ -1,6 +1,16 @@
 @extends('layouts.board')
 @section('style')
 <link rel='stylesheet' href="{{ asset('assets/styles/board/show.css') }}" />
+<style>
+  .listed {
+    list-style: decimal
+  }
+  .listed li {
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+</style>
 @endsection
 
 @section('title','Navire')
@@ -46,13 +56,22 @@
         <td>{{ $navire->quartier_maritime }}</td>
       </tr>
       <tr>
-        @if (isset($navire->Armateur))
-        <th>Armateur</th>
-        <td>{{ $navire->Armateur->nom . ' ' . $navire->Armateur->prenom }}</td>
+        @if (count($armateurs) > 0)
+          <td>Armateurs:</td>
+          <th colspan="3">
+            <ul class="listed">
+              @foreach ($armateurs as $armateur)
+                <li>{{ $armateur->nom . ' ' . $armateur->prenom }}</li>
+              @endforeach
+            </ul>
+          </th>
         @else
+        <td colspan="2">0 Armateurs</td>
+        @endif
+      </tr>
+      <tr>
         <th></th>
         <td></td>
-        @endif
         <th class='actions'>
           <a class="action edit" href="/navires/{{ $navire->id }}/edit"><i class="fa fa-pencil"></i></a>
           <form method="POST" action="/navires/{{ $navire->id }}">

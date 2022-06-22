@@ -17,7 +17,7 @@ class HistoryController extends Controller
 
   public function index()
   {
-    $histories = History::all();
+    $histories = History::all()->sortByDesc('created_at');
     return view('board.histories.index', ['histories' => $histories]);
   }
 

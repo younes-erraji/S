@@ -2,16 +2,15 @@
 
 namespace App\Imports;
 
-use App\Models\Double;
+use App\Models\DNavires;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class DoublesImport implements ToModel, WithHeadingRow
+class DNaviresImport implements ToModel, WithHeadingRow
 {
   public function model(array $row)
   {
-    return new Double([
-      'table' => $row['table'],
+    return new DNavires([
       'matricule' => $row['matricule'],
       'nom' => $row['nom'],
       'portattache' => $row['portattache'],
@@ -21,13 +20,8 @@ class DoublesImport implements ToModel, WithHeadingRow
       'type_dem' => $row['type_dem'],
       'date_immatriculation' => $row['date_immatriculation'],
       'quartier_maritime' => $row['quartier_maritime'],
-
-      'armateur_id' => $row['armateur'],
-      'operation_date' => $row['operation_date'],
-
-      'intitule' => $row['intitule'],
-
-      'count' => $row['count'],
+      'armateur' => $row['armateur'],
+      'count' => $row['count']
     ]);
   }
 }

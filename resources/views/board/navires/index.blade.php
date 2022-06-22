@@ -48,7 +48,7 @@
         <th>Type Dem</th>
         <th>Date Immatriculation</th> --}}
         {{-- <th>Quartier Maritime</th> --}}
-        <th>Armateur</th>
+        {{-- <th>Armateur</th> --}}
         <th></th>
         <th></th>
         <th></th>
@@ -67,11 +67,11 @@
         <td>{{ $navire->type_dem }}</td>
         <td>{{ $navire->date_immatriculation }}</td>
         <td>{{ $navire->quartier_maritime }}</td> --}}
-        @if (isset($navire->Armateur))
+        {{-- @if (isset($navire->Armateur))
         <td>{{ $navire->Armateur->nom . ' ' . $navire->Armateur->prenom }}</td>
         @else
         <td></td>
-        @endif
+        @endif --}}
         <td><a class="edit" href="navires/show/{{ $navire->id }}"><i class="fa fa-info"></i></a></td>
         <td><a class="edit" href="navires/{{ $navire->id }}/edit"><i class="fa fa-pencil"></i></a></td>
         <td>

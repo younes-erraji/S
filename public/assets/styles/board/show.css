@@ -24,10 +24,6 @@ table tr {
   border-bottom: 1px solid #ccc;
 }
 
-table tr th {
-  width: 20%;
-}
-
 a.action {
   border-radius: 14px;
   display: inline-flex;

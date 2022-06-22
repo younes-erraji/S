@@ -13,6 +13,10 @@ class NaviresArmateurs extends Migration
       $table->unsignedBigInteger('navire_id');
       $table->unsignedBigInteger('armateur_id');
 
+      $table->foreign('navire_id')->references('id')->on('navires')->onDelete('cascade')->onUpdate('cascade');
+
+      $table->foreign('armateur_id')->references('id')->on('armateurs')->onDelete('cascade')->onUpdate('cascade');
+
       $table->timestamps();
     });
   }

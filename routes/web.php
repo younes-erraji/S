@@ -6,10 +6,10 @@ use App\Http\Controllers\Admin\{
   NaviresController,
   OperationsController,
   AdminController,
-  DoublesController,
   UserRoleController,
   HistoryController
 };
+use App\Http\Controllers\Admin\Doubles\{DArmateursController, DNaviresController, DOperationsController};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -64,12 +64,6 @@ Route::prefix('history')->group(function () {
   Route::delete('{history}', [HistoryController::class, 'destroy']);
 });
 
-Route::prefix('doubles')->group(function () {
-  Route::get('/', [DoublesController::class, 'index']);
-  Route::delete('{double}', [DoublesController::class, 'destroy']);
-  Route::get('show/{double}', [DoublesController::class, 'show']);
-});
-
 Route::prefix('export')->group(function () {
   Route::prefix('armateurs')->group(function () {
     Route::get('excel', [ArmateursController::class, 'excel'])->name('export.armateurs.excel');
@@ -100,11 +94,6 @@ Route::prefix('export')->group(function () {
     Route::get('excel', [HistoryController::class, 'excel'])->name('export.history.excel');
     Route::get('csv', [HistoryController::class, 'csv'])->name('export.history.csv');
   });
-
-  Route::prefix('doubles')->group(function () {
-    Route::get('excel', [DoublesController::class, 'excel'])->name('export.doubles.excel');
-    Route::get('csv', [DoublesController::class, 'csv'])->name('export.doubles.csv');
-  });
 });
 
 
@@ -121,6 +110,32 @@ Route::prefix('users')->group(function () {
 Route::prefix('import')->group(function () {
   Route::post('armateurs', [ArmateursController::class, 'import'])->name('import.armateurs');
   Route::post('navires', [NaviresController::class, 'import'])->name('import.navires');
-  Route::post('doubles', [DoublesController::class, 'import'])->name('import.doubles');
   Route::post('operations', [OperationsController::class, 'import'])->name('import.operations');
+});
+
+Route::prefix('doubles')->group(function () {
+  Route::prefix('navires')->group(function () {
+    Route::get("/", [DNaviresController::class, 'index']);
+    Route::delete("{navire}", [DNaviresController::class, 'destroy']);
+    Route::get("show/{navire}", [DNaviresController::class, 'show']);
+
+    Route::get('export', [DNaviresController::class, 'export']);
+    Route::post('import', [DNaviresController::class, 'import']);
+  });
+  Route::prefix('armateurs')->group(function () {
+    Route::get("/", [DArmateursController::class, 'index']);
+    Route::delete("{armateur}", [DArmateursController::class, 'destroy']);
+    Route::get("show/{armateur}", [DArmateursController::class, 'show']);
+
+    Route::get('export', [DArmateursController::class, 'export']);
+    Route::post('import', [DArmateursController::class, 'import']);
+  });
+  Route::prefix('operations')->group(function () {
+    Route::get("/", [DOperationsController::class, 'index']);
+    Route::delete("{operation}", [DOperationsController::class, 'destroy']);
+    Route::get("show/{operation}", [DOperationsController::class, 'show']);
+
+    Route::get('export', [DOperationsController::class, 'export']);
+    Route::post('import', [DOperationsController::class, 'import']);
+  });
 });

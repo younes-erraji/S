@@ -3,7 +3,7 @@
 <link rel='stylesheet' href="{{ asset('assets/styles/board/show.css') }}" />
 @endsection
 
-@section('title','Doublon')
+@section('title','Navire')
 
 @section('content')
 
@@ -12,53 +12,44 @@
     <tbody class="two-column">
       <tr>
         <th>#</th>
-        <td>{{ $double->id }}</td>
+        <td>{{ $d_navire->id }}</td>
 
-        <th>Table:</th>
-        <td>{{ $double->table }}</td>
+        <th>Matricule:</th>
+        <td>{{ $d_navire->matricule }}</td>
       </tr>
-      @if (isset($double->matricule))
       <tr>
-        <th>Matricule</th>
-        <td>{{ $double->matricule }}</td>
-
         <th>Nom</th>
-        <td>{{ $double->nom }}</td>
+        <td>{{ $d_navire->nom }}</td>
+
+        <th>Portattache</th>
+        <td>{{ $d_navire->portattache }}</td>
       </tr>
-      @endif
-      @if (isset($double->categorie))
       <tr>
         <th>Categorie</th>
-        <td>{{ $double->categorie }}</td>
+        <td>{{ $d_navire->categorie }}</td>
 
-        <th>SCategorie</th>
-        <td>{{ $double->scategorie }}</td>
-      </tr>
-      @endif
-      <tr>
         <th>Type</th>
-        <td>{{ $double->type }}</td>
-        @if (isset($double->type_dem))
-        <th>Type Dem</th>
-        <td>{{ $double->type_dem }}</td>
-        @endif
+        <td>{{ $d_navire->type }}</td>
       </tr>
-      @if (isset($double->date_immatriculation))
+      <tr>
+        <th>SCategorie</th>
+        <td>{{ $d_navire->scategorie }}</td>
+
+        <th>Type Dem</th>
+        <td>{{ $d_navire->type_dem }}</td>
+      </tr>
       <tr>
         <th>Date Immatriculation</th>
-        <td>{{ $double->date_immatriculation }}</td>
+        <td>{{ $d_navire->date_immatriculation }}</td>
 
         <th>Quartier Maritime</th>
-        <td>{{ $double->quartier_maritime }}</td>
+        <td>{{ $d_navire->quartier_maritime }}</td>
       </tr>
-      @endif
-
       <tr>
-        <th>Count</th>
-        <td>{{ $double->count }}</td>
+        <th>Armateur</th>
+        <td>{{ $d_navire->armateur }}</td>
         <th class='actions'>
-          <a class="action edit" href="/doubles/{{ $double->id }}/edit"><i class="fa fa-pencil"></i></a>
-          <form method="POST" action="/doubles/{{ $double->id }}">
+          <form method="POST" action="/navires/{{ $d_navire->id }}">
             @csrf
             @method('DELETE')
             <a class="action delete"><i class="fa fa-trash-o"></i></a>

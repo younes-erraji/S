@@ -9,7 +9,7 @@
 </style>
 @endsection
 
-@section('title','Doubles')
+@section('title','Doublons des Navires')
 
 @section('content')
 <div class="container">
@@ -24,13 +24,13 @@
   @endif
 
   <div class="buttons">
-    <a href="{{ route('export.doubles.excel') }}" @if(count($doubles) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Excel</a>
+    <a href="/doubles/navires/export" @if(count($d_navires) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Export</a>
 
-    <form class="d-flex" method='POST' action="{{ route('import.doubles') }}" enctype="multipart/form-data">
+    <form class="d-flex" method='POST' action="/doubles/navires/import" enctype="multipart/form-data">
       @csrf
       <div>
-        <input type="file" id='excel-doubles' name="excel-doubles" />
-        <span class="error">@error('excel-doubles') {{ $message }} @enderror</span>
+        <input type="file" id='navires' name="navires" />
+        <span class="error">@error('navires') {{ $message }} @enderror</span>
       </div>
       <button class="button import"><i class="fa fa-upload"></i> Import</button>
     </form>
@@ -40,46 +40,36 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Table</th>
         <th>Matricule</th>
         <th>Nom</th>
-        {{-- <th>Portattache</th>
         <th>Categorie</th>
-        <th>SCategorie</th>
         <th>Type</th>
-        <th>Type Dem</th>
-        <th>Date Immatriculation</th>
-        <th>Quartier Maritime</th>
-        <th>Intitule</th>
-        <th>Date d'opération</th> --}}
+        <th>Armateur</th>
         <th>Count</th>
-        <th>Créé à</th>
         <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($doubles as $double)
+      @foreach ($d_navires as $d_navire)
       <tr>
-        <td>{{ $double->id }}</td>
-        <td>{{ $double->table }}</td>
-        <td>{{ $double->matricule ?? '---' }}</td>
-        <td>{{ $double->nom ?? '---' }}</td>
-        {{-- <td>{{ $double->portattache ?? '---' }}</td>
-        <td>{{ $double->categorie ?? '---' }}</td>
-        <td>{{ $double->scategorie ?? '---' }}</td>
-        <td>{{ $double->type ?? '---' }}</td>
-        <td>{{ $double->type_dem ?? '---' }}</td>
-        <td>{{ $double->date_immatriculation ?? '---' }}</td>
-        <td>{{ $double->quartier_maritime ?? '---' }}</td>
-        <td>{{ $double->intitule ?? '---' }}</td>
-        <td>{{ $double->operation_date ?? '---' }}</td> --}}
+        <td>{{ $d_navire->id }}</td>
 
-        <td>{{ $double->count }}</td>
-        <td>{{ $double->created_at }}</td>
-        <td><a class="edit" href="doubles/show/{{ $double->id }}"><i class="fa fa-info"></i></a></td>
+        <td>{{ $d_navire->matricule }}</td>
+        <td>{{ $d_navire->nom }}</td>
+        {{-- <td>{{ $d_navire->portattache }}</td> --}}
+        <td>{{ $d_navire->categorie }}</td>
+        {{-- <td>{{ $d_navire->scategorie }}</td> --}}
+        <td>{{ $d_navire->type }}</td>
+        {{-- <td>{{ $d_navire->type_dem }}</td> --}}
+        {{-- <td>{{ $d_navire->date_immatriculation }}</td> --}}
+        {{-- <td>{{ $d_navire->quartier_maritime }}</td> --}}
+        <td>{{ $d_navire->armateur }}</td>
+
+        <td>{{ $d_navire->count }}</td>
+        <td><a class="edit" href="/doubles/navires/show/{{ $d_navire->id }}"><i class="fa fa-info"></i></a></td>
         <td>
-          <form method="POST" action="doubles/{{ $double->id }}">
+          <form method="POST" action="/doubles/navires/{{ $d_navire->id }}">
             @csrf
             @method('DELETE')
             <a class="delete"><i class="fa fa-trash-o"></i></a>

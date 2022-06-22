@@ -11,7 +11,7 @@ class Navire extends Model
   protected $table = 'navires';
   protected $fillable = [
     'matricule', 'nom', 'portattache',
-    'categorie', 'scategorie', 'type', 'type_dem', 'date_immatriculation', 'quartier_maritime', 'armateur_id'
+    'categorie', 'scategorie', 'type', 'type_dem', 'date_immatriculation', 'quartier_maritime'
   ];
 
   protected $hidden = [
@@ -24,8 +24,8 @@ class Navire extends Model
     return $navires;
   }
 
-  public function Armateur()
+  public function Armateurs()
   {
-    return $this->belongsTo(Armateur::class);
+    return $this->belongsToMany(Armateur::class, 'navires_armateurs');
   }
 }

@@ -45,14 +45,6 @@
     <span class="error">@error('scategorie') {{ $message }} @enderror</span>
   </div>
   <div class="width-50">
-    <label for="armateur_id" dir="auto">Armateur *</label>
-    <select id="armateur_id" name='armateur_id'>
-      @foreach ($armateurs as $armateur)
-        <option value="{{ $armateur->id }}">{{ $armateur->nom . ' ' . $armateur->prenom }}</option>
-      @endforeach
-    </select>
-    <span class="error">@error('armateur_id') {{ $message }} @enderror</span>
-
     <label for="type" dir="auto">Type *</label>
     <input type="text" id="type" name='type' value="{{ $navire->type }}" />
     <span class="error">@error('type') {{ $message }} @enderror</span>

@@ -25,6 +25,6 @@ class Armateur extends Model
 
   public function navires()
   {
-    return $this->hasMany(Navire::class);
+    return $this->belongsToMany(Navire::class, 'navires_armateurs');
   }
 }
