@@ -24,22 +24,38 @@ class DNaviresController extends Controller
 
   public function destroy($d_navire)
   {
-    $navire = DNavires::find($d_navire);
-
-    $armateur = Armateur::where('identite', '=', $navire->armateur_id)->first();
-
-    DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$navire->id, $armateur->id]);
-
     $test = DB::delete('delete from d_navires where id = ?', [$d_navire]);
     if ($test) {
       History::create([
         'user' => auth()->user()->name,
         'role' => auth()->user()->role()->display_name,
-        'table' => 'Doubles',
+        'table' => 'Doubles des Navires',
         'operation' => 'Delete'
       ]);
 
       return redirect('/doubles/navires')->with('success', 'L\'opération DELETE s\'est terminée avec succès');
+    } else {
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
+    }
+  }
+
+  public function fusionnes($d_navire)
+  {
+    $navire = DNavires::find($d_navire);
+
+    $armateur = Armateur::where('identite', '=', $navire->armateur_id)->first();
+
+    $test = DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$navire->id, $armateur->id]);
+
+    if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Doubles des Navires',
+        'operation' => 'Fusionner'
+      ]);
+
+      return redirect('/doubles/navires')->with('success', 'L\'opération Fusionner s\'est terminée avec succès');
     } else {
       return back()->with('fail', 'Quelque chose s\'est mal passé');
     }

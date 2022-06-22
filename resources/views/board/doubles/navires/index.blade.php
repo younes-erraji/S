@@ -68,6 +68,7 @@
 
         <td>{{ $d_navire->count }}</td>
         <td><a class="edit" href="/doubles/navires/show/{{ $d_navire->id }}"><i class="fa fa-info"></i></a></td>
+        <td><a class="edit" href="/doubles/navires/fusionnes/{{ $d_navire->id }}">Fusionnes</a></td>
         <td>
           <form method="POST" action="/doubles/navires/{{ $d_navire->id }}">
             @csrf
