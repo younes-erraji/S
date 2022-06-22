@@ -43,7 +43,7 @@
         <th>Matricule</th>
         <th>Nom</th>
         <th>Categorie</th>
-        <th>Type</th>
+        {{-- <th>Type</th> --}}
         <th>Armateur</th>
         <th>Count</th>
         <th></th>
@@ -60,7 +60,7 @@
         {{-- <td>{{ $d_navire->portattache }}</td> --}}
         <td>{{ $d_navire->categorie }}</td>
         {{-- <td>{{ $d_navire->scategorie }}</td> --}}
-        <td>{{ $d_navire->type }}</td>
+        {{-- <td>{{ $d_navire->type }}</td> --}}
         {{-- <td>{{ $d_navire->type_dem }}</td> --}}
         {{-- <td>{{ $d_navire->date_immatriculation }}</td> --}}
         {{-- <td>{{ $d_navire->quartier_maritime }}</td> --}}
@@ -68,7 +68,7 @@
 
         <td>{{ $d_navire->count }}</td>
         <td><a class="edit" href="/doubles/navires/show/{{ $d_navire->id }}"><i class="fa fa-info"></i></a></td>
-        <td><a class="edit" href="/doubles/navires/fusionnes/{{ $d_navire->id }}">Fusionnes</a></td>
+        <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/navires/fusionnes/{{ $d_navire->id }}">Fusionnes</a></td>
         <td>
           <form method="POST" action="/doubles/navires/{{ $d_navire->id }}">
             @csrf

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Doubles;
 use App\Http\Controllers\Controller;
 use App\Exports\DNaviresExport;
 use App\Imports\DNaviresImport;
-use App\Models\{Armateur, DNavires, History};
+use App\Models\{Armateur, DNavires, History, Navire};
 use Excel;
 use Illuminate\Support\Facades\DB;
 
@@ -43,9 +43,11 @@ class DNaviresController extends Controller
   {
     $navire = DNavires::find($d_navire);
 
+    $main_navire = Navire::where('matricule', '=', $navire->matricule)->first();
+
     $armateur = Armateur::where('identite', '=', $navire->armateur_id)->first();
 
-    $test = DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$navire->id, $armateur->id]);
+    $test = DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$main_navire->id, $armateur->id]);
 
     if ($test) {
       History::create([
