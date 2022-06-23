@@ -48,6 +48,7 @@
         <th>Count</th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -57,13 +58,7 @@
 
         <td>{{ $d_navire->matricule }}</td>
         <td>{{ $d_navire->nom }}</td>
-        {{-- <td>{{ $d_navire->portattache }}</td> --}}
         <td>{{ $d_navire->categorie }}</td>
-        {{-- <td>{{ $d_navire->scategorie }}</td> --}}
-        {{-- <td>{{ $d_navire->type }}</td> --}}
-        {{-- <td>{{ $d_navire->type_dem }}</td> --}}
-        {{-- <td>{{ $d_navire->date_immatriculation }}</td> --}}
-        {{-- <td>{{ $d_navire->quartier_maritime }}</td> --}}
         <td>{{ $d_navire->armateur }}</td>
 
         <td>{{ $d_navire->count }}</td>
