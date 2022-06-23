@@ -39,7 +39,7 @@ class DNaviresController extends Controller
     }
   }
 
-  public function fusionnes($d_navire)
+  public function fusionner($d_navire)
   {
     $navire = DNavires::find($d_navire);
 
@@ -47,6 +47,18 @@ class DNaviresController extends Controller
 
     $armateur = Armateur::where('identite', '=', $navire->armateur_id)->first();
 
+    $main_navire->update([
+      'nom' => $navire->nom,
+      'portattache' => $navire->portattache,
+      'categorie' => $navire->categorie,
+      'scategorie' => $navire->scategorie,
+      'type' => $navire->type,
+      'type_dem' => $navire->type_dem,
+      'date_immatriculation' => $navire->date_immatriculation,
+      'quartier_maritime' => $navire->quartier_maritime,
+    ]);
+
+    // DB::delete('delete from navires_armateurs where navire_id = ?, armateur_id = ?', [$main_navire->id, $armateur->id]);
     $test = DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$main_navire->id, $armateur->id]);
 
     if ($test) {

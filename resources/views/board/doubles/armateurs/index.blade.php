@@ -59,6 +59,7 @@
         <td>{{ $d_armateur->type }}</td>
         <td>{{ $d_armateur->count }}</td>
         <td><a class="edit" href="/doubles/armateurs/show/{{ $d_armateur->id }}"><i class="fa fa-info"></i></a></td>
+        <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/armateurs/fusionner/{{ $d_armateur->id }}">Fusionner</a></td>
         <td>
           <form method="POST" action="/doubles/armateurs/{{ $d_armateur->id }}">
             @csrf

@@ -37,6 +37,7 @@
       <tr>
         <th></th>
         <th class='actions'>
+          <a style='width: auto;' class="action edit" href="/doubles/armateurs/fusionner/{{ $d_armateur->id }}">Fusionner</a>
           <form method="POST" action="/armateurs/{{ $d_armateur->id }}">
             @csrf
             @method('DELETE')

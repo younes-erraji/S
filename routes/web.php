@@ -118,7 +118,7 @@ Route::prefix('doubles')->group(function () {
     Route::get("/", [DNaviresController::class, 'index']);
     Route::delete("{navire}", [DNaviresController::class, 'destroy']);
     Route::get("show/{navire}", [DNaviresController::class, 'show']);
-    Route::get("fusionnes/{navire}", [DNaviresController::class, 'fusionnes']);
+    Route::get("fusionner/{navire}", [DNaviresController::class, 'fusionner']);
 
     Route::get('export', [DNaviresController::class, 'export']);
     Route::post('import', [DNaviresController::class, 'import']);
@@ -127,6 +127,7 @@ Route::prefix('doubles')->group(function () {
     Route::get("/", [DArmateursController::class, 'index']);
     Route::delete("{armateur}", [DArmateursController::class, 'destroy']);
     Route::get("show/{armateur}", [DArmateursController::class, 'show']);
+    Route::get("fusionner/{armateur}", [DArmateursController::class, 'fusionner']);
 
     Route::get('export', [DArmateursController::class, 'export']);
     Route::post('import', [DArmateursController::class, 'import']);
@@ -135,6 +136,7 @@ Route::prefix('doubles')->group(function () {
     Route::get("/", [DOperationsController::class, 'index']);
     Route::delete("{operation}", [DOperationsController::class, 'destroy']);
     Route::get("show/{operation}", [DOperationsController::class, 'show']);
+    Route::get("fusionner/{operation}", [DOperationsController::class, 'fusionner']);
 
     Route::get('export', [DOperationsController::class, 'export']);
     Route::post('import', [DOperationsController::class, 'import']);

@@ -75,7 +75,7 @@ class OperationsController extends Controller
     $test = null;
     if ($count != 0) {
 
-      $double = DOperations::where('type', '=', request('type'))->where('navire_id', '=', request('navire_id'))->first();
+      $double = DOperations::where('type', '=', request('type'))->where('navire', '=', request('navire_id'))->first();
 
       if ($double) {
         $test = $double->update([

@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin\Doubles;
 use App\Exports\DArmateursExport;
 use App\Http\Controllers\Controller;
 use App\Imports\DArmateursImport;
-use App\Models\DArmateurs;
-use App\Models\History;
-use App\Models\Navire;
+use App\Models\{Armateur, DArmateurs, History};
 use Excel;
 use Illuminate\Support\Facades\DB;
 
@@ -62,5 +60,33 @@ class DArmateursController extends Controller
     Excel::import(new DArmateursImport, request('armateurs'));
 
     return back()->with('success', 'Importé avec succés');
+  }
+
+  public function fusionner($d_armateur)
+  {
+    $armateur = DArmateurs::find($d_armateur);
+
+    $main_armateur = Armateur::where('identite', '=', $armateur->identite)->first();
+
+    $test = $main_armateur->update([
+      'nom' => $armateur->nom,
+      'prenom' => $armateur->prenom,
+      'email' => $armateur->email,
+      'type' => $armateur->type,
+      'nom_court' => $armateur->nom_court,
+    ]);
+
+    if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Doubles des Navires',
+        'operation' => 'Fusionner'
+      ]);
+
+      return redirect('/doubles/navires')->with('success', 'L\'opération Fusionner s\'est terminée avec succès');
+    } else {
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
+    }
   }
 }

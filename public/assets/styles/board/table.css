@@ -172,6 +172,11 @@ a.add {
   color: white;
 }
 
+.operation_Fusionner {
+  background-color: orange;
+  color: white;
+}
+
 .d-flex {
   display: flex;
   align-items: center;
