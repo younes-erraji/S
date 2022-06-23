@@ -84,7 +84,7 @@ class DArmateursController extends Controller
         'operation' => 'Fusionner'
       ]);
 
-      return redirect('/doubles/navires')->with('success', 'L\'opération Fusionner s\'est terminée avec succès');
+      return redirect('/doubles/armateurs')->with('success', 'L\'opération Fusionner s\'est terminée avec succès');
     } else {
       return back()->with('fail', 'Quelque chose s\'est mal passé');
     }

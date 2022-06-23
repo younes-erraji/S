@@ -1,5 +1,4 @@
 @extends('layouts.board')
-@section('title', 'Dashboard')
 
 @section('title','Tableau de bord')
 

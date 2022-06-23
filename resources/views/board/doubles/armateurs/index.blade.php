@@ -47,6 +47,7 @@
         <th>Count</th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -54,7 +55,7 @@
       <tr>
         <td>{{ $d_armateur->id }}</td>
         <td>{{ $d_armateur->identite }}</td>
-        <td>{{ $d_armateur->nom . ' ' . $d_armateur->prenom . '(' . $d_armateur->nom_court . ')' }}</td>
+        <td>{{ $d_armateur->nom . ' ' . $d_armateur->prenom }}</td>
         <td>{{ $d_armateur->email }}</td>
         <td>{{ $d_armateur->type }}</td>
         <td>{{ $d_armateur->count }}</td>

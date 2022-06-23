@@ -74,7 +74,7 @@ class DOperationsController extends Controller
         'operation' => 'Fusionner'
       ]);
 
-      return redirect('/doubles/navires')->with('success', 'L\'opération Fusionner s\'est terminée avec succès');
+      return redirect('/doubles/operations')->with('success', 'L\'opération Fusionner s\'est terminée avec succès');
     } else {
       return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
