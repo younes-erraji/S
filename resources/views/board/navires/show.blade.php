@@ -21,43 +21,43 @@
   <table class="grid">
     <tbody class="two-column">
       <tr>
-        <th>#</th>
+        <th># &nbsp;</th>
         <td>{{ $navire->id }}</td>
 
-        <th>Matricule:</th>
+        <th>Matricule: &nbsp;</th>
         <td>{{ $navire->matricule }}</td>
       </tr>
       <tr>
-        <th>Nom</th>
+        <th>Nom: &nbsp;</th>
         <td>{{ $navire->nom }}</td>
 
-        <th>Portattache</th>
+        <th>Portattache: &nbsp;</th>
         <td>{{ $navire->portattache }}</td>
       </tr>
       <tr>
-        <th>Categorie</th>
+        <th>Categorie: &nbsp;</th>
         <td>{{ $navire->categorie }}</td>
 
-        <th>Type</th>
+        <th>Type: &nbsp;</th>
         <td>{{ $navire->type }}</td>
       </tr>
       <tr>
-        <th>SCategorie</th>
+        <th>SCategorie: &nbsp;</th>
         <td>{{ $navire->scategorie }}</td>
 
-        <th>Type Dem</th>
+        <th>Type Dem: &nbsp;</th>
         <td>{{ $navire->type_dem }}</td>
       </tr>
       <tr>
-        <th>Date Immatriculation</th>
+        <th>Date Immatriculation: &nbsp;</th>
         <td>{{ $navire->date_immatriculation }}</td>
 
-        <th>Quartier Maritime</th>
+        <th>Quartier Maritime: &nbsp;</th>
         <td>{{ $navire->quartier_maritime }}</td>
       </tr>
       <tr>
         @if (count($armateurs) > 0)
-          <td>Armateurs:</td>
+          <td>Armateurs: &nbsp;</td>
           <th colspan="3">
             <ul class="listed">
               @foreach ($armateurs as $armateur)

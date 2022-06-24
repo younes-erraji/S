@@ -42,10 +42,9 @@
         <th>#</th>
         <th>Matricule</th>
         <th>Nom</th>
-        <th>Categorie</th>
-        {{-- <th>Type</th> --}}
         <th>Armateur</th>
         <th>Count</th>
+        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -58,11 +57,11 @@
 
         <td>{{ $d_navire->matricule }}</td>
         <td>{{ $d_navire->nom }}</td>
-        <td>{{ $d_navire->categorie }}</td>
         <td>{{ $d_navire->armateur }}</td>
 
         <td>{{ $d_navire->count }}</td>
         <td><a class="edit" href="/doubles/navires/show/{{ $d_navire->id }}"><i class="fa fa-info"></i></a></td>
+        <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/navires/comparer/{{ $d_navire->id }}">Comparer</a></td>
         <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/navires/fusionner/{{ $d_navire->id }}">Fusionner</a></td>
         <td>
           <form method="POST" action="/doubles/navires/{{ $d_navire->id }}">

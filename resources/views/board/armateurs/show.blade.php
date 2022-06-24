@@ -21,32 +21,32 @@
   <table class="grid">
     <tbody class="one-column">
       <tr>
-        <th>#</th>
+        <th># &nbsp;</th>
         <td>{{ $armateur->id }}</td>
       </tr>
       <tr>
-        <th>Identite: </th>
+        <th>Identite: &nbsp;</th>
         <td>{{ $armateur->identite }}</td>
       </tr>
       <tr>
-        <th>Nom: </th>
+        <th>Nom: &nbsp;</th>
         <td>{{ $armateur->nom . ' ' . $armateur->prenom }}</td>
       </tr>
       <tr>
-        <th>Nom Court: </th>
+        <th>Nom Court: &nbsp;</th>
         <td>{{ $armateur->nom_court }}</td>
       </tr>
       <tr>
-        <th>E-mail: </th>
+        <th>E-mail: &nbsp;</th>
         <td>{{ $armateur->email }}</td>
       </tr>
       <tr>
-        <th>Type: </th>
+        <th>Type: &nbsp;</th>
         <td>{{ $armateur->type }}</td>
       </tr>
       @if (count($navires) > 0)
       <tr>
-        <th>Navires: </th>
+        <th>Navires: &nbsp;</th>
         <td>
           <ul class="listed">
             @foreach($navires as $navire)

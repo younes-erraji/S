@@ -11,27 +11,27 @@
   <table class="grid">
     <tbody class="one-column">
       <tr>
-        <th>#</th>
+        <th># &nbsp;</th>
         <td>{{ $d_armateur->id }}</td>
       </tr>
       <tr>
-        <th>Identite</th>
+        <th>Identite: &nbsp;</th>
         <td>{{ $d_armateur->identite }}</td>
       </tr>
       <tr>
-        <th>Nom</th>
+        <th>Nom: &nbsp;</th>
         <td>{{ $d_armateur->nom . ' ' . $d_armateur->prenom }}</td>
       </tr>
       <tr>
-        <th>Nom Court</th>
+        <th>Nom Court: &nbsp;</th>
         <td>{{ $d_armateur->nom_court }}</td>
       </tr>
       <tr>
-        <th>E-mail</th>
+        <th>E-mail: &nbsp;</th>
         <td>{{ $d_armateur->email }}</td>
       </tr>
       <tr>
-        <th>Type</th>
+        <th>Type: &nbsp;</th>
         <td>{{ $d_armateur->type }}</td>
       </tr>
       <tr>

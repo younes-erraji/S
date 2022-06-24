@@ -7,7 +7,7 @@ use App\Models\{Armateur, DArmateurs, History, Navire};
 use App\Exports\ArmateursExport;
 use App\Imports\ArmateursImport;
 use Excel;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ArmateursController extends Controller
 {
@@ -124,6 +124,7 @@ class ArmateursController extends Controller
 
   public function destroy(Armateur $armateur)
   {
+    $test = DB::delete('delete from d_armateurs where identite = ?', [$armateur->identite]);
     $test = $armateur->delete();
 
     if ($test) {

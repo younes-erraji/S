@@ -119,6 +119,7 @@ Route::prefix('doubles')->group(function () {
     Route::delete("{navire}", [DNaviresController::class, 'destroy']);
     Route::get("show/{navire}", [DNaviresController::class, 'show']);
     Route::get("fusionner/{navire}", [DNaviresController::class, 'fusionner']);
+    Route::get("comparer/{navire}", [DNaviresController::class, 'comparer']);
 
     Route::get('export', [DNaviresController::class, 'export']);
     Route::post('import', [DNaviresController::class, 'import']);

@@ -75,6 +75,18 @@ class DNaviresController extends Controller
     }
   }
 
+  public function comparer($id)
+  {
+    $navire = DNavires::find($id);
+
+    $main_navire = Navire::where('matricule', '=', $navire->matricule)->first();
+
+    $armateurs = Navire::join('navires_armateurs', 'navires_armateurs.navire_id', 'navires.id')->join('armateurs', 'armateurs.id', 'navires_armateurs.armateur_id')
+      ->where('navires.id', '=', $main_navire->id)->get();
+
+    return view('board.doubles.navires.compare', ['d_navire' => $navire, 'navire' => $main_navire, 'armateurs' => $armateurs]);
+  }
+
   public function export()
   {
     return Excel::download(new DNaviresExport, 'navires.xlsx');
@@ -83,6 +95,7 @@ class DNaviresController extends Controller
   public function show($d_navire)
   {
     $navire = DB::table('d_navires')->find($d_navire);
+
     return view('board.doubles.navires.show', ['d_navire' => $navire]);
   }
 

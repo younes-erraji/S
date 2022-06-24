@@ -74,15 +74,14 @@ class OperationsController extends Controller
 
     $test = null;
     if ($count != 0) {
-
-      $double = DOperations::where('type', '=', request('type'))->where('navire', '=', request('navire_id'))->first();
+      $navire = DB::table('navires')->where('id', '=', request('navire_id'))->first();
+      $double = DOperations::where('type', '=', request('type'))->where('navire', '=', $navire->matricule)->first();
 
       if ($double) {
         $test = $double->update([
           'count' => $double->count + 1
         ]);
       } else {
-        $navire = DB::table('navires')->where('id', '=', request('navire_id'))->first();
 
         $test = DOperations::create([
           'type' => request('type'),
@@ -115,6 +114,9 @@ class OperationsController extends Controller
 
   public function destroy(Operation $operation)
   {
+    $navire = Navire::where('id', '=', $operation->navire_id)->first();
+
+    DB::delete('delete from d_operations where type = ? and navire = ?', [$operation->type, $navire->matricule]);
     $test = $operation->delete();
 
     if ($test) {

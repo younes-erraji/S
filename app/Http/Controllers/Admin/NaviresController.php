@@ -153,6 +153,7 @@ class NaviresController extends Controller
 
   public function destroy(Navire $navire)
   {
+    $test = DB::delete('delete from d_navires where matricule = ?', [$navire->matricule]);
     $test = $navire->delete();
 
     if ($test) {

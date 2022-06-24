@@ -11,42 +11,42 @@
   <table class="grid">
     <tbody class="two-column">
       <tr>
-        <th>#</th>
+        <th># &nbsp;</th>
         <td>{{ $d_navire->id }}</td>
 
-        <th>Matricule:</th>
+        <th>Matricule: &nbsp;</th>
         <td>{{ $d_navire->matricule }}</td>
       </tr>
       <tr>
-        <th>Nom</th>
+        <th>Nom: &nbsp;</th>
         <td>{{ $d_navire->nom }}</td>
 
-        <th>Portattache</th>
+        <th>Portattache: &nbsp;</th>
         <td>{{ $d_navire->portattache }}</td>
       </tr>
       <tr>
-        <th>Categorie</th>
+        <th>Categorie: &nbsp;</th>
         <td>{{ $d_navire->categorie }}</td>
 
-        <th>Type</th>
+        <th>Type: &nbsp;</th>
         <td>{{ $d_navire->type }}</td>
       </tr>
       <tr>
-        <th>SCategorie</th>
+        <th>SCategorie: &nbsp;</th>
         <td>{{ $d_navire->scategorie }}</td>
 
-        <th>Type Dem</th>
+        <th>Type Dem: &nbsp;</th>
         <td>{{ $d_navire->type_dem }}</td>
       </tr>
       <tr>
-        <th>Date Immatriculation</th>
+        <th>Date Immatriculation: &nbsp;</th>
         <td>{{ $d_navire->date_immatriculation }}</td>
 
-        <th>Quartier Maritime</th>
+        <th>Quartier Maritime: &nbsp;</th>
         <td>{{ $d_navire->quartier_maritime }}</td>
       </tr>
       <tr>
-        <th>Armateur</th>
+        <th>Armateur: &nbsp;</th>
         <td>{{ $d_navire->armateur }}</td>
         <th class='actions'>
           <a style='width: auto;' class="action edit" href="/doubles/navires/fusionner/{{ $d_navire->id }}">Fusionner</a>
