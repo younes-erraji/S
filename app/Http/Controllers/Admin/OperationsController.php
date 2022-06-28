@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{DOperations, Operation, History, Double, Navire};
+use App\Models\{DOperations, Operation, History, Navire};
 use App\Exports\OperationExport;
 use App\Imports\OperationsImport;
 use Excel;
@@ -70,26 +70,20 @@ class OperationsController extends Controller
       'navire_id' => 'required',
     ]);
 
-    $count = DB::table('operations')->where('type', '=', request('type'))->count();
+    $count = DB::table('operations')->where('type', '=', request('type'))->where('navire_id', '=', request('navire_id'))->count();
 
     $test = null;
     if ($count != 0) {
       $navire = DB::table('navires')->where('id', '=', request('navire_id'))->first();
-      $double = DOperations::where('type', '=', request('type'))->where('navire', '=', $navire->matricule)->first();
 
-      if ($double) {
-        $test = $double->update([
-          'count' => $double->count + 1
-        ]);
-      } else {
+      $count = DOperations::where('type', '=', request('type'))->where('navire', '=', $navire->matricule)->count();
 
-        $test = DOperations::create([
-          'type' => request('type'),
-          'operation_date' => request('operation_date'),
-          'navire' => $navire->matricule,
-          'count' => 1
-        ]);
-      }
+      $test = DOperations::create([
+        'type' => request('type'),
+        'operation_date' => request('operation_date'),
+        'navire' => $navire->matricule,
+        'count' => $count
+      ]);
     } else {
       $test = Operation::create([
         'type' => request('type'),

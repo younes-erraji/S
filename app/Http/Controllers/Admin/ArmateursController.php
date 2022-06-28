@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Armateur, DArmateurs, History, Navire};
+use App\Models\{Armateur, DArmateurs, History};
 use App\Exports\ArmateursExport;
 use App\Imports\ArmateursImport;
 use Excel;
@@ -80,23 +80,16 @@ class ArmateursController extends Controller
 
     $test = null;
     if ($count != 0) {
-      $double = DArmateurs::where('identite', '=', request('identite'))->first();
-
-      if ($double) {
-        $test = $double->update([
-          'count' => $double->count + 1
-        ]);
-      } else {
-        $test = DArmateurs::create([
-          'identite' => request('identite'),
-          'nom' => request('nom'),
-          'prenom' => request('prenom'),
-          'email' => request('email'),
-          'type' => request('type'),
-          'nom_court' => request('nom_court'),
-          'count' => 1
-        ]);
-      }
+      $count = DArmateurs::where('identite', '=', request('identite'))->count();
+      $test = DArmateurs::create([
+        'identite' => request('identite'),
+        'nom' => request('nom'),
+        'prenom' => request('prenom'),
+        'email' => request('email'),
+        'type' => request('type'),
+        'nom_court' => request('nom_court'),
+        'count' => $count
+      ]);
     } else {
       $test = Armateur::create([
         'identite' => request('identite'),

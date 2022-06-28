@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Navire, Armateur, DNavires, History, Double};
+use App\Models\{Navire, Armateur, DNavires, History};
 use App\Exports\NavireExport;
 use App\Imports\NaviresImport;
 use Excel;
@@ -74,7 +74,6 @@ class NaviresController extends Controller
     request()->validate([
       'matricule' => 'required',
       'nom' => 'required',
-
       'portattache' => 'required',
       'categorie' => 'required',
       'scategorie' => 'required',
@@ -91,31 +90,24 @@ class NaviresController extends Controller
     $test = null;
     if ($count != 0) {
 
-      $double = DNavires::where('matricule', '=', request('matricule'))->first();
+      $count = DNavires::where('matricule', '=', request('matricule'))->count();
 
-      if ($double) {
-        $test = $double->update([
-          'count' => $double->count + 1
-        ]);
-      } else {
+      $armateur = Armateur::where('id', '=', request('armateur_id'))->first();
 
-        $armateur = Armateur::where('id', '=', request('armateur_id'))->first();
-
-        $test = DNavires::create([
-          'matricule' => request('matricule'),
-          'nom' => request('nom'),
-          'portattache' => request('portattache'),
-          'categorie' => request('categorie'),
-          'scategorie' => request('scategorie'),
-          'type' => request('type'),
-          'type_dem' => request('type_dem'),
-          'date_immatriculation' => request('date_immatriculation'),
-          'quartier_maritime' => request('quartier_maritime'),
-          'armateur_id' => $armateur->identite,
-          'armateur' => $armateur->nom . ' ' . $armateur->prenom,
-          'count' => 1
-        ]);
-      }
+      $test = DNavires::create([
+        'matricule' => request('matricule'),
+        'nom' => request('nom'),
+        'portattache' => request('portattache'),
+        'categorie' => request('categorie'),
+        'scategorie' => request('scategorie'),
+        'type' => request('type'),
+        'type_dem' => request('type_dem'),
+        'date_immatriculation' => request('date_immatriculation'),
+        'quartier_maritime' => request('quartier_maritime'),
+        'armateur_id' => $armateur->identite,
+        'armateur' => $armateur->nom . ' ' . $armateur->prenom,
+        'count' => $count
+      ]);
     } else {
       $navire = new Navire();
 
