@@ -11,13 +11,16 @@ class CreateDArmateursTable extends Migration
     Schema::create('d_armateurs', function (Blueprint $table) {
       $table->id();
       $table->string('identite');
+
+      $table->foreign('identite')->references('identite')->on('armateurs')->onDelete('cascade')->onUpdate('cascade');
+
       $table->string('nom');
       $table->string('prenom');
       $table->string('email');
       $table->string('type');
       $table->string('nom_court');
 
-      $table->integer('count')->nullable()->default(0);
+      $table->integer('count')->nullable()->default(1);
 
       $table->timestamps();
     });

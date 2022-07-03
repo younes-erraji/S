@@ -12,6 +12,9 @@ class CreateDNaviresTable extends Migration
       $table->id();
 
       $table->string('matricule');
+
+      $table->foreign('matricule')->references('matricule')->on('navires')->onDelete('cascade')->onUpdate('cascade');
+
       $table->string('nom');
       $table->string('portattache');
       $table->string('categorie');
@@ -24,7 +27,7 @@ class CreateDNaviresTable extends Migration
       $table->string('armateur_id')->nullable();
       $table->string('armateur')->nullable();
 
-      $table->integer('count')->nullable()->default(0);
+      $table->integer('count')->nullable()->default(1);
 
       $table->timestamps();
     });

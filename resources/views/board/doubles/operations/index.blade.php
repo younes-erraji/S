@@ -26,6 +26,7 @@
   <div class="buttons">
     <a href="/doubles/operations/export" @if(count($d_operations) === 0) disabled @endif class="button excel"><i class="fa fa-download"></i> Export</a>
 
+    {{--
     <form class="d-flex" method='POST' action="/doubles/operations/import" enctype="multipart/form-data">
       @csrf
       <div>
@@ -34,6 +35,7 @@
       </div>
       <button class="button import"><i class="fa fa-upload"></i> Import</button>
     </form>
+    --}}
   </div>
 
   <table class="grid">

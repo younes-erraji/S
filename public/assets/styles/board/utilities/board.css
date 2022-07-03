@@ -68,7 +68,7 @@ main .dashboard h1 a {
   align-items: center;
   text-align: center;
   width: 100%;
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
 }
 
@@ -208,9 +208,8 @@ main .content section .container {
   html {
     font-size: 8px;
   }
-  main .dashboard h1 a img {
-    width: 124px;
-    margin: 0 0.2rem;
+  main .dashboard h1 a {
+    padding-right: 38px;
   }
 }
 @media (max-width: 575.98px) {
@@ -221,7 +220,7 @@ main .content section .container {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 100%;
+    width: 88%;
     height: 100vh;
     z-index: 9;
     overflow: auto;

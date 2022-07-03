@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\{
   ArmateursController,
-  LignesController,
   NaviresController,
   OperationsController,
   AdminController,
@@ -11,6 +10,7 @@ use App\Http\Controllers\Admin\{
 };
 use App\Http\Controllers\Admin\Doubles\{DArmateursController, DNaviresController, DOperationsController};
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
   return view('home');
@@ -39,16 +39,6 @@ Route::prefix('operations')->group(function () {
   Route::delete('{operation}', [OperationsController::class, 'destroy']);
 });
 
-Route::prefix('lignes')->group(function () {
-  Route::get('/', [LignesController::class, 'index']);
-  Route::get('{ligne}/edit', [LignesController::class, 'edit']);
-  Route::put('{ligne}', [LignesController::class, 'update']);
-  Route::get('create', [LignesController::class, 'create']);
-  Route::get('show', [LignesController::class, 'show']);
-  Route::post('/', [LignesController::class, 'store']);
-  Route::delete('{ligne}', [LignesController::class, 'destroy']);
-});
-
 Route::prefix('armateurs')->group(function () {
   Route::get('/', [ArmateursController::class, 'index']);
   Route::get('{armateur}/edit', [ArmateursController::class, 'edit']);
@@ -73,11 +63,6 @@ Route::prefix('export')->group(function () {
   Route::prefix('navires')->group(function () {
     Route::get('excel', [NaviresController::class, 'excel'])->name('export.navires.excel');
     Route::get('csv', [NaviresController::class, 'csv'])->name('export.navires.csv');
-  });
-
-  Route::prefix('lignes')->group(function () {
-    Route::get('excel', [LignesController::class, 'excel'])->name('export.lignes.excel');
-    Route::get('csv', [LignesController::class, 'csv'])->name('export.lignes.csv');
   });
 
   Route::prefix('operations')->group(function () {

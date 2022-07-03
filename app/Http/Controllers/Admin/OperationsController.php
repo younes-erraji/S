@@ -82,7 +82,7 @@ class OperationsController extends Controller
         'type' => request('type'),
         'operation_date' => request('operation_date'),
         'navire' => $navire->matricule,
-        'count' => $count
+        'count' => $count + 1
       ]);
     } else {
       $test = Operation::create([

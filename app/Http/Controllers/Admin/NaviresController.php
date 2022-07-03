@@ -106,7 +106,7 @@ class NaviresController extends Controller
         'quartier_maritime' => request('quartier_maritime'),
         'armateur_id' => $armateur->identite,
         'armateur' => $armateur->nom . ' ' . $armateur->prenom,
-        'count' => $count
+        'count' => $count + 1
       ]);
     } else {
       $navire = new Navire();
@@ -145,7 +145,6 @@ class NaviresController extends Controller
 
   public function destroy(Navire $navire)
   {
-    $test = DB::delete('delete from d_navires where matricule = ?', [$navire->matricule]);
     $test = $navire->delete();
 
     if ($test) {

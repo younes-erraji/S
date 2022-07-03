@@ -49,15 +49,6 @@
               <li><a href="/armateurs/create">Create</a></li>
             </ul>
           </li>
-          {{--
-          <li>
-            <a class='list' data-list="lignes">Lignes<i class="fa fa-angle-right"></i></a>
-            <ul class="lignes sublinks">
-              <li><a href="/lignes">List</a></li>
-              <li><a href="/lignes/create">Create</a></li>
-            </ul>
-          </li>
-          --}}
           <li>
             <a class='list' data-list="doublons">Doublons<i class="fa fa-angle-right"></i></a>
             <ul class="doublons sublinks">

@@ -10,7 +10,7 @@ class Navires extends Migration
   {
     Schema::create('navires', function (Blueprint $table) {
       $table->id();
-      $table->string('matricule');
+      $table->string('matricule')->unique();
       $table->string('nom');
       $table->string('portattache');
       $table->string('categorie');

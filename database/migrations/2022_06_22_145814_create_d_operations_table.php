@@ -14,7 +14,7 @@ class CreateDOperationsTable extends Migration
       $table->date('operation_date');
       $table->string('navire');
 
-      $table->integer('count')->nullable()->default(0);
+      $table->integer('count')->nullable()->default(1);
 
       $table->timestamps();
     });

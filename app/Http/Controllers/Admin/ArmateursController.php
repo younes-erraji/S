@@ -88,7 +88,7 @@ class ArmateursController extends Controller
         'email' => request('email'),
         'type' => request('type'),
         'nom_court' => request('nom_court'),
-        'count' => $count
+        'count' => $count + 1
       ]);
     } else {
       $test = Armateur::create([
@@ -117,7 +117,6 @@ class ArmateursController extends Controller
 
   public function destroy(Armateur $armateur)
   {
-    $test = DB::delete('delete from d_armateurs where identite = ?', [$armateur->identite]);
     $test = $armateur->delete();
 
     if ($test) {
