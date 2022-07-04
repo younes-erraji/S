@@ -53,6 +53,7 @@
 <script src="{{ asset('assets/scripts/board/datatable.js') }}"></script>
 <script>
   $('.grid').DataTable({
+    ordering: false,
     language: {
       url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
     }

@@ -18,8 +18,20 @@ class DNaviresController extends Controller
 
   public function index()
   {
+    $navires = Navire::all();
     $d_navires = DNavires::all();
-    return view('board.doubles.navires.index', ['d_navires' => $d_navires]);
+
+    return view('board.doubles.navires.index', ['d_navires' => $d_navires, 'navires' => $navires]);
+  }
+
+  public function getNavireDoubles()
+  {
+    $d_navires = DB::table('d_navires')->where('matricule', request()->code)->get();
+    if (count($d_navires) > 0) {
+      return response()->json(['code' => 1, 'd_navires' => $d_navires]);
+    } else {
+      return response()->json(['code' => 0, 'message' => "There's no data to show"]);
+    }
   }
 
   public function destroy($d_navire)

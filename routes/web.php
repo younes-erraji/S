@@ -106,6 +106,8 @@ Route::prefix('doubles')->group(function () {
     Route::get("fusionner/{navire}", [DNaviresController::class, 'fusionner']);
     Route::get("comparer/{navire}", [DNaviresController::class, 'comparer']);
 
+    Route::post('doubles', [DNaviresController::class, 'getNavireDoubles'])->name('getNavireDoubles');
+
     Route::get('export', [DNaviresController::class, 'export']);
     Route::post('import', [DNaviresController::class, 'import']);
   });
