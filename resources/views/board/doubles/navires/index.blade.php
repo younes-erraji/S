@@ -104,16 +104,7 @@
       url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
     }
   });
-  const // deleteButtons = Array.from(document.querySelectorAll('a.delete')),
-    selectedNavire = document.querySelector('#selected-navire');
-  // deleteButtons.forEach(function (item) {
-  //   item.addEventListener('click', () => {
-  //     let sure = confirm('Are You sure about that');
-  //     if (sure) {
-  //       item.parentElement.submit();
-  //     }
-  //   });
-  // });
+  const selectedNavire = document.querySelector('#selected-navire');
 
   $(document).on('click', 'a.delete', function (e) {
     let sure = confirm('Are You sure about that');

@@ -70,27 +70,11 @@ class OperationsController extends Controller
       'navire_id' => 'required',
     ]);
 
-    $count = DB::table('operations')->where('type', '=', request('type'))->where('navire_id', '=', request('navire_id'))->count();
-
-    $test = null;
-    if ($count != 0) {
-      $navire = DB::table('navires')->where('id', '=', request('navire_id'))->first();
-
-      $count = DOperations::where('type', '=', request('type'))->where('navire', '=', $navire->matricule)->count();
-
-      $test = DOperations::create([
-        'type' => request('type'),
-        'operation_date' => request('operation_date'),
-        'navire' => $navire->matricule,
-        'count' => $count + 1
-      ]);
-    } else {
-      $test = Operation::create([
-        'type' => request('type'),
-        'operation_date' => request('operation_date'),
-        'navire_id' => request('navire_id'),
-      ]);
-    }
+    $test = Operation::create([
+      'type' => request('type'),
+      'operation_date' => request('operation_date'),
+      'navire_id' => request('navire_id'),
+    ]);
 
     if ($test) {
       History::create([

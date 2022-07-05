@@ -62,7 +62,7 @@
       <tr>
         <th class='actions'>
           <a style='width: auto;' class="action edit" href="/doubles/navires/fusionner/{{ $d_navire->id }}">Fusionner</a>
-          <form method="POST" action="/navires/{{ $d_navire->id }}">
+          <form method="POST" action="/doubles/navires/{{ $d_navire->id }}">
             @csrf
             @method('DELETE')
             <a class="action delete"><i class="fa fa-trash-o"></i></a>

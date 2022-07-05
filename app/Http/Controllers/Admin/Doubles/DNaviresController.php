@@ -112,15 +112,4 @@ class DNaviresController extends Controller
 
     return view('board.doubles.navires.show', ['d_navire' => $navire]);
   }
-
-  public function import()
-  {
-    request()->validate([
-      'navires' => 'required|mimes:xlsx,csv',
-    ]);
-
-    Excel::import(new DNaviresImport, request('navires'));
-
-    return back()->with('success', 'Importé avec succés');
-  }
 }

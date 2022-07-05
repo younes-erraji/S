@@ -116,6 +116,9 @@ Route::prefix('doubles')->group(function () {
     Route::delete("{armateur}", [DArmateursController::class, 'destroy']);
     Route::get("show/{armateur}", [DArmateursController::class, 'show']);
     Route::get("fusionner/{armateur}", [DArmateursController::class, 'fusionner']);
+    Route::get("comparer/{navire}", [DArmateursController::class, 'comparer']);
+
+    Route::post('doubles', [DArmateursController::class, 'getArmateurDoubles'])->name('getArmateurDoubles');
 
     Route::get('export', [DArmateursController::class, 'export']);
     Route::post('import', [DArmateursController::class, 'import']);

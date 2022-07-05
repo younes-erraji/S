@@ -9,7 +9,7 @@
 
 <div class="container">
   <table class="grid">
-    <tbody class="one-column">
+    <tbody class="t-body">
       <tr>
         <th># &nbsp;</th>
         <td>{{ $d_armateur->id }}</td>
@@ -38,7 +38,7 @@
         <th></th>
         <th class='actions'>
           <a style='width: auto;' class="action edit" href="/doubles/armateurs/fusionner/{{ $d_armateur->id }}">Fusionner</a>
-          <form method="POST" action="/armateurs/{{ $d_armateur->id }}">
+          <form method="POST" action="/doubles/armateurs/{{ $d_armateur->id }}">
             @csrf
             @method('DELETE')
             <a class="action delete"><i class="fa fa-trash-o"></i></a>

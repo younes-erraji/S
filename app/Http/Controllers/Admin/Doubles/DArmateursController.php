@@ -19,7 +19,18 @@ class DArmateursController extends Controller
   public function index()
   {
     $d_armateurs = DArmateurs::all()->sortByDesc('created_at');
-    return view('board.doubles.armateurs.index', ['d_armateurs' => $d_armateurs]);
+    $armateurs = Armateur::all();
+    return view('board.doubles.armateurs.index', ['d_armateurs' => $d_armateurs, 'armateurs' => $armateurs]);
+  }
+
+  public function getArmateurDoubles()
+  {
+    $d_armateurs = DB::table('d_armateurs')->where('identite', request()->code)->get();
+    if (count($d_armateurs) > 0) {
+      return response()->json(['code' => 1, 'd_armateurs' => $d_armateurs]);
+    } else {
+      return response()->json(['code' => 0, 'message' => "There's no data to show"]);
+    }
   }
 
   public function destroy($d_armateur)
@@ -88,5 +99,14 @@ class DArmateursController extends Controller
     } else {
       return back()->with('fail', 'Quelque chose s\'est mal passé');
     }
+  }
+
+  public function comparer($id)
+  {
+    $armateur = DArmateurs::find($id);
+
+    $main_armateur = Armateur::where('identite', '=', $armateur->identite)->first();
+
+    return view('board.doubles.armateurs.compare', ['d_armateur' => $armateur, 'armateur' => $main_armateur]);
   }
 }

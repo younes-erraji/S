@@ -54,7 +54,6 @@
             <ul class="doublons sublinks">
               <li><a href="/doubles/armateurs">Armateurs</a></li>
               <li><a href="/doubles/navires">Navires</a></li>
-              <li><a href="/doubles/operations">Operations</a></li>
             </ul>
           </li>
           @role('superadministrator|administrator')
