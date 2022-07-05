@@ -69,8 +69,8 @@ class DNaviresController extends Controller
       'quartier_maritime' => $navire->quartier_maritime,
     ]);
 
-    DB::delete('delete from navires_armateurs where navire_id = ? and armateur_id = ?', [$main_navire->id, $armateur->id]);
     if (isset($armateur)) {
+      DB::delete('delete from navires_armateurs where navire_id = ? and armateur_id = ?', [$main_navire->id, $armateur->id]);
       DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$main_navire->id, $armateur->id]);
     }
 
