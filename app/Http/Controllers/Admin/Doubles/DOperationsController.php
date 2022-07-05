@@ -18,7 +18,7 @@ class DOperationsController extends Controller
 
   public function index()
   {
-    $d_operations = DOperations::all();
+    $d_operations = DOperations::all()->sortByDesc('created_at');
     return view('board.doubles.operations.index', ['d_operations' => $d_operations]);
   }
 

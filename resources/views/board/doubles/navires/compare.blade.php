@@ -1,19 +1,7 @@
 @extends('layouts.board')
 @section('style')
 <link rel='stylesheet' href="{{ asset('assets/styles/board/show.css') }}" />
-<style>
-  .subcontainer {
-    display: flex;
-  }
 
-  table {
-    width: 50%;
-  }
-
-  table tbody.one-column tr {
-    grid-template-columns: auto 1fr;
-  }
-</style>
 @endsection
 
 @section('title','Navire')
@@ -22,8 +10,8 @@
 
 <div class="container">
   <div class="subcontainer">
-    <table class="grid">
-      <tbody class="one-column">
+    <table class="grid half">
+      <tbody class="t-body">
         <tr>
           <th colspan="2">Navire</th>
         </tr>
@@ -64,22 +52,23 @@
         </tr>
         <tr>
           @if (count($armateurs) > 0)
-            <td>Armateurs: &nbsp;</td>
-            <th colspan="3">
+            <th>Armateurs: &nbsp;</th>
+            <td>
               <ul class="listed">
                 @foreach ($armateurs as $armateur)
                   <li>{{ $armateur->nom . ' ' . $armateur->prenom }}</li>
                 @endforeach
               </ul>
-            </th>
+            </td>
           @else
-          <td colspan="2">0 Armateurs</td>
+          <th>Armateurs: &nbsp;</th>
+          <td>0 Armateurs</td>
           @endif
         </tr>
       </tbody>
     </table>
-    <table class="grid">
-      <tbody class="one-column">
+    <table class="grid half">
+      <tbody class="t-body">
         <tr>
           <th colspan="2">Doublon</th>
         </tr>

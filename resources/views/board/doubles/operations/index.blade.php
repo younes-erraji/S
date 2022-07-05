@@ -46,7 +46,7 @@
         <th>Operation date</th>
         <th>Navire</th>
         <th>Count</th>
-        <th></th>
+        {{-- <th></th> --}}
         <th></th>
       </tr>
     </thead>
@@ -58,7 +58,7 @@
         <td>{{ $d_operation->operation_date }}</td>
         <td>{{ $d_operation->navire }}</td>
         <td>{{ $d_operation->count }}</td>
-        <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/operations/fusionner/{{ $d_operation->id }}">Fusionner</a></td>
+        {{-- <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/operations/fusionner/{{ $d_operation->id }}">Fusionner</a></td> --}}
         <td>
           <form method="POST" action="/doubles/operations/{{ $d_operation->id }}">
             @csrf

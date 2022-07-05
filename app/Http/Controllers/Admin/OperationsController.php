@@ -18,7 +18,7 @@ class OperationsController extends Controller
 
   public function index()
   {
-    $operations = Operation::all();
+    $operations = Operation::all()->sortByDesc('created_at');
     return view('board.operations.index', ['operations' => $operations]);
   }
 

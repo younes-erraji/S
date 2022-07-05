@@ -19,13 +19,13 @@
 
 <div class="container">
   <table class="grid">
-    <tbody class="one-column">
+    <tbody class="t-body">
       <tr>
         <th># &nbsp;</th>
         <td>{{ $armateur->id }}</td>
       </tr>
       <tr>
-        <th>Identite: &nbsp;</th>
+        <th>CIN: &nbsp;</th>
         <td>{{ $armateur->identite }}</td>
       </tr>
       <tr>
@@ -57,19 +57,20 @@
       </tr>
       @else
       <tr>
+        <th>Navires: &nbsp;</th>
         <td colspan="2">Cet Armateur n'a pas de navires</td>
       </tr>
       @endif
       <tr>
         <th></th>
-        <td class='actions'>
+        <th class='actions'>
           <a class="action edit" href="/armateurs/{{ $armateur->id }}/edit"><i class="fa fa-pencil"></i></a>
           <form method="POST" action="/armateurs/{{ $armateur->id }}">
             @csrf
             @method('DELETE')
             <a class="action delete"><i class="fa fa-trash-o"></i></a>
           </form>
-        </td>
+        </th>
       </tr>
     </tbody>
   </table>

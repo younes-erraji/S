@@ -18,7 +18,7 @@ class DArmateursController extends Controller
 
   public function index()
   {
-    $d_armateurs = DArmateurs::all();
+    $d_armateurs = DArmateurs::all()->sortByDesc('created_at');
     return view('board.doubles.armateurs.index', ['d_armateurs' => $d_armateurs]);
   }
 

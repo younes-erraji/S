@@ -18,7 +18,7 @@ class NaviresController extends Controller
 
   public function index()
   {
-    $navires = Navire::all();
+    $navires = Navire::all()->sortByDesc('created_at');
     return view('board.navires.index', ['navires' => $navires]);
   }
 

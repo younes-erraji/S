@@ -19,7 +19,7 @@ class DNaviresController extends Controller
   public function index()
   {
     $navires = Navire::all();
-    $d_navires = DNavires::all();
+    $d_navires = DNavires::all()->sortByDesc('created_at');
 
     return view('board.doubles.navires.index', ['d_navires' => $d_navires, 'navires' => $navires]);
   }
@@ -59,7 +59,7 @@ class DNaviresController extends Controller
 
     $armateur = Armateur::where('identite', '=', $navire->armateur_id)->first();
 
-    $main_navire->update([
+    $test = $main_navire->update([
       'nom' => $navire->nom,
       'portattache' => $navire->portattache,
       'categorie' => $navire->categorie,
@@ -71,7 +71,9 @@ class DNaviresController extends Controller
     ]);
 
     // DB::delete('delete from navires_armateurs where navire_id = ?, armateur_id = ?', [$main_navire->id, $armateur->id]);
-    $test = DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$main_navire->id, $armateur->id]);
+    if (isset($armateur)) {
+      DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$main_navire->id, $armateur->id]);
+    }
 
     if ($test) {
       History::create([

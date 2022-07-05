@@ -1,3 +1,7 @@
+.subcontainer {
+  display: flex;
+}
+
 table {
   font-family: Poppins, Arial, Tahoma;
   font-size: 17px;
@@ -7,21 +11,26 @@ table {
   text-align: start;
 }
 
-table tbody.one-column tr {
-  grid-template-columns: 20% 1fr;
+table.half {
+  width: 50%;
 }
 
-table tbody.two-column tr {
-  grid-template-columns: 20% 30% 20% 30%;
+table tbody.t-body tr {
+  grid-template-columns: auto 1fr;
 }
 
 table tr {
   padding: 14px 0;
   display: grid;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
 
   border-bottom: 1px solid #ccc;
+}
+
+table tr th.actions {
+  display: flex;
 }
 
 a.action {
@@ -44,8 +53,4 @@ a.action.edit {
 }
 a.action.delete {
   background-color: #d43535;
-}
-
-table tr th.actions {
-  display: flex;
 }

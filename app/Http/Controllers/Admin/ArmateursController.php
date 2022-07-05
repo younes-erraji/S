@@ -18,7 +18,7 @@ class ArmateursController extends Controller
 
   public function index()
   {
-    $armateurs = Armateur::all();
+    $armateurs = Armateur::all()->sortByDesc('created_at');
     return view('board.armateurs.index', ['armateurs' => $armateurs]);
   }
 

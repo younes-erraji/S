@@ -8,46 +8,58 @@
 @section('content')
 
 <div class="container">
-  <table class="grid">
-    <tbody class="two-column">
+  <div class="subcontainer">
+  <table class="grid half">
+    <tbody class="t-body">
       <tr>
         <th># &nbsp;</th>
         <td>{{ $d_navire->id }}</td>
-
-        <th>Matricule: &nbsp;</th>
-        <td>{{ $d_navire->matricule }}</td>
       </tr>
       <tr>
         <th>Nom: &nbsp;</th>
         <td>{{ $d_navire->nom }}</td>
-
-        <th>Portattache: &nbsp;</th>
-        <td>{{ $d_navire->portattache }}</td>
       </tr>
       <tr>
         <th>Categorie: &nbsp;</th>
         <td>{{ $d_navire->categorie }}</td>
-
-        <th>Type: &nbsp;</th>
-        <td>{{ $d_navire->type }}</td>
       </tr>
       <tr>
         <th>SCategorie: &nbsp;</th>
         <td>{{ $d_navire->scategorie }}</td>
-
-        <th>Type Dem: &nbsp;</th>
-        <td>{{ $d_navire->type_dem }}</td>
       </tr>
       <tr>
         <th>Date Immatriculation: &nbsp;</th>
         <td>{{ $d_navire->date_immatriculation }}</td>
-
-        <th>Quartier Maritime: &nbsp;</th>
-        <td>{{ $d_navire->quartier_maritime }}</td>
       </tr>
       <tr>
         <th>Armateur: &nbsp;</th>
         <td>{{ $d_navire->armateur }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="grid half">
+    <tbody class="t-body">
+      <tr>
+        <th>Matricule: &nbsp;</th>
+        <td>{{ $d_navire->matricule }}</td>
+      </tr>
+      <tr>
+        <th>Portattache: &nbsp;</th>
+        <td>{{ $d_navire->portattache }}</td>
+      </tr>
+      <tr>
+        <th>Type: &nbsp;</th>
+        <td>{{ $d_navire->type }}</td>
+      </tr>
+      <tr>
+        <th>Type Dem: &nbsp;</th>
+        <td>{{ $d_navire->type_dem }}</td>
+      </tr>
+      <tr>
+        <th>Quartier Maritime: &nbsp;</th>
+        <td>{{ $d_navire->quartier_maritime }}</td>
+      </tr>
+      <tr>
         <th class='actions'>
           <a style='width: auto;' class="action edit" href="/doubles/navires/fusionner/{{ $d_navire->id }}">Fusionner</a>
           <form method="POST" action="/navires/{{ $d_navire->id }}">
@@ -59,6 +71,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 @endsection
 
