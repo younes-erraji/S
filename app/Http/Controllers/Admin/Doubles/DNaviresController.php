@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Doubles;
 
 use App\Http\Controllers\Controller;
 use App\Exports\DNaviresExport;
-use App\Imports\DNaviresImport;
 use App\Models\{Armateur, DNavires, History, Navire};
 use Excel;
 use Illuminate\Support\Facades\DB;
@@ -70,7 +69,7 @@ class DNaviresController extends Controller
       'quartier_maritime' => $navire->quartier_maritime,
     ]);
 
-    // DB::delete('delete from navires_armateurs where navire_id = ?, armateur_id = ?', [$main_navire->id, $armateur->id]);
+    DB::delete('delete from navires_armateurs where navire_id = ? and armateur_id = ?', [$main_navire->id, $armateur->id]);
     if (isset($armateur)) {
       DB::insert('insert into navires_armateurs (navire_id, armateur_id) values (?, ?)', [$main_navire->id, $armateur->id]);
     }
@@ -111,5 +110,24 @@ class DNaviresController extends Controller
     $navire = DB::table('d_navires')->find($d_navire);
 
     return view('board.doubles.navires.show', ['d_navire' => $navire]);
+  }
+
+  public function destroyAll($id)
+  {
+    $navire = DNavires::find($id);
+    $test = DB::delete('delete from d_navires where matricule = ?', [$navire->matricule]);
+
+    if ($test) {
+      History::create([
+        'user' => auth()->user()->name,
+        'role' => auth()->user()->role()->display_name,
+        'table' => 'Doubles des Navires',
+        'operation' => 'Delete'
+      ]);
+
+      return redirect('/doubles/navires')->with('success', 'L\'opération DELETE s\'est terminée avec succès');
+    } else {
+      return back()->with('fail', 'Quelque chose s\'est mal passé');
+    }
   }
 }

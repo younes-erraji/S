@@ -31,11 +31,11 @@ class UserSeeder extends Seeder
     ]);
     $user->attachRole('user');
 
-    $soumaya = User::create([
-      'name' => 'Soumaya',
-      'email' => 'soumaya@mail.com',
+    $somaya = User::create([
+      'name' => 'somaya',
+      'email' => 'somaya@mail.com',
       'password' => Hash::make('123456'),
     ]);
-    $soumaya->attachRole('superadministrator');
+    $somaya->attachRole('superadministrator');
   }
 }

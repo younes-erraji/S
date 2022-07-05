@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>- Home</title>
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.jpg') }}" />
-        {{-- <link rel="stylesheet" href="{{ asset('assets/styles/utilities/normalize.css') }}" /> --}}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
         <link
@@ -13,35 +12,6 @@
         <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}" />
     </head>
     <body>
-      {{--
-      <div class="header">
-
-        <div class="slider">
-          <div class="overlay"></div>
-          <div class = "container">
-              <div class="intro">
-                  <h2></h2>
-                  <h3></h3>
-                  <p></p>
-
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer">
-          <div class="container">
-              <span>Copyright &copy; 2022 Somaya.</span>
-              <ul>
-                  <li><i class="fa fa-facebook-square fa-2x"></i></li>
-                  <li><i class="fa fa-twitter-square fa-2x"></i></li>
-                  <li><i class="fa fa-linkedin-square fa-2x"></i></li>
-                  <li><i class="fa fa-google-plus-square fa-2x"></i></li>
-              </ul>
-          </div>
-      </div>
-      --}}
-
       <div class="overlay">
         <div class="overlay__inner">
           <h1 class="overlay__title">

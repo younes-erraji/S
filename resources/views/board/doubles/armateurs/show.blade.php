@@ -43,6 +43,10 @@
             @method('DELETE')
             <a class="action delete"><i class="fa fa-trash-o"></i></a>
           </form>
+          <form method="POST" action="/doubles/armateurs/delete-all/{{ $d_armateur->id }}">
+            @csrf
+            <a class="delete" style='width: auto; font-size: 14px'>Supprimer Tout</a>
+          </form>
         </th>
       </tr>
     </tbody>

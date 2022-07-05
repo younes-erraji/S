@@ -1,6 +1,5 @@
 @extends('layouts.board')
 @section('style')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/board/datatable.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
 <style>
@@ -63,7 +62,8 @@
         <th>Nom</th>
         <th>E-mail</th>
         <th>Type</th>
-        <th>Count</th>
+        {{-- <th>Count</th> --}}
+        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -78,7 +78,7 @@
         <td>{{ $d_armateur->nom . ' ' . $d_armateur->prenom }}</td>
         <td>{{ $d_armateur->email }}</td>
         <td>{{ $d_armateur->type }}</td>
-        <td>{{ $d_armateur->count }}</td>
+        {{-- <td>{{ $d_armateur->count }}</td> --}}
         <td><a class="edit" href="/doubles/armateurs/show/{{ $d_armateur->id }}"><i class="fa fa-info"></i></a></td>
 
         <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/armateurs/comparer/{{ $d_armateur->id }}">Comparer</a></td>
@@ -90,6 +90,12 @@
             @csrf
             @method('DELETE')
             <a class="delete"><i class="fa fa-trash-o"></i></a>
+          </form>
+        </td>
+        <td>
+          <form method="POST" action="/doubles/armateurs/delete-all/{{ $d_armateur->id }}">
+            @csrf
+            <a class="delete" style='width: auto; font-size: 14px'>Supprimer Tout</a>
           </form>
         </td>
       </tr>

@@ -1,6 +1,5 @@
 @extends('layouts.board')
 @section('style')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/board/datatable.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/styles/board/table.css') }}" />
 <style>
@@ -62,7 +61,8 @@
         <th>Matricule</th>
         <th>Nom</th>
         <th>Armateur</th>
-        <th>Count</th>
+        {{-- <th>Count</th> --}}
+        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -78,7 +78,7 @@
         <td>{{ $d_navire->nom }}</td>
         <td>{{ $d_navire->armateur }}</td>
 
-        <td>{{ $d_navire->count }}</td>
+        {{-- <td>{{ $d_navire->count }}</td> --}}
         <td><a class="edit" href="/doubles/navires/show/{{ $d_navire->id }}"><i class="fa fa-info"></i></a></td>
         <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/navires/comparer/{{ $d_navire->id }}">Comparer</a></td>
         <td><a style='width: auto; font-size: 14px' class="edit" href="/doubles/navires/fusionner/{{ $d_navire->id }}">Fusionner</a></td>
@@ -87,6 +87,12 @@
             @csrf
             @method('DELETE')
             <a class="delete"><i class="fa fa-trash-o"></i></a>
+          </form>
+        </td>
+        <td>
+          <form method="POST" action="/doubles/navires/delete-all/{{ $d_navire->id }}">
+            @csrf
+            <a class="delete" style='width: auto; font-size: 14px'>Supprimer Tout</a>
           </form>
         </td>
       </tr>

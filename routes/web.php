@@ -101,6 +101,7 @@ Route::prefix('import')->group(function () {
 Route::prefix('doubles')->group(function () {
   Route::prefix('navires')->group(function () {
     Route::get("/", [DNaviresController::class, 'index']);
+    Route::post("delete-all/{navire}", [DNaviresController::class, 'destroyAll']);
     Route::delete("{navire}", [DNaviresController::class, 'destroy']);
     Route::get("show/{navire}", [DNaviresController::class, 'show']);
     Route::get("fusionner/{navire}", [DNaviresController::class, 'fusionner']);
@@ -113,6 +114,7 @@ Route::prefix('doubles')->group(function () {
   });
   Route::prefix('armateurs')->group(function () {
     Route::get("/", [DArmateursController::class, 'index']);
+    Route::post("delete-all/{armateur}", [DArmateursController::class, 'destroyAll']);
     Route::delete("{armateur}", [DArmateursController::class, 'destroy']);
     Route::get("show/{armateur}", [DArmateursController::class, 'show']);
     Route::get("fusionner/{armateur}", [DArmateursController::class, 'fusionner']);
